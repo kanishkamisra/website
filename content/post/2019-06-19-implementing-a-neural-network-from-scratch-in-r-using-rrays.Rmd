@@ -1,0 +1,150 @@
+---
+title: Implementing a Neural Network from scratch in R using rrays
+description: Using rrays and R6 class-system to implement an extensible NN-toolkit-ish
+author: Kanishka Misra
+date: '2019-06-19'
+slug: implementing-a-neural-network-from-scratch-using-rrays
+categories:
+  - neural-networks
+tags:
+  - R
+---
+
+## Summary
+
+In this post, I want to briefly demonstrate how one can implement a simple Neural Network architecture in R using a new package for array/tensor computation called `rray` along with the `R6` object oriented programming system which will be used to modularize the various elements requried for anyone to build a neural network architecture. Using our neural network toolkit, I will demonstrate the quintessential example where Linear Models fail but Neural Networks succeed: the **XOR function**. Most of the code is going to mimick Joel Grus' awesome code for "Building a Deep Learning Library" resource found [here](), I cannot state enough about how helpful his videos and blog posts have been. An important difference is that I have ported his python code to R and used rray as the tensor computation package to do all the heavylifting. 
+
+## Neural Network Primer (an inadequate one)
+
+Specifically, the post covers implementing multilayer perceptrons (MLP). MLPs are prototypical deep learning models whose goal is to approximate a function, $\mathbf{y} = f(\mathbf{x}|\Theta)$, where $\mathbf{x}$ are the inputs and $\mathbf{y}$ are the outputs and it does so by *learning* the best parameters captured in the collection $\Theta$. These are also referred to as Feed-forward Neural Networks because information flows only in one direction: *forward* through a series of functions to compute the output values^[there are other types of networks where this isn't the case, such as Recurrent Neural Networks (RNN) where the output of a network is used as an input to another network]. The simplest form of a multi-layer perceptron is composed of a series of transformations to the input:
+
+\[
+f_1 = xW_1 + b_1 \\
+g = \phi(f_1(x)) \\
+f_2 = gW_2 + b_2
+\]
+Combining these equations into one, 
+
+\[
+MLP(x) = \phi(xW_1 + b_1)W_2 + b_2
+\]
+
+Here $f_1$ is a single perceptron, which is a linear transformation of the input vector $x$, using the matrix $W$. $\phi$ is a non-linear function that is often referred to as an activation function that (in this case) transforms the input into something from which a simple linear model, $f_2$ can be easily trained to accurately predict the correct output. The weight matrices $\{W_1, W_2\}$ and the bias vectors $\{b_1, b_2\}$ form our parameters which are _learnt_ during training.
+
+How is the network trained and how are the parameters _learnt_? Using the combination of loss functions and gradient descent methods of course! More precisely, in a typical usecase of Neural Networks, one would have inputs ($\mathbf{x}$) and the corresponding outputs ($\mathbf{y}$) that the network has to be trained to predict, loss functions operationalize this by assigning a numerical score to the produced output of a neural network (denoted by $\mathbf{\hat{y}}$) by comparing it to the desired output using some mathematical function(s), i.e., they try to quantify how bad are the predictions of the neural network. Once the score is calculated, it is important for the model to tweak the gradients such that this score is minimized. This is done using Gradient based learning methods. I do not want to dwelve deeper into theory, but in brief, gradient based methods try to minimize this loss score in an iterative process by:
+
+1. Computing the loss estimate
+2. Computing the rate change of the loss (called gradients or derivatives) with respect to the parameters
+3. Shifting the parameter values in a direction opposite to that of the gradients.
+
+In our instance, we will be looking at the canonical example of Gradient based methods, the Stochastic Gradient Descent (SGD).
+
+This is not the ideal introduction to Neural Networks and some the resources that do an infinitely better job than I did are the deep learning book by Goodfellow et al. (2016) and Stanford's CS231n class among others.
+
+## Computing with Vectors (tensors?) in R: a rray of hope
+
+Since in most cases the inputs and outputs that are used in the training of neural networks are often vectors, we will be using a package in R that provides useful tools to perform computation with these vectors. `rray` is a new package in R made by Davis Vaughn with many different goals, but the major one being: it enables seamless integration of array/tensor broadcasting across all widely used functions including ones that could not have been done (easily) by using the `Matrix` package (which is extremely awesome and fast!). An example can be shown here:
+
+Lets say you have an $3 \times 2$ matrix, and you want to center it columnwise. With `rray`, it is a simple operation, like so:
+
+```{r}
+library(rray)
+set.seed(1234)
+
+x <- rray(rnorm(6), dim = c(3,2))
+
+x - rray_mean(x, axes = 1)
+```
+
+In contrast, the default `matrix` in R is not able to do this properly:
+
+```{r}
+set.seed(1234)
+
+x_mat <- matrix(rnorm(6), nrow = 3)
+
+x_mat - colMeans(x_mat)
+```
+
+and with the `Matrix` library, it becomes a little ugly:
+
+```{r}
+library(Matrix)
+set.seed(1234)
+
+x_Mat <- Matrix(rnorm(6), nrow = 3)
+
+t(t(x_Mat) - Matrix(Matrix::colMeans(x_Mat)))
+```
+
+Hopefully, the point is clear, but for more interesting utilities of broadcasting, check out [this](). 
+
+## Yet another R OOP system: R6
+
+Generally, a Neural Network model will be made up of several components. We need to keep track of the inputs, the initialization of weights, the logic of the forward pass, the gradients with respect to the loss function (usually done using auto-diff libraries, but we will be hand coding them), and finally the update rule (gradient based methods in our case). The model could be made up using many different kinds of layers and activation functions, thus in order for us to construct such a model efficiently, using Object Oriented Programming proves to be very useful. The major advantage it gives us is **Encapsulation**, which helps us abstract the data (parameters of the network) as well as functions (forward, and in our case, backward pass logic) together into an object; and **Polymorphism**, which allows us to use the same method, say the forward pass for any kind of a model.
+
+R provides us with several options for using Object Oriented Paradigms: S3, S4 and R6, but we will be using R6 since it facilitates encapsulation more easily than the others. For a detailed discussion on the trade-offs between the OOP systems in R, I refer the reader to [Chapter 16 of Hadley Wickham's awesome second edition of Advanced R.](https://adv-r.hadley.nz/oo-tradeoffs.html)
+
+## Neural Network Layers
+
+Layers are fundamental structural elements of the network architecture, each layer is usually a function that maps a vector to another vector (or a scalar in certail cases). A typical NN is just a stack of these layers that start from taking in the input data, performing their respective functions, and producing the output. 
+
+To start off, lets load the required libraries.
+
+```{r}
+library(rray)
+library(R6)
+
+set.seed(1234)
+```
+
+Then, we'd want to describe a general structure of a layer. We do this by defining an `R6` class called `Layer`. We will need two public fields, the parameters of the layer, and the gradients to pass backward during the backpropagation step. Each layer will also contain two functions: (1) logic about the forward computation for moving _ahead_ in the network, and (2) the backward computation, for computing and updating the gradients with respect to the input and the parameters.
+
+```{r}
+Layer <- R6Class(
+  "Layer",
+  public = list(
+    params = list(),
+    grads = list(),
+    initialize = function() {},
+    forward = function() {stop("Not Implemented!")},
+    backward = function() {stop("Not Implemented!")}
+  )
+)
+```
+
+Since this is a generic layer method, we will not implement anything here, but define a new type of layer by extending this class. Lets define a Linear layer, containing a weights matrix, $\mathbf{W}$ and a bias vector, $\mathbf{b}$. The forward computation, given input $\mathbf{x}$ is simply: 
+
+\[
+  \mathbf{x \cdot W + b}
+\]
+
+To compute the gradients
+
+```{r}
+Linear <- R6Class(
+  "Linear",
+  inherit = Layer,
+  public = list(
+    inputs = NULL,
+    initialize = function(input_size, output_size) {
+      # super$initialize()
+      self$params[["w"]] = rray(rnorm(input_size * output_size), c(input_size, output_size))
+      self$params[["bias"]] = rray(rnorm(output_size), c(1, output_size))
+    },
+    forward = function(inputs) {
+      self$inputs = inputs
+      return(self$inputs %*% self$params[["w"]] + self$params[["bias"]])
+    },
+    backward = function(grad) {
+      self$grads[["w"]] = t(self$inputs) %*% grad
+      self$grads[["bias"]] = rray_sum(grad, axes = 1)
+      
+      return(grad %*% t(self$params[["w"]]))
+    }
+  )
+)
+```
+
+
+
