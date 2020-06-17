@@ -18,15 +18,15 @@ publication: In *Proceedings of the 42nd Annual Conference of the Cognitive Scie
 publication_short: In *CogSci 2020*
 publication_types:
 - "1"
-publishDate: "2020-08-01T00:00:00Z"
+publishDate: "2020-06-01T00:00:00Z"
 # slides: example
-summary: Using semantic priming to investigae how BERT utilizes lexical relations to inform word probabilities in context.
+summary: Using semantic priming to investigate how BERT utilizes lexical relations to inform word probabilities in context.
 # tags:
 # - Source Themes
 title: Exploring Lexical Relations in BERT using Semantic Priming (Forthcoming)
 # url_code: '#'
 # url_dataset: '#'
-url_pdf: "papers/fuzzy-risk.pdf"
+# url_pdf: "papers/fuzzy-risk.pdf"
 # url_poster: "posters/cogsci19.pdf"
 # url_project: ""
 # url_slides: "slides/fuzzy-risk.pdf"
