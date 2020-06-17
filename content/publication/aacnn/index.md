@@ -16,7 +16,7 @@ links:
 - name: Custom Link
   url: https://www.researchgate.net/publication/337638410_Authorship_Analysis_of_Online_Predatory_Conversations_using_Character_Level_Convolution_Neural_Networks
 publication: In *2019 IEEE International Conference on Systems, Man and Cybernetics (SMC)*
-publication_short: In *IEEE SMC*
+publication_short: In *IEEE SMC 2019*
 publication_types:
 - "1"
 publishDate: "2019-11-28T00:00:00Z"

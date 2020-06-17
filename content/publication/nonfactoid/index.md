@@ -16,7 +16,7 @@ links:
 - name: Custom Link
   url: https://www.researchgate.net/publication/337639936_A_Sentiment_Based_Non-Factoid_Question-Answering_Framework
 publication: In *2019 IEEE International Conference on Systems, Man and Cybernetics (SMC)*
-publication_short: In *IEEE SMC*
+publication_short: In *IEEE SMC 2019*
 publication_types:
 - "1"
 publishDate: "2019-11-28T00:00:00Z"
