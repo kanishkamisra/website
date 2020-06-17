@@ -26,7 +26,7 @@ summary: Using semantic priming to investigae how BERT utilizes lexical relation
 title: Exploring Lexical Relations in BERT using Semantic Priming (Forthcoming)
 # url_code: '#'
 # url_dataset: '#'
-# url_pdf: "papers/fuzzy-risk.pdf"
+url_pdf: "papers/fuzzy-risk.pdf"
 # url_poster: "posters/cogsci19.pdf"
 # url_project: ""
 # url_slides: "slides/fuzzy-risk.pdf"
