@@ -8,7 +8,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 30  # Order that this section will appear.
 
-title = "News"
+title = "Research News"
 subtitle = ""
 
 [design]
@@ -22,11 +22,11 @@ subtitle = ""
   #   Any HTML color name or Hex value is valid.
 
   # Background color.
-  # color = "navy"
+  # color = "#e7dfd5"
   
   # Background gradient.
-   gradient_start = "DeepSkyBlue"
-   gradient_end = "SkyBlue"
+   # gradient_start = "DeepSkyBlue"
+   # gradient_end = "SkyBlue"
   
   # Background image.
   #image = "headers/bubbles-wide.jpg"  # Name of image in `static/img/`.
@@ -36,7 +36,7 @@ subtitle = ""
   #image_parallax = true  # Use a fun parallax-like fixed background effect? true/false
 
   # Text color (true=light or false=dark).
-  text_color_light = true
+  text_color_light = false
 
 [design.spacing]
   # Customize the section spacing. Order is top, right, bottom, left.
@@ -50,16 +50,6 @@ subtitle = ""
  css_class = ""
 +++
 
-Welcome to the **personal demo** of Academic. Other demos available include:
-
-- [**Project Demo** (Academic's actual site)](https://sourcethemes.com/academic/)
-
-**Over 100,000 [Amazing Websites](https://sourcethemes.com/academic/#expo) have Already Been Built with Academic**
-
-**[Join](https://sourcethemes.com/academic/docs/install/) the Most Empowered Hugo Community**
-
-{{% alert note %}}
-This homepage section is an example of adding [elements](https://sourcethemes.com/academic/docs/writing-markdown-latex/) to the [*Blank* widget](https://sourcethemes.com/academic/docs/widgets/).
-
-Backgrounds can be applied to any section. Here, the *background* option is set give an *image parallax* effect.
-{{% /alert %}}
+- **May 2020:** [Paper](publication/nafips20/) with Julia accepted at NAFIPS'20!
+- **May 2020:** [Poster](publication/bertpriming) with [Allyson Ettinger](https://aetting.github.io/) and Julia accepted at CogSci 2020!
+- **April 2020:** Congrats to my undergraduate advisees [Qingyuan "Carol" Hu](https://www.linkedin.com/in/qingyuan-carol-hu-a60211136/) and [Yi Zhang](https://www.linkedin.com/in/yi-z3050/) for winning second place at the first Virtual Purdue Undergraduate Research Conference!
