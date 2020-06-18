@@ -8,7 +8,7 @@ light = true
 primary = "#1b6ca8"
 
 # Menu
-menu_primary = "#e7dfd5"
+menu_primary = "#F3F9FB"
 # menu_text = "#fff"
 menu_text = "#204051"
 menu_text_active = "#1b6ca8"
@@ -16,8 +16,9 @@ menu_text_active = "#1b6ca8"
 menu_title = "#204051"
 
 # Backgrounds
-background = "#e7dfd5"
-home_section_odd = "#e7dfd5"
-home_section_even = "#e7dfd5"
+# background = "#e7dfd5"
+background = "#F3F9FB"
+home_section_odd = "#F3F9FB"
+home_section_even = "#F3F9FB"
 
 font = "kanishka"
