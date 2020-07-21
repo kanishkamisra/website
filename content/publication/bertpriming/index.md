@@ -7,10 +7,10 @@ authors:
 date: "2020-08-01T00:00:00Z"
 # doi: "10.1109/SMC.2019.8914528"
 featured: true
-# image:
+image:
   # caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/pLCdAaMFLTE)'
   # focal_point: ""
-  # preview_only: false
+  preview_only: false
 links:
 # - name: Custom Link
   # url: https://cogsci.mindmodeling.org/2019/papers/0626/index.html
@@ -26,12 +26,12 @@ summary: Using semantic priming to investigate how BERT utilizes lexical relatio
 title: Exploring Lexical Relations in BERT using Semantic Priming (Forthcoming)
 # url_code: '#'
 # url_dataset: '#'
-# url_pdf: "papers/fuzzy-risk.pdf"
-# url_poster: "posters/cogsci19.pdf"
+url_pdf: "papers/cogsci20supp.pdf"
+url_poster: "posters/cogsci20.pdf"
 # url_project: ""
 # url_slides: "slides/fuzzy-risk.pdf"
 # url_source: '#'
-# url_video: '#'
+url_video: 'https://cutt.ly/bert-priming'
 ---
 
 {{% alert note %}}

@@ -50,6 +50,7 @@ subtitle = ""
  css_class = ""
 +++
 
+- **July 2020:** Presenting a [Poster](publication/bert-priming) with [Allyson Ettinger](https://aetting.github.io/) and Julia at the first virtual CogSci!
 - **May 2020:** [Paper](publication/nafips20/) with Julia accepted at NAFIPS'20!
 - **May 2020:** [Poster](publication/bertpriming) with [Allyson Ettinger](https://aetting.github.io/) and Julia accepted at CogSci 2020!
 - **April 2020:** Congrats to my undergraduate advisees [Qingyuan "Carol" Hu](https://www.linkedin.com/in/qingyuan-carol-hu-a60211136/) and [Yi Zhang](https://www.linkedin.com/in/yi-z3050/) for winning second place at the first Virtual Purdue Undergraduate Research Conference!
