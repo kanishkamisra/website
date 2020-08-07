@@ -49,7 +49,7 @@ subtitle = ""
  # CSS class.
  css_class = ""
 +++
-
+- **August 2020:** Congrats to my undergraduate advisees [Qingyuan "Carol" Hu](https://www.linkedin.com/in/qingyuan-carol-hu-a60211136/) and [Yi Zhang](https://www.linkedin.com/in/yi-z3050/) for their paper with Julia and me being accepted to ICCI*CC 2020!
 - **July 2020:** Presented a [Poster](publication/bert-priming) with [Allyson Ettinger](https://aetting.github.io/) and Julia at the first virtual CogSci!
 - **May 2020:** [Paper](publication/nafips20/) with Julia accepted at NAFIPS'20!
 - **May 2020:** [Poster](publication/bertpriming) with [Allyson Ettinger](https://aetting.github.io/) and Julia accepted at CogSci 2020!
