@@ -12,8 +12,8 @@ image:
   # focal_point: ""
   preview_only: false
 links:
-# - name: Custom Link
-  # url: https://cogsci.mindmodeling.org/2019/papers/0626/index.html
+- name: Supplementary
+  url: "papers/cogsci20supp.pdf"
 publication: In *Proceedings of the 42nd Annual Conference of the Cognitive Science Society*
 publication_short: In *CogSci 2020*
 publication_types:
@@ -26,7 +26,7 @@ summary: Using semantic priming to investigate how BERT utilizes lexical relatio
 title: Exploring Lexical Relations in BERT using Semantic Priming (Forthcoming)
 # url_code: '#'
 # url_dataset: '#'
-url_pdf: "papers/cogsci20supp.pdf"
+url_pdf: "papers/cogsci20abstract.pdf"
 url_poster: "posters/cogsci20.pdf"
 # url_project: ""
 # url_slides: "slides/fuzzy-risk.pdf"

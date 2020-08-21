@@ -4,13 +4,15 @@ authors:
 - admin 
 - Julia Taylor Rayz
 date: "2020-06-16T00:00:00Z"
-doi: "10.1109/SMC.2019.8914528"
+# doi: "10.1109/SMC.2019.8914528"
 featured: true
 #image:
 #  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/pLCdAaMFLTE)'
 #  focal_point: ""
 #  preview_only: false
-#links:
+# links:
+# - name: NAFIPS
+
 #- name: Custom Link
 #  url: https://www.researchgate.net/publication/337645484_Not_So_Cute_but_Fuzzy_Estimating_Risk_of_Sexual_Predation_in_Online_Conversations
 publication: In *Fuzzy Information Processing 2020, Proceedings of NAFIPS'2020*
@@ -28,7 +30,7 @@ title: "An Approximate Perspective on Word Prediction in Context: Ontological Se
 url_pdf: "papers/nafips.pdf"
 # url_poster: '#'
 # url_project: ""
-# url_slides: "slides/fuzzy-risk.pdf"
+url_slides: "slides/nafips2020.pdf"
 # url_source: '#'
 # url_video: '#'
 ---
