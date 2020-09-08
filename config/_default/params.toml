@@ -16,7 +16,7 @@
 theme = "kanishka"
 
 # Enable users to switch between day and night mode?
-day_night = true
+day_night = false
 
 # Override the theme's font set (optional).
 #   Latest font sets (may require updating): https://sourcethemes.com/academic/themes/
@@ -258,7 +258,7 @@ plugins_js  = []
 ############################
 ## Maps
 ############################
-[map]
+#[map]
   # To show your address on a map in the Contact widget, enter your latitude and longitude (above)
   # and choose a map provider below.
   #
@@ -273,9 +273,9 @@ plugins_js  = []
   #   1: Google Maps
   #   2: OpenStreetMap (Mapnik)
   #   3: OpenStreetMap (Mapbox)
-  engine = 1
-  api_key = "AIzaSyB2JweMsyN81D6Muw6JiHj9haRu7MWc8Yk"
-  zoom = 15
+  #engine = 1
+  #api_key = "AIzaSyB2JweMsyN81D6Muw6JiHj9haRu7MWc8Yk"
+  #zoom = 15
 
 ############################
 ## Marketing

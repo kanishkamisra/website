@@ -8,12 +8,12 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 30  # Order that this section will appear.
 
-title = "Research News"
-subtitle = ""
+title = "Recent News"
+subtitle = "[SEE ALL](/news)"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "1"
+  columns = "2"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -22,25 +22,25 @@ subtitle = ""
   #   Any HTML color name or Hex value is valid.
 
   # Background color.
-  # color = "#e7dfd5"
+  # color = "navy"
   
   # Background gradient.
-   # gradient_start = "DeepSkyBlue"
-   # gradient_end = "SkyBlue"
+  # gradient_start = "DarkGreen"
+  # gradient_end = "ForestGreen"
   
   # Background image.
-  #image = "headers/bubbles-wide.jpg"  # Name of image in `static/img/`.
-  #image_darken = 0.6  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
-  #image_size = "cover"  #  Options are `cover` (default), `contain`, or `actual` size.
-  #image_position = "center"  # Options include `left`, `center` (default), or `right`.
-  #image_parallax = true  # Use a fun parallax-like fixed background effect? true/false
-
+  # image = "pylons.jpg"  # Name of image in `static/img/`.
+  # image_darken = 0.6  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
+  # image_size = "cover"  #  Options are `cover` (default), `contain`, or `actual` size.
+  # image_position = "center"  # Options include `left`, `center` (default), or `right`.
+  # image_parallax = true  # Use a fun parallax-like fixed background effect? true/false
+  
   # Text color (true=light or false=dark).
-  text_color_light = false
+  # text_color_light = true
 
 [design.spacing]
   # Customize the section spacing. Order is top, right, bottom, left.
-  padding = ["20px", "0", "20px", "0"]
+  # padding = ["20px", "0", "20px", "0"]
 
 [advanced]
  # Custom CSS. 
@@ -49,8 +49,5 @@ subtitle = ""
  # CSS class.
  css_class = ""
 +++
-- **August 2020:** Congrats to my undergraduate advisees [Qingyuan "Carol" Hu](https://www.linkedin.com/in/qingyuan-carol-hu-a60211136/) and [Yi Zhang](https://www.linkedin.com/in/yi-z3050/) for their paper with Julia and me being accepted to ICCI*CC 2020!
-- **July 2020:** Presented a [Poster](publication/bert-priming) with [Allyson Ettinger](https://aetting.github.io/) and Julia at the first virtual CogSci!
-- **May 2020:** [Paper](publication/nafips20/) with Julia accepted at NAFIPS'20!
-- **May 2020:** [Poster](publication/bertpriming) with [Allyson Ettinger](https://aetting.github.io/) and Julia accepted at CogSci 2020!
-- **April 2020:** Congrats to my undergraduate advisees [Qingyuan "Carol" Hu](https://www.linkedin.com/in/qingyuan-carol-hu-a60211136/) and [Yi Zhang](https://www.linkedin.com/in/yi-z3050/) for winning second place at the first Virtual Purdue Undergraduate Research Conference!
+
+{{< readfromfile "/content/newslist.dat" 6 >}} 

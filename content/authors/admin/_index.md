@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: My research interests include distributed robotics, mobile computing and programmable
+bio: My research interests include Natural Language Processing, Cognitive Science, and Deep Learning.
   matter.
 education:
   courses:
@@ -50,8 +50,8 @@ I am a third year PhD Student at Purdue University, where I work on Natural Lang
 
 In 2018, I was fortunate to be funded by the Purdue Research Foundation Fellowship. I currently teach three sections (~75 students) of database fundamentals to sophomore level undergraduates.
 
-{{% alert note %}}
-I will soon be hosting virtual office hours for undergraduates interested in research. [Click here for updates]({{< ref "/misc/" >}}).
-{{% /alert %}}
+<!---{{% alert note %}}
+I am currently working on projects .
+{{% /alert %}}--->
 
 My email is [my-first-name] @ purdue [dot] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">[why is it like that?]</a></sup>
