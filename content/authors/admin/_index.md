@@ -12,10 +12,23 @@ education:
     institution: Purdue University
     year: 2018
 email: ""
+
+# committee:
+#   courses:
+#   - course: Kanishka
+#     url: "https://kanishka.xyz"
+#     institution: Purdue
+#     year: 2019
+
+collaborators:
+- Allyson Ettinger, UChicago
+- Ananya Sheth, Purdue University
+
 interests:
 - Natural Language Processing
 - Lexical Semantics
 - Sentence Processing in Humans
+
 organizations:
 - name: Purdue University
   url: "https://www.purdue.edu/"

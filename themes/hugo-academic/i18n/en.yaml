@@ -83,6 +83,12 @@
 
 # About widget
 
+- id: committee
+  translation: Doctoral Committee
+
+- id: collaborators
+  translation: Collaborators
+
 - id: interests
   translation: Interests
 
