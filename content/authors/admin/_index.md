@@ -21,8 +21,10 @@ email: ""
 #     year: 2019
 
 collaborators:
+- Julia Rayz, Purdue (**Chair**)
 - Allyson Ettinger, UChicago
-- Ananya Sheth, Purdue University
+- Tatiana Ringenberg, Purdue
+- Ananya Sheth, Purdue
 
 interests:
 - Natural Language Processing
