@@ -8,6 +8,9 @@ education:
   - course: PhD Student
     institution: Purdue University
     year: Current
+  - course: MS in Computer Information Technology
+    institution: Purdue University
+    year: 2020
   - course: BS in Computer Information Technology
     institution: Purdue University
     year: 2018
@@ -61,7 +64,7 @@ user_groups:
 - Visitors
 ---
 
-I am a third year PhD Student at Purdue University, where I work on Natural Language Understanding with [Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in analysing neural network representations of language from the perspective of human sentence processing. 
+I am a third year PhD Student at Purdue University, where I work on Natural Language Understanding with [Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in analyzing neural network representations of language from the perspective of human sentence processing. 
 
 In 2018, I was fortunate to be funded by the Purdue Research Foundation Fellowship. I currently teach three sections (~75 students) of database fundamentals to sophomore level undergraduates.
 
