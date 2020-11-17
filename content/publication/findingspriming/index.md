@@ -14,8 +14,10 @@ image:
 links:
 - name: arxiv
   url: "https://arxiv.org/abs/2010.03010"
-publication: In *Findings of ACL&#58; EMNLP 2020*
-publication_short: In *Findings of EMNLP 2020*
+- name: Anthology
+  url: "https://www.aclweb.org/anthology/2020.findings-emnlp.415"
+publication: "In *Findings of the Association for Computational Linguistics: EMNLP 2020*"
+publication_short: "In *Findings of ACL: EMNLP 2020*"
 publication_types:
 - "1"
 #publishDate: "2020-06-01T00:00:00Z"
@@ -23,11 +25,11 @@ publication_types:
 summary: Using semantic priming to investigate how BERT utilizes lexical relations to inform word probabilities in context.
 # tags:
 # - Source Themes
-title: Exploring BERT’s Sensitivity to Lexical Cues using Tests from Semantic Priming (Forthcoming)
+title: Exploring BERT’s Sensitivity to Lexical Cues using Tests from Semantic Priming
 # url_code: '#'
 # url_dataset: '#'
 # url_pdf: "papers/cogsci20abstract.pdf"
-# url_poster: "posters/cogsci20.pdf"
+url_poster: "posters/findings2020.pdf"
 # url_project: ""
 # url_slides: "slides/fuzzy-risk.pdf"
 # url_source: '#'

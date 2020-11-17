@@ -32,7 +32,7 @@ collaborators:
 interests:
 - Natural Language Processing
 - Lexical Semantics
-- Sentence Processing in Humans
+- Categorization
 
 organizations:
 - name: Purdue University
