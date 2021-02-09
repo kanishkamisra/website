@@ -65,7 +65,7 @@ user_groups:
 - Visitors
 ---
 
-I am a third year PhD Student at Purdue University, where I work on Natural Language Understanding with [Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in relating natural language processing algorithms and models from the perspective of cognitive science. I closely work with [Dr. Allyson Ettinger](https://aetting.github.io/) of UChicago.
+I am a third year PhD Student at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in relating natural language processing algorithms and models from the perspective of cognitive science. I closely work with [Dr. Allyson Ettinger](https://aetting.github.io/) of UChicago.
 
 In 2018, I was fortunate to be funded by the Purdue Research Foundation Fellowship. I then taught database fundamentals to sophomore level undergraduates for three semesters. Currently, I am funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on integrating cybersecurity education by using Computational Humor.
 
