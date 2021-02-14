@@ -2,7 +2,6 @@
 authors:
 - admin
 bio: My research interests include Natural Language Processing, Cognitive Science, and Deep Learning.
-  matter.
 education:
   courses:
   - course: PhD, Natural Language Understanding
@@ -26,13 +25,15 @@ email: ""
 collaborators:
 - Julia Rayz, Purdue (**Advisor**)
 - Allyson Ettinger, UChicago
+- Hemanth Devarapalli, Purdue
 - Tatiana Ringenberg, Purdue
 - Ananya Sheth, Purdue
 
 interests:
-- Natural Language Processing
+- Language Understanding
 - Lexical Semantics
 - Categorization
+- Typicality and Vagueness
 - Induction
 
 organizations:
@@ -65,9 +66,11 @@ user_groups:
 - Visitors
 ---
 
-I am a third year PhD Student at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in relating natural language processing algorithms and models from the perspective of cognitive science. I closely work with [Dr. Allyson Ettinger](https://aetting.github.io/) of UChicago.
+I am a third year PhD Student at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in relating natural language processing algorithms and models from the perspective of ideas in cognitive science (specifically, the study of concepts and categories). I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) of UChicago. I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.
 
-In 2018, I was fortunate to be funded by the Purdue Research Foundation Fellowship. I then taught database fundamentals to sophomore level undergraduates for three semesters. Currently, I am funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on integrating cybersecurity education by using Computational Humor.
+In 2018, I was fortunate to be a Purdue Research Foundation fellow. I then taught database fundamentals to sophomore level undergraduates for three semesters. I am currently funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on integrating cybersecurity education through Computational Humor.
+
+<!--I enjoy mentoring students interested in Natural Language Processing, check out my CV for some examples of undergraduate projects I have mentored.--->
 
 
 
