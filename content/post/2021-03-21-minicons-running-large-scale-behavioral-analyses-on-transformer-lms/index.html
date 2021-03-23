@@ -38,7 +38,7 @@ header-includes:
 <h2>Premise</h2>
 <p>Assume that just like any other day in the Natural Language Processing (NLP) community, you read a tweet about this shiny and fancy new transformer <span class="citation">(Vaswani et al. 2017)</span> language model (let’s call it :robot:) that has recently come out and is hyped and touted to solve many NLP tasks!
 Now lets say that you are an NLP researcher, and just like me, you are interested in understanding and evaluating models like :robot:.
-Fortunately for you, due to the hard work put in by <a href="https://huggingface.co/">Huggingface</a>, :robot: has been made public and now appears on its <a href="https://huggingface.co/models">model hub</a> (let’s assume for the purposes of this post that :robot: = <a href="https://huggingface.co/distilgpt2"><code>distilgpt2</code></a>).
+Fortunately for you, due to the hard work put in by <a href="https://huggingface.co/">Huggingface</a>, :robot: has been made public and now appears on its <a href="https://huggingface.co/models">model hub</a> (for the purposes of this post, let’s assume that :robot: = <a href="https://huggingface.co/distilgpt2"><code>distilgpt2</code></a>).
 Assuming for the purposes of this post, you are interested in morpho-syntax,<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> you might ask the question:</p>
 <blockquote>
 <p>How well does :robot: learn subject-verb agreement?</p>
@@ -55,7 +55,7 @@ Since it is a language model, :robot: assigns probabilities to words in a sequen
 Maintaining the assumption that :robot: is the the same as <code>distilgpt2</code>, it estimates the probability of a word <span class="math inline">\(w_i\)</span> in the sequence <span class="math inline">\(s = w_1, w_2, ..., w_{n-1}\)</span> as <span class="math inline">\(p(w_i \mid w_1, ..., w_{i-1})\)</span>.
 To calculate the probability of (<em>is</em>/<em>are</em>) in our example sentences, the model computes the expression <span class="math inline">\(p(\textit{is } \text{or} \textit{ are } \mid \textit{ the, keys, to, the, cabinet)}\)</span>.
 One could treat this conditional probability as a measure of how plausible the given phrase (<em>the keys to the cabinet is</em> or <em>the keys to the cabinet are</em>) is w.r.t. to the model’s trained parameters, as was done by <span class="citation">Linzen, Dupoux, and Goldberg (2016)</span>, and subsequent works.
-Therefore, a good language model of English—just like humans—will tell you that (1) is more plausible than (2), i.e. <span class="math inline">\(p(\textit{are} \mid \textit{the, keys, to, the, cabinet)} &gt; p(\textit{is} \mid \textit{the, keys, to, the, cabinet)}\)</span>.</p>
+Therefore, a good language model of English—just like humans—will tell you that (1) is more plausible than (2), i.e. <span class="math inline">\(p(\textit{are} \mid \textit{the, keys, to, the, cabinet)} &gt; p(\textit{is } \mid \textit{ the, keys, to, the, cabinet)}\)</span>.</p>
 </div>
 <div id="enter-textttminicons" class="section level2">
 <h2>Enter <span class="math inline">\(\texttt{minicons}\)</span>:</h2>
@@ -184,7 +184,7 @@ Though simple, the computations supported by the library facilitate running of l
 </div>
 <div id="acknowledgments" class="section level2">
 <h2>Acknowledgments</h2>
-<p><em>Thanks to Hemanth Devarapalli for inspriring me to convert my code into a library and <a href="https://www.anansheth.com">Ananya Sheth</a> for suggesting fine-grained edits to this post.</em></p>
+<p><em>Thanks to Hemanth Devarapalli for inspiring me to convert my code into a library and <a href="https://www.anansheth.com">Ananya Sheth</a> for suggesting fine-grained edits to this post.</em></p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2>References</h2>

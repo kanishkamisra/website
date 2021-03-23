@@ -32,7 +32,7 @@ header-includes:
 
 Assume that just like any other day in the Natural Language Processing (NLP) community, you read a tweet about this shiny and fancy new transformer [@vaswani2017attention] language model (let's call it :robot:) that has recently come out and is hyped and touted to solve many NLP tasks!
 Now lets say that you are an NLP researcher, and just like me, you are interested in understanding and evaluating models like :robot:.
-Fortunately for you, due to the hard work put in by [Huggingface](https://huggingface.co/), :robot: has been made public and now appears on its [model hub](https://huggingface.co/models) (let's assume for the purposes of this post that :robot: = [`distilgpt2`](https://huggingface.co/distilgpt2)). 
+Fortunately for you, due to the hard work put in by [Huggingface](https://huggingface.co/), :robot: has been made public and now appears on its [model hub](https://huggingface.co/models) (for the purposes of this post, let's assume that :robot: = [`distilgpt2`](https://huggingface.co/distilgpt2)). 
 Assuming for the purposes of this post, you are interested in morpho-syntax,^[the study of the internal structure of words and how they combine to form a sentence or a phrase.] you might ask the question:
 
 > How well does :robot: learn subject-verb agreement?
@@ -50,7 +50,7 @@ Since it is a language model, :robot: assigns probabilities to words in a sequen
 Maintaining the assumption that :robot: is the the same as `distilgpt2`, it estimates the probability of a word $w_i$ in the sequence $s = w_1, w_2, ..., w_{n-1}$ as $p(w_i \mid w_1, ..., w_{i-1})$.
 To calculate the probability of (*is*/*are*) in our example sentences, the model computes the expression $p(\textit{is } \text{or} \textit{ are } \mid \textit{ the, keys, to, the, cabinet)}$.
 One could treat this conditional probability as a measure of how plausible the given phrase (*the keys to the cabinet is* or *the keys to the cabinet are*) is w.r.t. to the model's trained parameters, as was done by @linzen2016assessing, and subsequent works.
-Therefore, a good language model of English---just like humans---will tell you that (1) is more plausible than (2), i.e. $p(\textit{are} \mid \textit{the, keys, to, the, cabinet)} > p(\textit{is} \mid \textit{the, keys, to, the, cabinet)}$.
+Therefore, a good language model of English---just like humans---will tell you that (1) is more plausible than (2), i.e. $p(\textit{are} \mid \textit{the, keys, to, the, cabinet)} > p(\textit{is } \mid \textit{ the, keys, to, the, cabinet)}$.
 
 ## Enter $\texttt{minicons}$:
 
@@ -194,6 +194,6 @@ The source code for this post (in RMarkdown, with python code supported through 
 
 ## Acknowledgments
 
-*Thanks to Hemanth Devarapalli for inspriring me to convert my code into a library and [Ananya Sheth](https://www.anansheth.com) for suggesting fine-grained edits to this post.*
+*Thanks to Hemanth Devarapalli for inspiring me to convert my code into a library and [Ananya Sheth](https://www.anansheth.com) for suggesting fine-grained edits to this post.*
 
 ## References
