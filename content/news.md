@@ -6,7 +6,7 @@ tags = []
 title = "News"
 math = true
 summary = """
-List of news.
+Recent news
 """
 
 [header]
