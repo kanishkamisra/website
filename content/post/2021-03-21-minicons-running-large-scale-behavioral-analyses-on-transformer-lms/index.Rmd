@@ -1,0 +1,199 @@
+---
+title: 'Introducing $\texttt{minicons}$: Running large scale behavioral analyses on transformer language models'
+author: Kanishka Misra
+date: '2021-03-21'
+slug: minicons-running-large-scale-behavioral-analyses-on-transformer-lms
+categories:
+  - research
+tags:
+  - Neural Networks
+  - Language Models
+  - Natural Language Processing
+  - Research
+subtitle: ''
+summary: 'In this post, I showcase my new python library that implements simple computations to facilitate large-scale evaluation of transformer language models.'
+authors: []
+lastmod: '2021-03-22T22:52:15-04:00'
+featured: no
+image:
+  caption: 'Made in [draw.io](https://app.diagrams.net/). Icon made by [Freepik](https://www.freepik.com)'
+  focal_point: ''
+  preview_only: no
+projects: []
+bibliography: [references.bib]
+header-includes:
+  - \usepackage{bbm}
+  - \usepackage{amsmath}
+  - \usepackage{gb4e}
+  - \noautomath
+---
+
+## Premise
+
+Assume that just like any other day in the Natural Language Processing (NLP) community, you read a tweet about this shiny and fancy new transformer [@vaswani2017attention] language model (let's call it :robot:) that has recently come out and is hyped and touted to solve many NLP tasks!
+Now lets say that you are an NLP researcher, and just like me, you are interested in understanding and evaluating models like :robot:.
+Fortunately for you, due to the hard work put in by [Huggingface](https://huggingface.co/), :robot: has been made public and now appears on its [model hub](https://huggingface.co/models) (let's assume for the purposes of this post that :robot: = [`distilgpt2`](https://huggingface.co/distilgpt2)). 
+Assuming for the purposes of this post, you are interested in morpho-syntax,^[the study of the internal structure of words and how they combine to form a sentence or a phrase.] you might ask the question:
+
+> How well does :robot: learn subject-verb agreement?
+
+If you were to conduct an experiment to answer this question in the context of native English speakers, you'd present several human subjects pairs of sentences that look like (1) and (2) and ask them to rate which one is more acceptable:
+
+(1) *the keys to the cabinet <u>**are**</u> on the table.*
+(2) *the keys to the cabinet <u>**is**</u> on the table.*
+
+In the above examples, knowledge about subject-verb agreement is tested by checking if the agent (human, our model :robot:, etc.) rates (1) as more acceptable than (2), since the number of the verb (*is* vs. *are*) has to agree with the subject, *keys*.
+Such an experiment is common to the psycholinguistic domain, where participants are presented with stimuli that are targeted to probe for a particular information.
+
+But how does one perform the same experiment with :robot:?
+Since it is a language model, :robot: assigns probabilities to words in a sequence.
+Maintaining the assumption that :robot: is the the same as `distilgpt2`, it estimates the probability of a word $w_i$ in the sequence $s = w_1, w_2, ..., w_{n-1}$ as $p(w_i \mid w_1, ..., w_{i-1})$.
+To calculate the probability of (*is*/*are*) in our example sentences, the model computes the expression $p(\textit{is } \text{or} \textit{ are } \mid \textit{ the, keys, to, the, cabinet)}$.
+One could treat this conditional probability as a measure of how plausible the given phrase (*the keys to the cabinet is* or *the keys to the cabinet are*) is w.r.t. to the model's trained parameters, as was done by @linzen2016assessing, and subsequent works.
+Therefore, a good language model of English---just like humans---will tell you that (1) is more plausible than (2), i.e. $p(\textit{are} \mid \textit{the, keys, to, the, cabinet)} > p(\textit{is} \mid \textit{the, keys, to, the, cabinet)}$.
+
+## Enter $\texttt{minicons}$:
+
+$\texttt{minicons}$ is a python library that lets you conduct experiments similar to the one sketched out above on a large scale.
+It automates the probability computations of transformer LMs that are accessible through the `transformers` package by HuggingFace, so that you---the researcher---can instead spend most of your time and effort in carefully designing experiments and stimuli that target aspects of linguistic knowledge that the model should ideally encode.
+$\texttt{minicons}$ is on [pypi](https://pypi.org/project/minicons/), and can be installed using the following terminal command:
+<!-- > Introducing `minicons`, a python package that lets you run large scale behavior analyses on transformer based LMs. -->
+
+<!-- A large part of my PhD research focuses on developing analytical tests to better understand blackbox neural network-based language processing models. -->
+<!-- Since many of the tests that have been proposed BLiMP [@warstadt2019blimp]. -->
+
+```{bash eval=FALSE}
+pip install minicons
+```
+
+```{r setup, include=FALSE}
+library(reticulate)
+# this is my poetry virtual environment, please change this path accordingly when replicating.
+use_python("/Users/kanishka/Library/Caches/pypoetry/virtualenvs/minicons-59FnUJMz-py3.8/bin/python")
+```
+
+To score sentences or phrases, you'll need the `scorer` module from the library. In the snippet below, I have also loaded other packages that will help demonstrate how one can rapidly run behavioral experiments using $\texttt{minicons}$.
+
+```{python}
+from minicons import scorer
+
+import json
+import statistics
+
+from torch.utils.data import DataLoader
+```
+
+Sticking to the subject-verb agreement task, one could collect/construct pairs of sentences that differ in their verb/auxiliary verb depending on the subject, such as examples (1) and (2). For simplicity, let's use the one that appears in a recent dataset/paper called [BLiMP](https://github.com/alexwarstadt/blimp) [@warstadt2019blimp].
+The BLiMP dataset consists of 67 different stimuli types (1000 pairs of sentences per stimuli-type), each targeted to evaluate a unique linguistic phenomenon based on one of 12 different paradigms (see Table 1 in @warstadt2019blimp for a summary of these paradigms), totaling to 67,000 pairs of sentence stimuli.
+One stimuli type relevant to the subject-verb agreement paradigm that you might be interested in is contained in a file called `distractor_agreement_relational_noun.jsonl`, made publicly available on [the lead author's github](https://github.com/alexwarstadt/blimp/blob/master/data/distractor_agreement_relational_noun.jsonl).
+The stimuli contained in this particular subset only cover one aspect of subject-verb agreement knowledge --- one requiring a verb's agreement with the number of a noun that is held constant across a given pair of sentences (see Table 4 in the same paper to explore other ways of evaluating subject-verb agreement).
+Let's now load the stimuli from the file:
+
+```{python}
+stimuli = []
+with open("distractor_agreement_relational_noun.jsonl", "r") as f:
+    for line in f:
+        row = json.loads(line)
+        stimuli.append([row['one_prefix_prefix'] + " " + row['one_prefix_word_good'], row['one_prefix_prefix'] + " " + row['one_prefix_word_bad']])
+        
+# Let's take a look at some of the stimuli
+for pair in stimuli[:5]:
+    print(f"{pair[0]} vs. {pair[1]}")
+```
+
+Notice that we only need the left context of the target words (*is* vs *are* in the running example), since our model, :robot:, is an incremental LM, i.e., it estimates the probability of a word by conditioning on its left context.
+To load our model, $\texttt{minicons.scorer}$ provides the `IncrementalLMScorer` class to instantiate any Incremental language model that is accessible through huggingface's `transformers` library.
+For this post, I've loaded it onto my cpu but one could also use a `cuda` device if it is available to them.
+
+```{python}
+model = scorer.IncrementalLMScorer('distilgpt2', 'cpu')
+```
+
+Let's also instantiate a dataloader so that we can run computations in batches as opposed to one at a time.
+This enables fast and efficient computation, and forms the core philosophy of $\texttt{minicons}$.
+
+```{python}
+stimuli_dl = DataLoader(stimuli, batch_size = 100)
+```
+
+Let's now compute :robot:'s scores on the 1000 sentence pairs in our evaluation stimuli.
+This is done by invoking the `.score()` method of our instantiated model.
+By default, it computes the log probabilities of the batch of input sentences, divided by their length (using `torch.mean()`), but also allows you to specify other aggregation functions, such as sum, geometric mean, or any other custom function that accepts a tensor of log-probabilities and returns a scalar for every row. To keep things simple, let's call our outputs 'scores' $(s)$.
+
+```{python}
+results = []
+for batch in stimuli_dl:
+    good, bad = batch
+    good_score = model.score(good)
+    bad_score = model.score(bad)
+    results.extend(zip(good_score, bad_score))
+```
+
+This gives us a results list containing `(good_score, bad_score)` tuples, each of which contain scores of the good vs. the bad inputs.
+It's typical to synthesize the results of such an experiment using an aggregated metric, to give us a summarized view of the model's performance on the task.
+For instance, one could compute the accuracy $\mathcal{A}$, by comparing the mean log probabilities, or scores, of "good" and "bad" instances in the evaluation dataset: 
+
+\[
+\begin{align}
+\mathcal{A} = \frac{1}{n}\sum_{i = 1}^n\mathbb{1}\{s(\text{good})~>~s(\text{bad})\}_i, (\#eq:accuracy)
+\end{align}
+\]
+
+where $\mathbb{1}\{\}_i$ is an indicator function that accepts a condition and outputs 1 if the condition is met for the given instance ($i$), and 0 otherwise.
+This is straightforward to implement in python:
+
+```{python}
+def accuracy(data):
+    return statistics.mean([g > b for g, b in data])
+    
+
+# Computing accuracy of our model:
+print(f"The accuracy of the model is {round(accuracy(results)*100, 2)}%")
+```
+
+How does this compare to other models, or even humans? Let's take a look at the paper's results:
+
+| 5-gram |  LSTM  |   TXL  |  GPT2  |  Human | :robot: (distilgpt2) |
+|:------:|:------:|:------:|:------:|:------:|:-------:|
+| 24.00% | 76.00% | 77.00% | 83.00% | 81.00% |  81.80% |
+
+Surprisingly, our model :robot: ends up performing *better* than humans, and almost similar to GPT2 (which incidentally :robot: is actually based on)!
+The observation that the model is able to *out-perform* humans should be taken with extreme caution.
+One potential reason could be purely statistical --- the model is optimized to predict the statistical properties of word sequences, and it could have performed slightly better than humans if it has seen certain contiguous sequences (perhaps n-gram patterns of certain words) in its training corpus. If this is true then the model should have near-perfect memory of sequence patterns. Another potential reason could be the noise in human judgment -- humans aren't asked to annotate every single pair in the dataset. In fact, the authors only selected 100 sentences from each of the 67 different phenomena for their crowdsourcing experiment.
+Overall, the [paper](https://github.com/alexwarstadt/blimp) [@warstadt2019blimp] also reports a greater differential between humans and models on more challenging grammar tasks, favoring the humans. This suggests that our language models can acquire basic facts about the English language, but still have a long way to go in order to perfectly represent a diverse set of linguistic phenomena.
+For a detailed discussion on models vs. humans on these task, I urge you to read the original paper. 
+
+## What else can be done using $\texttt{minicons}$?
+
+I have only demonstrated one major application of $\texttt{minicons}$ --- the ability to rapidly run relative acceptability judgments on vast amount of linguistic data. 
+The library also supports a whole host of other operations. 
+Some include:
+
+- evaluating on masked language models
+- extracting hidden state representation at any layer of a given model
+- extracting and comparing the output distribution of the model on a given prompt
+- "priming" of language models where the model is conditioned on a given text and is evaluated on multiple continuations. A primitive version of this was used in my paper [[@misra2020exploring]](https://www.aclweb.org/anthology/2020.findings-emnlp.415)
+- exploring the outputs of models pre-trained to perform specific NLP tasks such as natural language inference, etc
+
+I also plan to add support for many more evaluation techniques as I make progress in my research, but I invite anyone to try and contribute to this library, especially since this is my very first time! Some potential ways of doing so could be:
+
+- writing better documentation, perhaps making a website to host it all
+- writing tutorials to showcase the usefulness of the library
+- adding new functionality
+
+So feel free to create PRs/Issues and I will be happy to collaborate on them with you!
+
+## Closing thoughts
+
+In this post I demonstrated one crucial application of my latest python library: $\texttt{minicons}$, by applying it on a toy evaluation setting based on basic English grammar, for a semi-fictitious model called :robot:. 
+Though simple, the computations supported by the library facilitate running of large-scale behavioral analyses of transformer-based language models through simple interaction with huggingface's `transformer` library and `pytorch`.
+
+The source code for this post (in RMarkdown, with python code supported through `reticulate`) can be found [here](https://github.com/kanishkamisra/website/blob/master/content/post/2021-03-21-minicons-running-large-scale-behavioral-analyses-on-transformer-lms/index.Rmd).
+
+<!-- Equation \@ref(eq:accuracy). -->
+
+## Acknowledgments
+
+*Thanks to Hemanth Devarapalli for inspriring me to convert my code into a library and [Ananya Sheth](https://www.anansheth.com) for suggesting fine-grained edits to this post.*
+
+## References
