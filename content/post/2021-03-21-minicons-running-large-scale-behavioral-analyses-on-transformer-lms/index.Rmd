@@ -30,7 +30,8 @@ header-includes:
 
 ## Premise
 
-Assume that just like any other day in the Natural Language Processing (NLP) community, you read a tweet about this shiny and fancy new transformer [@vaswani2017attention] language model (let's call it :robot:) that has recently come out and is hyped and touted to solve many NLP tasks!
+Assume that just like any other day in the Natural Language Processing (NLP) community, you read a tweet about this fancy new transformer [@vaswani2017attention] language model that has recently come out and is touted to solve many NLP tasks!
+Let's call it :robot:.
 Now lets say that you are an NLP researcher, and just like me, you are interested in understanding and evaluating models like :robot:.
 Fortunately for you, due to the hard work put in by [Huggingface](https://huggingface.co/), :robot: has been made public and now appears on its [model hub](https://huggingface.co/models) (for the purposes of this post, let's assume that :robot: = [`distilgpt2`](https://huggingface.co/distilgpt2)). 
 Assuming for the purposes of this post, you are interested in morpho-syntax,^[the study of the internal structure of words and how they combine to form a sentence or a phrase.] you might ask the question:
