@@ -22,7 +22,7 @@ publication_types:
 - "1"
 #publishDate: "2020-06-01T00:00:00Z"
 # slides: example
-summary: Using semantic priming to investigate how BERT utilizes lexical relations to inform word probabilities in context.
+summary: Using semantic priming to investigate how BERT utilizes lexical relations to inform word probabilities in context. Presented at *Blackbox NLP 2021*.
 # tags:
 # - Source Themes
 title: Exploring BERT’s Sensitivity to Lexical Cues using Tests from Semantic Priming

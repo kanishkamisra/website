@@ -20,7 +20,7 @@ publication_types:
 - "1"
 publishDate: "2020-06-01T00:00:00Z"
 # slides: example
-summary: Using semantic priming to investigate how BERT utilizes lexical relations to inform word probabilities in context.
+summary: Using semantic priming to investigate how BERT utilizes lexical relations to inform word probabilities in context. Presented at *CogSci 2020*.
 # tags:
 # - Source Themes
 title: Exploring Lexical Relations in BERT using Semantic Priming (Forthcoming)
