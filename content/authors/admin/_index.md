@@ -27,7 +27,7 @@ collaborators:
 - Allyson Ettinger, UChicago
 - Hemanth Devarapalli, Purdue
 - Tatiana Ringenberg, Purdue
-- Ananya Sheth, Purdue
+- Geetanjali Bihani, Purdue
 
 interests:
 - Language Understanding
@@ -35,6 +35,7 @@ interests:
 - Categorization
 - Typicality and Vagueness
 - Induction
+- Reasoning
 
 organizations:
 - name: Purdue University

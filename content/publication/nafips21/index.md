@@ -10,11 +10,10 @@ featured: true
 #  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/pLCdAaMFLTE)'
 #  focal_point: ""
 #  preview_only: false
-# links:
+links:
 # - name: NAFIPS
-
-#- name: Custom Link
-#  url: https://www.researchgate.net/publication/337645484_Not_So_Cute_but_Fuzzy_Estimating_Risk_of_Sexual_Predation_in_Online_Conversations
+- name: arxiv
+  url: https://arxiv.org/abs/2104.10813
 publication: In *Proceedings of NAFIPS 2021*
 publication_short: In *NAFIPS 2021*
 publication_types:
@@ -27,7 +26,7 @@ summary: Probing an NLI model for its handling of fuzzy concepts such as tempera
 title: "Finding fuzziness in Neural Network Models of Language Processing (Forthcoming)"
 url_code: 'https://github.com/kanishkamisra/nafips2021'
 # url_dataset: '#'
-url_pdf: "papers/nafips21.pdf"
+# url_pdf: "papers/nafips21.pdf"
 # url_poster: '#'
 # url_project: ""
 # url_slides: "slides/nafips2020.pdf"
