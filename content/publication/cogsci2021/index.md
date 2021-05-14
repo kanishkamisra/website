@@ -19,7 +19,7 @@ publication: In *Proceedings of the 43rd Annual Conference of the Cognitive Scie
 publication_short: In *CogSci 2021*
 publication_types:
 - "1"
-publishDate: "2021-08-01T00:00:00Z"
+#publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
   Investigating manifestation of category typicality effects in predictive models of language processing. To be presented at *CogSci 2021*
