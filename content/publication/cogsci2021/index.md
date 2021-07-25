@@ -15,6 +15,8 @@ featured: true
 links:
 - name: arxiv
   url: https://arxiv.org/abs/2105.02987
+- name: Proceedings
+  url: https://escholarship.org/uc/item/9n77r9mr#main
 publication: In *Proceedings of the 43rd Annual Conference of the Cognitive Science Society*
 publication_short: In *CogSci 2021*
 publication_types:
@@ -22,18 +24,18 @@ publication_types:
 #publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
-  Investigating manifestation of category typicality effects in predictive models of language processing. To be presented at *CogSci 2021*
+  Investigating manifestation of category typicality effects in predictive models of language processing. Presented at *CogSci 2021*
 # tags:
 # - Source Themes
 title: "Do language models learn typicality judgments from text?"
-# url_code: '#'
+url_code: 'https://github.com/kanishkamisra/typicalityprobing'
 # url_dataset: '#'
 # url_pdf: "papers/fuzzy-risk.pdf"
 # url_poster: "posters/cogsci19.pdf"
 # url_project: ""
-# url_slides: "slides/fuzzy-risk.pdf"
+url_slides: "slides/cogsci2021.pdf"
 # url_source: '#'
-# url_video: '#'
+url_video: '#'
 ---
 
 {{% alert note %}}
