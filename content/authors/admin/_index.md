@@ -30,12 +30,11 @@ collaborators:
 - Geetanjali Bihani, Purdue
 
 interests:
+- Inductive Reasoning
 - Language Understanding
 - Lexical Semantics
 - Categorization
 - Typicality and Vagueness
-- Induction
-- Reasoning
 
 organizations:
 - name: Purdue University
@@ -67,7 +66,7 @@ user_groups:
 - Visitors
 ---
 
-I am a third year PhD Student at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in relating natural language processing algorithms and models from the perspective of ideas in cognitive science (specifically, the study of concepts and categories). I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) of UChicago. I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.
+I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in relating natural language processing algorithms and models from the perspective of ideas in cognitive science (specifically, the study of concepts and categories). I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) of UChicago. I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.
 
 In 2018, I was fortunate to be a Purdue Research Foundation fellow. I then taught database fundamentals to sophomore level undergraduates for three semesters. I am currently funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on integrating cybersecurity education through Computational Humor.
 
