@@ -26,8 +26,9 @@ collaborators:
 - Julia Rayz, Purdue (**Advisor**)
 - Allyson Ettinger, UChicago
 - Geetanjali Bihani, Purdue
+- Abhilasha Kumar, Indiana
 - Hemanth Devarapalli, Purdue
-- Tatiana Ringenberg, Purdue
+- Tatiana Ringenberg, Indiana
 
 interests:
 - Inductive Reasoning
@@ -66,9 +67,9 @@ user_groups:
 - Visitors
 ---
 
-I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in relating natural language processing algorithms and models from the perspective of ideas in cognitive science (specifically, the study of concepts and categories). I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) of UChicago. I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.
+I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in characterizing the level of semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.
 
-In 2018, I was fortunate to be a Purdue Research Foundation fellow. I then taught database fundamentals to sophomore level undergraduates for three semesters. I am currently funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on integrating cybersecurity education and Computational Humor.
+In 2018, I was fortunate to be awarded the Purdue Research Foundation fellowship (now known as the Ross-Lynn Graduate Student Fellowship). I then taught database fundamentals to sophomore level undergraduates for three semesters. I am currently funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on using artificial intelligence techniques to develop entertainment education materials for social-engineering research.
 
 <!--I enjoy mentoring students interested in Natural Language Processing, check out my CV for some examples of undergraduate projects I have mentored.--->
 
