@@ -2,17 +2,17 @@
 authors:
 - admin
 bio: My research interests include Natural Language Processing, Cognitive Science, and Deep Learning.
-education:
-  courses:
-  - course: PhD, Natural Language Understanding
-    institution: Purdue University
-    year: Current
-  - course: MS in Computer Information Technology
-    institution: Purdue University
-    year: 2020
-  - course: BS in Computer Information Technology
-    institution: Purdue University
-    year: 2018
+#education:
+#  courses:
+#  - course: PhD, Natural Language Understanding
+#    institution: Purdue University
+#    year: Current
+#  - course: MS in Computer Information Technology
+#    institution: Purdue University
+#    year: 2020
+#  - course: BS in Computer Information Technology
+#    institution: Purdue University
+#    year: 2018
 email: ""
 
 # committee:
@@ -67,7 +67,9 @@ user_groups:
 - Visitors
 ---
 
-I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in characterizing the level of semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.
+I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.
+
+I was recently selected to be a Graduate Student Fellow in the inaugural [Purdue Graduate School Mentoring Fellows](https://news.cla.purdue.edu/2021/12/01/purdues-graduate-school-mentoring-graduate-student-fellow-program/) program! 
 
 I am the author of [minicons](https://minicons.kanishka.website), a python package that facilitates large scale behavioral analyses of transformer language models.
 
