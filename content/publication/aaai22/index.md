@@ -29,7 +29,7 @@ title: "On Semantic Cognition, Inductive Generalization, and Language Models"
 # url_code: 'https://github.com/kanishkamisra/typicalityprobing'
 # url_dataset: '#'
 # url_pdf: "papers/fuzzy-risk.pdf"
-# url_poster: "posters/cogsci19.pdf"
+url_poster: "posters/aaai2022dc.pdf"
 # url_project: ""
 # url_slides: "slides/cogsci2021.pdf"
 # url_source: '#'

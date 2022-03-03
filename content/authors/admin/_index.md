@@ -25,22 +25,27 @@ email: ""
 collaborators:
 - Julia Rayz, Purdue (**Advisor**)
 - Allyson Ettinger, UChicago
-- Geetanjali Bihani, Purdue
-- Abhilasha Kumar, Indiana
 - Hemanth Devarapalli, Purdue
+- Geetanjali Bihani, Purdue
+- Chih-chan Tien, UChicago
+- Mourad Heddaya, UChicago
+- Abhilasha Kumar, Indiana
 - Tatiana Ringenberg, Indiana
 
 interests:
 - Inductive Reasoning
+- Concepts and Categories
 - Language Understanding
 - Lexical Semantics
 - Categorization
 - Typicality and Vagueness
 
 organizations:
+- name: AKRaNLU Lab
+  url: "https://engineering.purdue.edu/akranlu"
 - name: Purdue University
   url: "https://www.purdue.edu/"
-role: PhD Student
+role: PhD Candidate
 social:
 - icon: twitter
   icon_pack: fab
@@ -51,15 +56,15 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/kanishkamisra
-- icon: researchgate
-  icon_pack: ai
-  link: https://www.researchgate.net/profile/Kanishka_Misra
-- icon: semantic-scholar
-  icon_pack: ai
-  link: https://www.semanticscholar.org/author/Kanishka-Misra/145274478
-- icon: linkedin
-  icon_pack: fab
-  link: https://www.linkedin.com/in/kanishkamisra/
+#- icon: researchgate
+#  icon_pack: ai
+#  link: https://www.researchgate.net/profile/Kanishka_Misra
+#- icon: semantic-scholar
+#  icon_pack: ai
+#  link: https://www.semanticscholar.org/author/Kanishka-Misra/145274478
+#- icon: linkedin
+#  icon_pack: fab
+#  link: https://www.linkedin.com/in/kanishkamisra/
 superuser: true
 title: Kanishka Misra
 user_groups:
