@@ -25,12 +25,12 @@ email: ""
 collaborators:
 - Julia Rayz, Purdue (**Advisor**)
 - Allyson Ettinger, UChicago
-- Hemanth Devarapalli, Purdue
-- Geetanjali Bihani, Purdue
+#- Hemanth Devarapalli, Purdue
 - Chih-chan Tien, UChicago
 - Mourad Heddaya, UChicago
-- Abhilasha Kumar, Indiana
-- Tatiana Ringenberg, Indiana
+- Geetanjali Bihani, Purdue
+#- Abhilasha Kumar, Indiana
+#- Tatiana Ringenberg, Indiana
 
 interests:
 - Inductive Reasoning
