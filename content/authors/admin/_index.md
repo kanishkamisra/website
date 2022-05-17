@@ -37,7 +37,6 @@ interests:
 - Concepts and Categories
 - Language Understanding
 - Lexical Semantics
-- Categorization
 - Typicality and Vagueness
 
 organizations:
