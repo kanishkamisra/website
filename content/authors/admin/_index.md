@@ -77,6 +77,8 @@ I was recently selected to be a Graduate Student Fellow in the inaugural [Purdue
 
 I am the author of [minicons](https://minicons.kanishka.website), a python package that facilitates large scale behavioral analyses of transformer language models.
 
+I recently hosted a two part discussion group on [Neural Nets for Cognition](https://neural-nets-for-cognition.net/) @ [CogSci 2022](https://cognitivesciencesociety.org/cogsci-2022/)!
+
 <!--In 2018, I was fortunate to be awarded the Purdue Research Foundation fellowship (now known as the Ross-Lynn Graduate Student Fellowship). I then taught database fundamentals to sophomore level undergraduates for three semesters. I am currently funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on using artificial intelligence techniques to develop entertainment education materials for social-engineering research.-->
 
 <!--I enjoy mentoring students interested in Natural Language Processing, check out my CV for some examples of undergraduate projects I have mentored.--->

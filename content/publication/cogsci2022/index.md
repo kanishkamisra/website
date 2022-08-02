@@ -11,16 +11,18 @@ featured: true
 links:
 - name: arxiv
   url: https://arxiv.org/abs/2205.06910
-#- name: Proceedings
-#  url: https://escholarship.org/uc/item/9n77r9mr#main
-publication: In *Proceedings of the 44rd Annual Conference of the Cognitive Science Society*
+- name: Proceedings
+  url: https://escholarship.org/uc/item/6170h6nj
+- name: Supplementary
+  url: https://github.com/kanishkamisra/lm-induction/blob/main/supplemental.pdf
+publication: In *Proceedings of the 44th Annual Conference of the Cognitive Science Society*
 publication_short: In *CogSci 2022*
 publication_types:
 - "1"
 #publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
-  Investigating how neural language generalize novel information about concepts and properties. To be presented at *CogSci 2022*
+  Investigating how neural language generalize novel information about everyday concepts and their properties. To be presented at *CogSci 2022*
 # tags:
 # - Source Themes
 title: "A Property Induction Framework for Neural Language Models"
