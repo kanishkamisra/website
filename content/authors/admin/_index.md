@@ -25,10 +25,11 @@ email: ""
 collaborators:
 - Julia Rayz, Purdue (**Advisor**)
 - Allyson Ettinger, UChicago
+- Najoung Kim, NYU/Google
+- Adina Williams, Meta AI
+- Koustuv Sinha, Meta AI
 #- Hemanth Devarapalli, Purdue
-- Chih-chan Tien, UChicago
-- Mourad Heddaya, UChicago
-- Geetanjali Bihani, Purdue
+#- Chih-chan Tien, UChicago
 #- Abhilasha Kumar, Indiana
 #- Tatiana Ringenberg, Indiana
 
