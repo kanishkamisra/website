@@ -72,7 +72,11 @@ user_groups:
 - Visitors
 ---
 
-I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.
+I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). 
+I am evaluate and analyze large language models from the perspective of human semantic cognition, by investigating capacities such as their ability to encode typicality effects, recall property knowledge, demonstrate property inheritance, and perform human-like category-based induction. Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.
+
+<!--I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. 
+<!--I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.-->
 
 I am currently a Research Intern at Google AI working on multi-hop reasoning and language models!
 
