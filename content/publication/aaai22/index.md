@@ -22,7 +22,7 @@ publication_types:
 #publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
-  Thesis proposal to study Inductive Generalization in Language Models.
+  Thesis proposal to study Inductive Generalization in Language Models. Presented at *AAAI 2022 Doctoral Consortium*.
 # tags:
 # - Source Themes
 title: "On Semantic Cognition, Inductive Generalization, and Language Models"

@@ -22,27 +22,30 @@ email: ""
 #     institution: Purdue
 #     year: 2019
 
-collaborators:
-- Julia Rayz, Purdue (**Advisor**)
-- Allyson Ettinger, UChicago
-- Najoung Kim, NYU/Google
-- Adina Williams, Meta AI
-- Koustuv Sinha, Meta AI
-#- Hemanth Devarapalli, Purdue
-#- Chih-chan Tien, UChicago
-#- Abhilasha Kumar, Indiana
-#- Tatiana Ringenberg, Indiana
-
-interests:
-- Inductive Reasoning
-- Concepts and Categories
-- Language Understanding
-- Lexical Semantics
-- Typicality and Vagueness
+# collaborators:
+# - Julia Rayz, Purdue (**Advisor**)
+# - Allyson Ettinger, UChicago
+# - Najoung Kim, NYU/Google
+# - Adina Williams, Meta AI
+# - Koustuv Sinha, Meta AI
+# - Aaron Mueller
+# #- Hemanth Devarapalli, Purdue
+# #- Chih-chan Tien, UChicago
+# #- Abhilasha Kumar, Indiana
+# #- Tatiana Ringenberg, Indiana
+# 
+# interests:
+# - Inductive Reasoning
+# - Concepts and Categories
+# - Language Understanding
+# - Lexical Semantics
+# - Typicality and Vagueness
 
 organizations:
 - name: AKRaNLU Lab
   url: "https://engineering.purdue.edu/akranlu"
+- name: UChicago CompLing Lab
+  url: "https://uchicagocompling.github.io/"
 - name: Purdue University
   url: "https://www.purdue.edu/"
 role: PhD Candidate
@@ -79,7 +82,7 @@ My research focuses on evaluating and analyzing large language models from the p
 <!--I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. 
 <!--I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.-->
 
-I am currently a Research Intern at Google AI working on multi-hop reasoning and language models!
+I spent Fall 2022 as a Research Intern at Google AI working on multi-hop reasoning and language models!
 
 I was recently selected to be a Graduate Student Fellow in the inaugural [Purdue Graduate School Mentoring Fellows](https://news.cla.purdue.edu/2021/12/01/purdues-graduate-school-mentoring-graduate-student-fellow-program/) program!
 

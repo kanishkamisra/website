@@ -22,7 +22,7 @@ publication_types:
 #publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
-  Investigating how neural language generalize novel information about everyday concepts and their properties. To be presented at *CogSci 2022*
+  Investigating how neural language generalize novel information about everyday concepts and their properties. Presented at *CogSci 2022*
 # tags:
 # - Source Themes
 title: "A Property Induction Framework for Neural Language Models"
