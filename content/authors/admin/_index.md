@@ -75,7 +75,7 @@ user_groups:
 - Visitors
 ---
 
-I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. **I am currently on the job market for post-doctoral position! Please reach out if you think I am a good fit for your lab!**
+I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. **I am currently on the job market for a post-doctoral position! Please reach out if you think I am a good fit for your lab!**
 
 My research focuses on evaluating and analyzing large language models from the perspective of human semantic cognition, investigating capacities such as their ability to encode [typicality effects](https://arxiv.org/abs/2105.02987), [recall property knowledge](https://arxiv.org/abs/2205.06910), demonstrate [property inheritance](https://arxiv.org/abs/2210.01963), and perform human-like [category-based induction](https://arxiv.org/abs/2205.06910). Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.
 
@@ -100,4 +100,4 @@ I recently hosted a two part discussion group on [Neural Nets for Cognition](htt
 I am currently working on projects .
 {{% /alert %}}--->
 
-My email is kmisra \@ purdue \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
+My email is kmisra \[at\] purdue \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
