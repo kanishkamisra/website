@@ -23,6 +23,8 @@ I have been enjoying reading whodunnits these days (early 2023), and my favorite
   
 I recently visited a cat cafe and met this amazing cat (see below), I hope a prosperous life is in store for him:
 
-![orange cat playing with red cardinal toy.](./cat1.jpg)
+<img src="/img/cat2.jpg" alt="orange cat playing with red cardinal toy." width="600" height="300">
+
+<!--![orange cat playing with red cardinal toy.](/img/cat2.jpg)-->
 
 <!--![test](/misc/_index_files/cat1.jpg)-->
