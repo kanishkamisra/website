@@ -19,9 +19,9 @@ I have been enjoying reading whodunnits these days (early 2023), and my favorite
   - The word is murder
   - The sentence is death
   - A line to kill
-  - The twist of a knife -- *currently listening*
+  - The twist of a knife
   
-I recently visited a cat cafe and met this amazing cat (see below), I hope a prosperous life is in store for him:
+I recently visited a cat cafe and met this amazing cat named cheesy poof, I hope a prosperous life is in store for him:
 
 <img src="/img/cat2.jpg" alt="orange cat playing with red cardinal toy." width="600" height="300">
 
