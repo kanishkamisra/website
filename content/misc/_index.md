@@ -10,7 +10,7 @@ title: Miscellaneous
 
 ## Fun
 
-I have been enjoying reading whodunnits these days (early 2023), and my favorite whodunnit writers is [Anthony Horowitz](https://anthonyhorowitz.com/). Here are some of his books I really liked:
+I have been enjoying reading whodunnits these days (early 2023), and one of my favorite whodunnit writers is [Anthony Horowitz](https://anthonyhorowitz.com/). Here are some of his books I really liked:
 
 - Susan Ryeland series:
   - Magpie Murders.
