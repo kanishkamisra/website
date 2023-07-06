@@ -75,20 +75,24 @@ user_groups:
 - Visitors
 ---
 
-I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. 
+I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago.
 
-My research focuses on evaluating and analyzing large language models from the perspective of human semantic cognition, investigating capacities such as their ability to encode [typicality effects](https://arxiv.org/abs/2105.02987), [recall property knowledge](https://arxiv.org/abs/2205.06910), demonstrate [property inheritance](https://arxiv.org/abs/2210.01963), and perform human-like [category-based induction](https://arxiv.org/abs/2205.06910). Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.
+My research focuses on evaluating and analyzing large language models from the perspective of human semantic cognition, investigating capacities such as their ability to encode [typicality effects](https://arxiv.org/abs/2105.02987), [recall property knowledge](https://arxiv.org/abs/2205.06910), demonstrate [property inheritance](https://arxiv.org/abs/2210.01963), and perform human-like [category-based induction](https://arxiv.org/abs/2205.06910). Together, these capacities shed light on the extent to which LMs encode and extract conceptual meaning from input contexts. Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.
+
+My email is kmisra \[at\] purdue \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
 
 <!--I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. 
 <!--I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.-->
 
-I spent Fall 2022 as a Research Intern at Google AI working on multi-hop reasoning and language models!
+## Other things:
 
-I was recently selected to be a Graduate Student Fellow in the inaugural [Purdue Graduate School Mentoring Fellows](https://news.cla.purdue.edu/2021/12/01/purdues-graduate-school-mentoring-graduate-student-fellow-program/) program!
+-   I am also the author of [minicons](https://minicons.kanishka.website), a python package that facilitates large scale behavioral analyses of transformer language models.
 
-I am the author of [minicons](https://minicons.kanishka.website), a python package that facilitates large scale behavioral analyses of transformer language models.
+-   I spent Fall 2022 as a Research Intern at Google AI working on multi-hop reasoning and language models!
 
-I recently hosted a two part discussion group on [Neural Nets for Cognition](https://neural-nets-for-cognition.net/) @ [CogSci 2022](https://cognitivesciencesociety.org/cogsci-2022/)!
+-   I was selected to be a Graduate Student Fellow in the inaugural [Purdue Graduate School Mentoring Fellows](https://news.cla.purdue.edu/2021/12/01/purdues-graduate-school-mentoring-graduate-student-fellow-program/) program!
+
+-   In summer of 2022, I hosted a two part discussion group on [Neural Nets for Cognition](https://neural-nets-for-cognition.net/) \@ [CogSci 2022](https://cognitivesciencesociety.org/cogsci-2022/)
 
 <!--In 2018, I was fortunate to be awarded the Purdue Research Foundation fellowship (now known as the Ross-Lynn Graduate Student Fellowship). I then taught database fundamentals to sophomore level undergraduates for three semesters. I am currently funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on using artificial intelligence techniques to develop entertainment education materials for social-engineering research.-->
 
@@ -99,5 +103,3 @@ I recently hosted a two part discussion group on [Neural Nets for Cognition](htt
 <!---{{% alert note %}}
 I am currently working on projects .
 {{% /alert %}}--->
-
-My email is kmisra \[at\] purdue \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
