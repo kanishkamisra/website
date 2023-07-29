@@ -21,9 +21,21 @@ I have been enjoying reading whodunnits these days (early 2023), and one of my f
   - A line to kill
   - The twist of a knife
   
-I recently visited a cat cafe and met this amazing cat named cheesy poof, I hope a prosperous life is in store for him:
+Other books with whodunnit vibes I've recently read:
+
+- **The Appeal** by Janice Hallett
+- **The Twyford Code** by Janice Hallett
+- **The Marlow Murder Club** by Robert Thorogood (*currently reading*)
+
+One day I hope to solve [Cain's Jawbone](https://en.wikipedia.org/wiki/Cain%27s_Jawbone) by Edward Powys Mathers.
+
+I recently visited a cat cafe and met this amazing cat named cheesy poof! He is amazing and I hope a prosperous life is in store for him:
 
 <img src="/img/cat2.jpg" alt="orange cat playing with red cardinal toy." width="600" height="300">
+
+Here's an illustration of cheesy poof made by [lined cats](https://twitter.com/lined_cats):
+
+<img src="/img/cheesypoof illustrated.jpg" alt="orange cat playing with red cardinal toy." width="600" height="300">
 
 <!--![orange cat playing with red cardinal toy.](/img/cat2.jpg)-->
 
