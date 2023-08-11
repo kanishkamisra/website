@@ -11,8 +11,10 @@ featured: true
 links:
 - name: arxiv
   url: https://arxiv.org/abs/2210.01963
-# - name: Proceedings
-#   url: https://escholarship.org/uc/item/6170h6nj
+- name: ACL Anthology
+  url: https://aclanthology.org/2023.eacl-main.213/
+- name: Video
+  url: https://aclanthology.org/2023.eacl-main.213.mp4
 # - name: Supplementary
 #   url: https://github.com/kanishkamisra/lm-induction/blob/main/supplemental.pdf
 publication: In *Proceedings of the European Association of Computation Linguistics*
@@ -22,7 +24,7 @@ publication_types:
 #publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
-  Dataset and analyes to test conceptual knowledge in LLMs. Presented at *EACL 2023*. (<b>Recipient of the Best Paper Award</b>)
+  Dataset and analyses to test for robust conceptual knowledge in LLMs. Presented at *EACL 2023*. (<b>Recipient of the Best Paper Award</b>)
 # tags:
 # - Source Themes
 title: "COMPS: Conceptual Minimal Pair Sentences for testing Robust Property Knowledge and its Inheritance in Pre-trained Language Models"

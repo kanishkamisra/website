@@ -2,7 +2,7 @@
 name = "kanishka"
 
 # Optional Google font URL
-google_fonts = "Fira+Code|Lora:400,600,700|Roboto:400,700|Karla:400"
+google_fonts = "Fira+Code|Lora:400,600,700|Roboto:400,700|Karla:400,500, 700"
 
 # Font families
 #heading_font = "Lora"
