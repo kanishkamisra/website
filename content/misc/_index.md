@@ -21,11 +21,13 @@ I have been enjoying reading whodunnits these days (early 2023), and one of my f
   - A line to kill
   - The twist of a knife
   
-Other books with whodunnit vibes I've recently read:
+Other whodunnits/books with whodunnit vibes I've recently read:
 
 - **The Appeal** by Janice Hallett
 - **The Twyford Code** by Janice Hallett
-- **The Marlow Murder Club** by Robert Thorogood (*currently reading*)
+- **The Mysterious Case of the Alperton Angels** by Janice Hallett
+- **The Marlow Murder Club** by Robert Thorogood
+- **Death comes to Marlow** by Robert Thorogood
 
 One day I hope to solve [Cain's Jawbone](https://en.wikipedia.org/wiki/Cain%27s_Jawbone) by Edward Powys Mathers.
 

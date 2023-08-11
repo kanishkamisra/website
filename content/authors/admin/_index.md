@@ -42,13 +42,17 @@ email: ""
 # - Typicality and Vagueness
 
 organizations:
-- name: AKRaNLU Lab
-  url: "https://engineering.purdue.edu/akranlu"
-- name: UChicago CompLing Lab
-  url: "https://uchicagocompling.github.io/"
-- name: Purdue University
-  url: "https://www.purdue.edu/"
-role: PhD Candidate
+#- name: AKRaNLU Lab
+#  url: "https://engineering.purdue.edu/akranlu"
+#- name: UChicago CompLing Lab
+#  url: "https://uchicagocompling.github.io/"
+#- name: Purdue University
+#  url: "https://www.purdue.edu/"
+- name: UT Austin CompLing Group
+  url: "https://sites.utexas.edu/compling/"
+- name: UT Austin NLP and CompLing
+  url: "https://www.nlp.utexas.edu/"
+role: Postdoc at UT Austin
 social:
 - icon: twitter
   icon_pack: fab
@@ -75,11 +79,13 @@ user_groups:
 - Visitors
 ---
 
-I am a PhD candidate at Purdue University, where I work on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
+I am a postdoctoral fellow in the linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/).
+
+Previously, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
 
 My research focuses on evaluating and analyzing large language models from the perspective of human semantic cognition, investigating capacities such as their ability to encode [typicality effects](https://arxiv.org/abs/2105.02987), [recall property knowledge](https://arxiv.org/abs/2205.06910), demonstrate [property inheritance](https://arxiv.org/abs/2210.01963), and perform human-like [category-based induction](https://arxiv.org/abs/2205.06910). Together, these capacities shed light on the extent to which LMs encode and extract conceptual meaning from input contexts. Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.
 
-My email is kmisra \[at\] purdue \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
+My email is kmisra \[at\] utexas \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
 
 <!--I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. 
 <!--I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.-->
