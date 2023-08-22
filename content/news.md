@@ -5,6 +5,7 @@ draft = false
 tags = []
 title = "News"
 math = true
+emoji = true
 summary = """
 Recent news
 """
