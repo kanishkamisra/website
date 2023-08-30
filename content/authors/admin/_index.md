@@ -79,7 +79,7 @@ user_groups:
 - Visitors
 ---
 
-I am a postdoctoral fellow in the linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/).
+I am a postdoctoral fellow in the linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). In Sept 2024, I will start as a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/)!
 
 Previously, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
 
