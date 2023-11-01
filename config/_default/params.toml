@@ -88,7 +88,7 @@ show_related = {docs = true, page = false, post = true, project = true, publicat
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "kmisra@purdue.edu"
+email = "kmisra@utexas.edu"
 phone = ""
 
 # Address
@@ -212,7 +212,7 @@ plugins_js  = []
   #   3: Card
   #   4: Citation (publications only)
   post_view = 2
-  publication_view = 2
+  publication_view = 3
   talk_view = 2
 
 ############################
