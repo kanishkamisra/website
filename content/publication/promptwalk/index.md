@@ -7,7 +7,7 @@ authors:
 - Siamak Shakeri
 date: "2023-07-01T00:00:00Z"
 # doi: "10.1109/SMC.2019.8914528"
-featured: true
+featured: false
 links:
 - name: ACL Anthology
   url: https://aclanthology.org/2023.findings-acl.62/
