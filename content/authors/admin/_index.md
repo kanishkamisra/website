@@ -52,7 +52,8 @@ organizations:
   url: "https://sites.utexas.edu/compling/"
 - name: UT Austin NLP and CompLing
   url: "https://www.nlp.utexas.edu/"
-role: Postdoc at UT Austin
+# role: Postdoc at UT Austin
+role: Research Assistant Professor at Toyota Technological Institute at Chicago
 social:
 - icon: twitter
   icon_pack: fab
@@ -79,13 +80,16 @@ user_groups:
 - Visitors
 ---
 
-I am a postdoctoral fellow in the linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). In Sept 2024, I will start as a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/)!
+<!--I am a postdoctoral fellow in the linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). In Sept 2024, I will start as a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/)! -->
 
-Previously, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
+I am a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/), a philanthropically endowed academic computer science institute located on the University of Chicago campus.
 
-My research focuses on evaluating and analyzing large language models from the perspective of human semantic cognition, investigating capacities such as their ability to encode [typicality effects](https://arxiv.org/abs/2105.02987), [recall property knowledge](https://arxiv.org/abs/2205.06910), demonstrate [property inheritance](https://arxiv.org/abs/2210.01963), and perform human-like [category-based induction](https://arxiv.org/abs/2205.06910). Together, these capacities shed light on the extent to which LMs encode and extract conceptual meaning from input contexts. Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.
+Previously, I was a postdoctoral fellow in the Linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). Before that, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
 
-My email is kmisra \[at\] utexas \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
+<!--My research focuses on evaluating and analyzing large language models from the perspective of human semantic cognition, investigating capacities such as their ability to encode [typicality effects](https://arxiv.org/abs/2105.02987), [recall property knowledge](https://arxiv.org/abs/2205.06910), demonstrate [property inheritance](https://arxiv.org/abs/2210.01963), and perform human-like [category-based induction](https://arxiv.org/abs/2205.06910). Together, these capacities shed light on the extent to which LMs encode and extract conceptual meaning from input contexts. Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.-->
+Broadly, my research program is centered around a productive network of contributions between Cognitive Science, Computational Linguistics, and Artificial Intelligence. Using ideas in CogSci and Linguistics, specifically Human Semantic Cognition, I evaluate and analyze AI systems on their ability to robustly capture conceptual and categorical meaning. Using tools and models in AI, I develop methods to better understand the statistical mechanisms that underlie acquisition and generalization of complex linguistic phenomena and conceptual knowledge.
+
+My email is kanishka \[at\] ttic \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
 
 <!--I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. 
 <!--I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.-->
@@ -96,7 +100,7 @@ My email is kmisra \[at\] utexas \[dot\] edu.<sup><a href = "https://en.wikipedi
 
 -   I spent Fall 2022 as a Research Intern at Google AI working on multi-hop reasoning and language models!
 
--   I was selected to be a Graduate Student Fellow in the inaugural [Purdue Graduate School Mentoring Fellows](https://news.cla.purdue.edu/2021/12/01/purdues-graduate-school-mentoring-graduate-student-fellow-program/) program!
+<!---   I was selected to be a Graduate Student Fellow in the inaugural [Purdue Graduate School Mentoring Fellows](https://news.cla.purdue.edu/2021/12/01/purdues-graduate-school-mentoring-graduate-student-fellow-program/) program!-->
 
 -   In summer of 2022, I hosted a two part discussion group on [Neural Nets for Cognition](https://neural-nets-for-cognition.net/) \@ [CogSci 2022](https://cognitivesciencesociety.org/cogsci-2022/)
 

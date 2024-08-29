@@ -34,7 +34,8 @@ Assume that just like any other day in the Natural Language Processing (NLP) com
 Let's call it :robot:.
 Now lets say that you are an NLP researcher, and just like me, you are interested in understanding and evaluating models like :robot:.
 Fortunately for you, due to the hard work put in by [Huggingface](https://huggingface.co/), :robot: has been made public and now appears on its [model hub](https://huggingface.co/models) (for the purposes of this post, let's assume that :robot: = [`distilgpt2`](https://huggingface.co/distilgpt2)). 
-Assuming for the purposes of this post, you are interested in morpho-syntax,^[the study of the internal structure of words and how they combine to form a sentence or a phrase.] you might ask the question:
+<!-- Additionally, lets say you are interested in morpho-syntax,^[the study of the internal structure of words and how they combine to form a sentence or a phrase.] you might ask the question: -->
+Now, if you were a morpho-syntactician, you might ask the question:
 
 > How well does :robot: learn subject-verb agreement?
 
@@ -44,7 +45,7 @@ If you were to conduct an experiment to answer this question in the context of n
 (2) *the keys to the cabinet <u>**is**</u> on the table.*
 
 In the above examples, knowledge about subject-verb agreement is tested by checking if the agent (human, our model :robot:, etc.) rates (1) as more acceptable than (2), since the number of the verb (*is* vs. *are*) has to agree with the subject, *keys*.
-Such an experiment is common to the psycholinguistic domain, where participants are presented with stimuli that are targeted to probe for a particular information.
+Such an experiment is common to psycholinguistics, where participants are presented with stimuli that are targeted to probe for a particular information.
 
 But how does one perform the same experiment with :robot:?
 Since it is a language model, :robot: assigns probabilities to words in a sequence.
@@ -118,15 +119,15 @@ stimuli_dl = DataLoader(stimuli, batch_size = 100)
 ```
 
 Let's now compute :robot:'s scores on the 1000 sentence pairs in our evaluation stimuli.
-This is done by invoking the `.score()` method of our instantiated model.
+This is done by invoking the `.sequence_score()` method of our instantiated model.
 By default, it computes the log probabilities of the batch of input sentences, divided by their length (using `torch.mean()`), but also allows you to specify other aggregation functions, such as sum, geometric mean, or any other custom function that accepts a tensor of log-probabilities and returns a scalar for every row. To keep things simple, let's call our outputs 'scores' $(s)$.
 
 ```{python}
 results = []
 for batch in stimuli_dl:
     good, bad = batch
-    good_score = model.score(good)
-    bad_score = model.score(bad)
+    good_score = model.sequence_score(good)
+    bad_score = model.sequence_score(bad)
     results.extend(zip(good_score, bad_score))
 ```
 

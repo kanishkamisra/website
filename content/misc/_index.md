@@ -10,6 +10,8 @@ title: Miscellaneous
 
 ## Fun
 
+In my spare time, I like to play tennis and bake bread!
+
 I have been enjoying reading whodunnits these days (early 2023), and one of my favorite whodunnit writers is [Anthony Horowitz](https://anthonyhorowitz.com/). Here are some of his books I really liked:
 
 - Susan Ryeland series:
@@ -32,10 +34,12 @@ Other whodunnits/books with whodunnit vibes I've recently read:
 - **Death comes to Marlow** by Robert Thorogood
 - **The Thursday Murder Club** by Richard Osman (currently reading).
 
-I also liked Robert Galbraith's Cormoran Strike series:
+I recently started reading Robert Galbraith's Cormoran Strike series (rank so far in parantheses):
 
--- **Cuckoo's Calling**
--- **The Silkworm** (currently reading)
+- **Cuckoo's Calling** (4 -- this was very predictable)
+- **The Silkworm** (3 -- kind of boring, and I'm generally not a fan of gore)
+- **A Career of Evil** (2 -- very good! I loved the character development here)
+- **Lethal White** (1 -- best one so far, character development continues to improve)
 
 One day I hope to solve [Cain's Jawbone](https://en.wikipedia.org/wiki/Cain%27s_Jawbone) by Edward Powys Mathers.
 
