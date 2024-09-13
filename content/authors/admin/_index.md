@@ -48,10 +48,12 @@ organizations:
 #  url: "https://uchicagocompling.github.io/"
 #- name: Purdue University
 #  url: "https://www.purdue.edu/"
+- name: Speech & Language @ TTIC
+  url: "https://home.ttic.edu/~klivescu/SLATTIC/people.htm"
 - name: UT Austin CompLing Group
   url: "https://sites.utexas.edu/compling/"
-- name: UT Austin NLP and CompLing
-  url: "https://www.nlp.utexas.edu/"
+# - name: UT Austin NLP and CompLing
+#   url: "https://www.nlp.utexas.edu/"
 # role: Postdoc at UT Austin
 role: Research Assistant Professor at Toyota Technological Institute at Chicago
 social:
@@ -84,10 +86,10 @@ user_groups:
 
 I am a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/), a philanthropically endowed academic computer science institute located on the University of Chicago campus.
 
-Previously, I was a postdoctoral fellow in the Linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). Before that, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
-
 <!--My research focuses on evaluating and analyzing large language models from the perspective of human semantic cognition, investigating capacities such as their ability to encode [typicality effects](https://arxiv.org/abs/2105.02987), [recall property knowledge](https://arxiv.org/abs/2205.06910), demonstrate [property inheritance](https://arxiv.org/abs/2210.01963), and perform human-like [category-based induction](https://arxiv.org/abs/2205.06910). Together, these capacities shed light on the extent to which LMs encode and extract conceptual meaning from input contexts. Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.-->
-Broadly, my research program is centered around a productive network of contributions between Cognitive Science, Computational Linguistics, and Artificial Intelligence. Using ideas in CogSci and Linguistics, specifically Human Semantic Cognition, I evaluate and analyze AI systems on their ability to robustly capture conceptual and categorical meaning. Using tools and models in AI, I develop methods to better understand the statistical mechanisms that underlie acquisition and generalization of complex linguistic phenomena and conceptual knowledge.
+My research program lies at the intersection of Cognitive Science, Linguistics, and Artificial Intelligence. I am primarily interested in characterizing the statistical mechanisms that underlie the acquisition and generalization of complex linguistic phenomena and conceptual meaning. To this end, I: (1) develop methods to evaluate and analyze AI models from the perspective of semantic cognition; and (2) use AI models as simulated learners to test and generate novel hypotheses about language acquisition and generalization.
+
+Previously, I was a postdoctoral fellow in the Linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). Before that, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
 
 My email is kanishka \[at\] ttic \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
 
@@ -96,9 +98,9 @@ My email is kanishka \[at\] ttic \[dot\] edu.<sup><a href = "https://en.wikipedi
 
 ## Other things:
 
--   I am also the author of [minicons](https://minicons.kanishka.website), a python package that facilitates large scale behavioral analyses of transformer language models.
+-   I am the author of [minicons](https://minicons.kanishka.website), a python package that facilitates large scale behavioral analyses of transformer language models.
 
--   I spent Fall 2022 as a Research Intern at Google AI working on multi-hop reasoning and language models!
+-   I spent Fall 2022 as a Research Intern at Google AI working on multi-hop reasoning and language models.
 
 <!---   I was selected to be a Graduate Student Fellow in the inaugural [Purdue Graduate School Mentoring Fellows](https://news.cla.purdue.edu/2021/12/01/purdues-graduate-school-mentoring-graduate-student-fellow-program/) program!-->
 
@@ -107,8 +109,6 @@ My email is kanishka \[at\] ttic \[dot\] edu.<sup><a href = "https://en.wikipedi
 <!--In 2018, I was fortunate to be awarded the Purdue Research Foundation fellowship (now known as the Ross-Lynn Graduate Student Fellowship). I then taught database fundamentals to sophomore level undergraduates for three semesters. I am currently funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on using artificial intelligence techniques to develop entertainment education materials for social-engineering research.-->
 
 <!--I enjoy mentoring students interested in Natural Language Processing, check out my CV for some examples of undergraduate projects I have mentored.--->
-
-<!--cdsad-->
 
 <!---{{% alert note %}}
 I am currently working on projects .

@@ -10,7 +10,7 @@ title: Miscellaneous
 
 ## Fun
 
-In my spare time, I like to play tennis and bake bread!
+In my spare time, I like to play tennis, do jigsaw puzzles, and bake bread!
 
 I have been enjoying reading whodunnits these days (early 2023), and one of my favorite whodunnit writers is [Anthony Horowitz](https://anthonyhorowitz.com/). Here are some of his books I really liked:
 
@@ -43,7 +43,7 @@ I recently started reading Robert Galbraith's Cormoran Strike series (rank so fa
 
 One day I hope to solve [Cain's Jawbone](https://en.wikipedia.org/wiki/Cain%27s_Jawbone) by Edward Powys Mathers.
 
-I recently visited a cat cafe and met this amazing cat named cheesy poof! He is amazing and I hope a prosperous life is in store for him:
+I once visited a cat cafe and met this amazing cat named cheesy poof! He is amazing and I hope a prosperous life is in store for him:
 
 <img src="/img/cat2.jpg" alt="orange cat playing with red cardinal toy." width="600" height="300">
 

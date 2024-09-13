@@ -88,7 +88,7 @@ show_related = {docs = true, page = false, post = true, project = true, publicat
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "kmisra@utexas.edu"
+email = "kanishka@ttic.edu"
 phone = ""
 
 # Address
@@ -100,7 +100,7 @@ phone = ""
 coordinates = {latitude = "40.426231", longitude = "-86.911848"}
 
 # Directions for visitors to locate you.
-directions = "RLP Building (TBA)"
+directions = "6045 South Kenwood Ave Chicago, IL 60637"
 
 # Office hours
 # A list of your office hours. To remove, set to an empty list `[]`.
