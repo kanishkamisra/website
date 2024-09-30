@@ -15,14 +15,14 @@ In my spare time, I like to play tennis, do jigsaw puzzles, and bake bread!
 I have been enjoying reading whodunnits these days (early 2023), and one of my favorite whodunnit writers is [Anthony Horowitz](https://anthonyhorowitz.com/). Here are some of his books I really liked:
 
 - Susan Ryeland series:
-  - Magpie Murders.
-  - Moonflower Murders.
+  - **Magpie Murders**
+  - **Moonflower Murders**
 - Hawthorne and Horowitz series:
-  - The word is murder
-  - The sentence is death
-  - A line to kill
-  - The twist of a knife
-  - Close to death
+  - **The word is murder**
+  - **The sentence is death**
+  - **A line to kill**
+  - **The twist of a knife**
+  - **Close to death**
   - *he has 7 more planned!!*
   
 Other whodunnits/books with whodunnit vibes I've recently read:
@@ -30,16 +30,19 @@ Other whodunnits/books with whodunnit vibes I've recently read:
 - **The Appeal** by Janice Hallett
 - **The Twyford Code** by Janice Hallett
 - **The Mysterious Case of the Alperton Angels** by Janice Hallett
+- **The Examiner** by Janice Hallett
 - **The Marlow Murder Club** by Robert Thorogood
 - **Death comes to Marlow** by Robert Thorogood
 - **The Thursday Murder Club** by Richard Osman (currently reading).
 
-I recently started reading Robert Galbraith's Cormoran Strike series (rank so far in parantheses):
+I recently started reading Robert Galbraith's Cormoran Strike series (rank so far in parantheses, titles ordered by chronology):
 
-- **Cuckoo's Calling** (4 -- this was very predictable)
-- **The Silkworm** (3 -- kind of boring, and I'm generally not a fan of gore)
-- **A Career of Evil** (2 -- very good! I loved the character development here)
-- **Lethal White** (1 -- best one so far, character development continues to improve)
+- **Cuckoo's Calling** (5 -- this was very predictable)
+- **The Silkworm** (4 -- kind of boring, and I'm generally not a fan of gore)
+- **A Career of Evil** (3 -- very good! I loved the character development here)
+- **Lethal White** (2 -- v v good! character development continues to improve)
+- **Troubled Blood** (1 -- best one so far, not only is the character development at its peak but the actual mystery is by far the most intriguing)
+- **The Ink Black Heart** (TBA -- unsure how Troubled Blood will be topped but who knows!)
 
 One day I hope to solve [Cain's Jawbone](https://en.wikipedia.org/wiki/Cain%27s_Jawbone) by Edward Powys Mathers.
 
