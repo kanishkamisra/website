@@ -33,16 +33,17 @@ Other whodunnits/books with whodunnit vibes I've recently read:
 - **The Examiner** by Janice Hallett
 - **The Marlow Murder Club** by Robert Thorogood
 - **Death comes to Marlow** by Robert Thorogood
-- **The Thursday Murder Club** by Richard Osman (currently reading).
+- **The Thursday Murder Club** by Richard Osman (currently reading, slowly...).
 
 I recently started reading Robert Galbraith's Cormoran Strike series (rank so far in parantheses, titles ordered by chronology):
 
-- **Cuckoo's Calling** (5 -- this was very predictable)
-- **The Silkworm** (4 -- kind of boring, and I'm generally not a fan of gore)
-- **A Career of Evil** (3 -- very good! I loved the character development here)
+- **Cuckoo's Calling** (6 -- this was very predictable)
+- **The Silkworm** (5 -- kind of boring, and I'm generally not a fan of gore)
+- **A Career of Evil** (4 -- very good! I loved the character development here)
 - **Lethal White** (2 -- v v good! character development continues to improve)
 - **Troubled Blood** (1 -- best one so far, not only is the character development at its peak but the actual mystery is by far the most intriguing)
-- **The Ink Black Heart** (TBA -- unsure how Troubled Blood will be topped but who knows!)
+- **The Ink Black Heart** (1.5 -- similar to troubled blood, the climax was rushed, which is why this is still below troubled blood.)
+- **The Running Grave** (3 -- very good character development, but main story was not as good as TB or IBH)
 
 One day I hope to solve [Cain's Jawbone](https://en.wikipedia.org/wiki/Cain%27s_Jawbone) by Edward Powys Mathers.
 
