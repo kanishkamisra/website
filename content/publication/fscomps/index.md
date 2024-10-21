@@ -17,10 +17,10 @@ links:
 #   url: https://aclanthology.org/2023.eacl-main.213.mp4
 # - name: Supplementary
 #   url: https://github.com/kanishkamisra/lm-induction/blob/main/supplemental.pdf
-publication: In *arxiv 2024*
-publication_short: In *arxiv 2023*
+publication: In *EMNLP 2024*
+publication_short: In *EMNLP 2024*
 publication_types:
-- "3"
+- "1"
 #publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
@@ -30,7 +30,10 @@ summary: >
 title: "Experimental Contexts Can Facilitate Robust Semantic Property Inference in Language Models, but Inconsistently"
 url_code: 'https://github.com/kanishkamisra/fewshotcomps'
 # url_dataset: '#'
-url_pdf: "papers/fscomps.pdf"
+# url_pdf: "papers/fscomps.pdf"
+links:
+- name: arxiv
+  url: https://arxiv.org/abs/2401.06640
 # url_poster: "posters/cogsci22.pdf"
 # url_project: ""
 #url_slides: "slides/cogsci2021.pdf"

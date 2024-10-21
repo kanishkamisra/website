@@ -1,6 +1,6 @@
 ---
 abstract: >
-  Language models learn rare syntactic phenomena, but it has been argued that they rely on rote memorization, as opposed to grammatical generalization. Training on a corpus of human-scale in size (100M words), we iteratively trained transformer language models on systematically manipulated corpora and then evaluated their learning of a particular rare grammatical phenomenon: the English Article+Adjective+Numeral+Noun (AANN) construction ("a beautiful five days"). We first compared how well this construction was learned on the default corpus relative to a counterfactual corpus in which the AANN sentences were removed. AANNs were still learned better than systematically perturbed variants of the construction. Using additional counterfactual corpora, we suggest that this learning occurs through generalization from related constructions (e.g., "a few days"). An additional experiment showed that this learning is enhanced when there is more variability in the input. Taken together, our results provide an existence proof that models learn rare grammatical phenomena by generalization from less rare phenomena.
+  Language models learn rare syntactic phenomena, but the extent to which this is attributable to generalization vs. memorization is a major open question. To that end, we iteratively trained transformer language models on systematically manipulated corpora which were human-scale in size, and then evaluated their learning of a rare grammatical phenomenon: the English Article+Adjective+Numeral+Noun (AANN) construction (“a beautiful five days”). We compared how well this construction was learned on the default corpus relative to a counterfactual corpus in which AANN sentences were removed. We found that AANNs were still learned better than systematically perturbed variants of the construction. Using additional counterfactual corpora, we suggest that this learning occurs through generalization from related constructions (e.g., “a few days”). An additional experiment showed that this learning is enhanced when there is more variability in the input. Taken together, our results provide an existence proof that LMs can learn rare grammatical phenomena by generalization from less rare phenomena. Data and code: <a href='https:// github.com/kanishkamisra/aannalysis'>here</a>.
 authors:
 - admin 
 - Kyle Mahowald
@@ -16,10 +16,10 @@ links:
 #   url: https://aclanthology.org/2023.eacl-main.213.mp4
 # - name: Supplementary
 #   url: https://github.com/kanishkamisra/lm-induction/blob/main/supplemental.pdf
-publication: In *arxiv 2024*
-publication_short: In *arxiv 2024*
+publication: In *EMNLP 2024*
+publication_short: In *EMNLP 2024*
 publication_types:
-- "3"
+- "1"
 #publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
