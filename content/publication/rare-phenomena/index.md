@@ -30,7 +30,7 @@ title: "Language Models Learn Rare Phenomena from Less Rare Phenomena: The Case 
 url_code: 'https://github.com/kanishkamisra/aannalysis'
 # url_dataset: '#'
 # url_pdf: "papers/fscomps.pdf"
-# url_poster: "posters/cogsci22.pdf"
+url_poster: "posters/AANN-Poster.pdf"
 # url_project: ""
 #url_slides: "slides/cogsci2021.pdf"
 # url_source: '#'

@@ -34,7 +34,7 @@ url_code: 'https://github.com/kanishkamisra/fewshotcomps'
 links:
 - name: arxiv
   url: https://arxiv.org/abs/2401.06640
-# url_poster: "posters/cogsci22.pdf"
+url_poster: "posters/FSCOMPS-Poster.pdf"
 # url_project: ""
 #url_slides: "slides/cogsci2021.pdf"
 # url_source: '#'
