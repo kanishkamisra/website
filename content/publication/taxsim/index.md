@@ -31,9 +31,9 @@ title: "Characterizing the Role of Similarity in the Property Inferences of Lang
 url_code: 'https://github.com/aaronmueller/lm-property-inheritance'
 # url_dataset: '#'
 # url_pdf: "papers/fscomps.pdf"
-links:
-- name: arxiv
-  url: https://arxiv.org/abs/2401.06640
+# links:
+# - name: arxiv
+#   url: https://arxiv.org/abs/2401.06640
 # url_poster: "posters/FSCOMPS-Poster.pdf"
 # url_project: ""
 #url_slides: "slides/cogsci2021.pdf"

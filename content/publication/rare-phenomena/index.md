@@ -10,8 +10,8 @@ featured: true
 links:
 - name: arxiv
   url: https://arxiv.org/abs/2403.19827
-# - name: ACL Anthology
-#   url: https://aclanthology.org/2023.eacl-main.213/
+- name: ACL Anthology
+  url: https://aclanthology.org/2024.emnlp-main.53/
 # - name: Video
 #   url: https://aclanthology.org/2023.eacl-main.213.mp4
 # - name: Supplementary

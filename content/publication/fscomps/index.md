@@ -9,10 +9,10 @@ date: "2024-01-11T00:00:00Z"
 # doi: "10.1109/SMC.2019.8914528"
 featured: true
 links:
-# - name: arxiv
-#   url: https://arxiv.org/abs/2210.01963
-# - name: ACL Anthology
-#   url: https://aclanthology.org/2023.eacl-main.213/
+- name: arxiv
+  url: https://arxiv.org/abs/2401.06640
+- name: ACL Anthology
+  url: https://aclanthology.org/2024.emnlp-main.687/
 # - name: Video
 #   url: https://aclanthology.org/2023.eacl-main.213.mp4
 # - name: Supplementary
@@ -31,9 +31,6 @@ title: "Experimental Contexts Can Facilitate Robust Semantic Property Inference 
 url_code: 'https://github.com/kanishkamisra/fewshotcomps'
 # url_dataset: '#'
 # url_pdf: "papers/fscomps.pdf"
-links:
-- name: arxiv
-  url: https://arxiv.org/abs/2401.06640
 url_poster: "posters/FSCOMPS-Poster.pdf"
 # url_project: ""
 #url_slides: "slides/cogsci2021.pdf"
