@@ -87,16 +87,20 @@ user_groups:
 I am a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/), a philanthropically endowed academic computer science institute located on the University of Chicago campus.
 
 <!--My research focuses on evaluating and analyzing large language models from the perspective of human semantic cognition, investigating capacities such as their ability to encode [typicality effects](https://arxiv.org/abs/2105.02987), [recall property knowledge](https://arxiv.org/abs/2205.06910), demonstrate [property inheritance](https://arxiv.org/abs/2210.01963), and perform human-like [category-based induction](https://arxiv.org/abs/2205.06910). Together, these capacities shed light on the extent to which LMs encode and extract conceptual meaning from input contexts. Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.-->
-My research program lies at the intersection of Cognitive Science, Linguistics, and Artificial Intelligence. I am primarily interested in characterizing the statistical mechanisms that underlie the acquisition and generalization of complex linguistic phenomena and conceptual meaning. To this end, I: (1) develop methods to evaluate and analyze AI models from the perspective of semantic cognition; and (2) use AI models as simulated learners to test and generate novel hypotheses about language acquisition and generalization.
+My research program lies at the intersection of Cognitive Science, Linguistics, and Artificial Intelligence. I am primarily interested in characterizing the statistical mechanisms that underlie the acquisition and generalization of complex linguistic phenomena and conceptual meaning. To this end, I: (1) develop methods to evaluate and analyze AI models from the perspective of semantic cognition; and (2) use AI models as simulated learners to test and generate novel hypotheses about language acquisition and generalization. My research has been recognized with awards at EACL 2023, ACL 2023, and EMNLP 2024!
 
 Previously, I was a postdoctoral fellow in the Linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). Before that, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
 
 My email is kanishka \[at\] ttic \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
 
+
+**Note:** I am not currently looking to hire any PhD students, but please reach out to me if I can be of assistance or point you to other fantastic researchers who are looking for students. I will unfortunately not respond to your email if its content suggests you have not read my website.
 <!--I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. 
 <!--I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.-->
 
 ## Other things:
+
+-   I co-organize the UChicago/TTIC NLP Seminar, along with the wonderful [Mina Lee](https://minalee-research.github.io/) and [Zhewei Sun](https://zhewei-sun.github.io/). We are constantly looking for external speakers -- please reach out if you are interested to present! **I strongly encourage people from underrepresented and marginalized groups to reach out**.
 
 -   I am the author of [minicons](https://minicons.kanishka.website), a python package that facilitates large scale behavioral analyses of transformer language models.
 
