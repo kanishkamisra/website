@@ -57,9 +57,12 @@ organizations:
 # role: Postdoc at UT Austin
 role: Research Assistant Professor at Toyota Technological Institute at Chicago
 social:
-- icon: twitter
+- icon: x-twitter
   icon_pack: fab
   link: https://twitter.com/kanishkamisra
+- icon: bluesky
+  icon_pack: fab
+  link: https://bsky.app/profile/kanishka.bsky.social
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.com/citations?user=-c6SAOMAAAAJ&hl=en
@@ -69,12 +72,12 @@ social:
 #- icon: researchgate
 #  icon_pack: ai
 #  link: https://www.researchgate.net/profile/Kanishka_Misra
-#- icon: semantic-scholar
-#  icon_pack: ai
-#  link: https://www.semanticscholar.org/author/Kanishka-Misra/145274478
-#- icon: linkedin
-#  icon_pack: fab
-#  link: https://www.linkedin.com/in/kanishkamisra/
+- icon: semantic-scholar
+  icon_pack: ai
+  link: https://www.semanticscholar.org/author/Kanishka-Misra/145274478
+- icon: linkedin-in
+  icon_pack: fab
+  link: https://www.linkedin.com/in/kanishkamisra/
 superuser: true
 title: Kanishka Misra
 user_groups:
@@ -87,7 +90,7 @@ user_groups:
 I am a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/), a philanthropically endowed academic computer science institute located on the University of Chicago campus.
 
 <!--My research focuses on evaluating and analyzing large language models from the perspective of human semantic cognition, investigating capacities such as their ability to encode [typicality effects](https://arxiv.org/abs/2105.02987), [recall property knowledge](https://arxiv.org/abs/2205.06910), demonstrate [property inheritance](https://arxiv.org/abs/2210.01963), and perform human-like [category-based induction](https://arxiv.org/abs/2205.06910). Together, these capacities shed light on the extent to which LMs encode and extract conceptual meaning from input contexts. Through my work, I hope to contribute towards bridging the experimental paradigms in the study of human cognition with that of artificial intelligence systems.-->
-My research program lies at the intersection of Cognitive Science, Linguistics, and Artificial Intelligence. I am primarily interested in characterizing the statistical mechanisms that underlie the acquisition and generalization of complex linguistic phenomena and conceptual meaning. To this end, I: (1) develop methods to evaluate and analyze AI models from the perspective of semantic cognition; and (2) use AI models as simulated learners to test and generate novel hypotheses about language acquisition and generalization. My research has been recognized with awards at EACL 2023, ACL 2023, and EMNLP 2024!
+My research program lies at the intersection of Cognitive Science, Linguistics, and Artificial Intelligence. I am primarily interested in characterizing the statistical mechanisms that underlie the acquisition and generalization of complex linguistic phenomena and conceptual meaning. To this end, I: (1) develop methods to evaluate and analyze AI models from the perspective of semantic cognition; and (2) use AI models as simulated learners to test and generate novel hypotheses about language acquisition and generalization. My research has been recognized with awards at [EACL 2023](https://2023.eacl.org/program/best-paper/), [ACL 2023](https://2023.aclweb.org/program/best_papers/), and [EMNLP 2024](https://2024.emnlp.org/program/best_papers/)!
 
 Previously, I was a postdoctoral fellow in the Linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). Before that, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
 
