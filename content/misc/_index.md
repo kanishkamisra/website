@@ -10,13 +10,14 @@ title: Miscellaneous
 
 ## Fun
 
-In my spare time, I like to play tennis, do jigsaw puzzles, and bake bread!
+In my spare time, I like to play tennis, do jigsaw puzzles, and bake bagels and different kinds of bread!
 
 I have been enjoying reading whodunnits these days (early 2023), and one of my favorite whodunnit writers is [Anthony Horowitz](https://anthonyhorowitz.com/). Here are some of his books I really liked:
 
 - Susan Ryeland series:
   - **Magpie Murders**
   - **Moonflower Murders**
+  - **Marblehall Murders**
 - Hawthorne and Horowitz series:
   - **The word is murder**
   - **The sentence is death**
@@ -31,8 +32,9 @@ Other whodunnits/books with whodunnit vibes I've recently read:
 - **The Twyford Code** by Janice Hallett
 - **The Mysterious Case of the Alperton Angels** by Janice Hallett
 - **The Examiner** by Janice Hallett
-- **The Marlow Murder Club** by Robert Thorogood
-- **Death comes to Marlow** by Robert Thorogood
+- **The Killer Question** by Janice Hallett (will read on Sept 23!)
+- **The Marlow Murder Club** by Robert Thorogood (didn't really like this)
+- **Death comes to Marlow** by Robert Thorogood (didn't really like this either)
 - **The Thursday Murder Club** by Richard Osman (currently reading, slowly...).
 
 I recently started reading Robert Galbraith's Cormoran Strike series (rank so far in parantheses, titles ordered by chronology):
@@ -44,6 +46,7 @@ I recently started reading Robert Galbraith's Cormoran Strike series (rank so fa
 - **Troubled Blood** (1 -- best one so far, not only is the character development at its peak but the actual mystery is by far the most intriguing)
 - **The Ink Black Heart** (1.5 -- similar to troubled blood, the climax was rushed, which is why this is still below troubled blood.)
 - **The Running Grave** (3 -- very good character development, but main story was not as good as TB or IBH)
+- **The Hallmarked Man** (have pre-ordered!)
 
 One day I hope to solve [Cain's Jawbone](https://en.wikipedia.org/wiki/Cain%27s_Jawbone) by Edward Powys Mathers.
 
