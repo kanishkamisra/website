@@ -88,7 +88,7 @@ Unfortunately, I am not recruiting any MS Students or Interns at the moment.
 
 Previously, I was a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/), a philanthropically endowed academic computer science institute located on the University of Chicago campus. Before, I was a postdoctoral fellow in the Linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). Before that, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
 
-My email is kanishka \[at\] ttic \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
+My email is kmisra \[at\] utexas \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
 
 <!--**Note:** I am not currently looking to hire any PhD students, but please reach out to me if I can be of assistance or point you to other fantastic researchers who are looking for students. I will unfortunately not respond to your email if its content suggests you have not read my website.-->
 <!--I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. 
@@ -96,8 +96,8 @@ My email is kanishka \[at\] ttic \[dot\] edu.<sup><a href = "https://en.wikipedi
 
 ### Other things:
 
--   I co-organized the UChicago/TTIC NLP Seminar, along with the wonderful [Mina Lee](https://minalee-research.github.io/) and [Zhewei Sun](https://zhewei-sun.github.io/).
--   I am the author of [minicons](https://minicons.kanishka.website), a python package that facilitates large scale behavioral analyses of transformer language models.
+-   I am the author of [minicons](https://minicons.kanishka.website), a python library that facilitates large scale behavioral analyses of transformer language models.
+-   I used to co-organize the UChicago/TTIC NLP Seminar, along with the wonderful [Mina Lee](https://minalee-research.github.io/) and [Zhewei Sun](https://zhewei-sun.github.io/).
 -   I spent Fall 2022 as a Research Intern at Google AI working on multi-hop reasoning and language models.
 -   In summer of 2022, I hosted a two part discussion group on [Neural Nets for Cognition](https://neural-nets-for-cognition.net/) \@ [CogSci 2022](https://cognitivesciencesociety.org/cogsci-2022/)
 <!---   I was selected to be a Graduate Student Fellow in the inaugural [Purdue Graduate School Mentoring Fellows](https://news.cla.purdue.edu/2021/12/01/purdues-graduate-school-mentoring-graduate-student-fellow-program/) program!-->
