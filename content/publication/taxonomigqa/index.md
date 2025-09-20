@@ -22,10 +22,10 @@ links:
 #   url: https://aclanthology.org/2023.eacl-main.213.mp4
 # - name: Supplementary
 #   url: https://github.com/kanishkamisra/lm-induction/blob/main/supplemental.pdf
-publication: In *arxiv 2025*
-publication_short: In *arxiv 2025*
+publication: In *NeurIPS 2025*
+publication_short: In *NeurIPS 2025*
 publication_types:
-- "3"
+- "2"
 #publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
