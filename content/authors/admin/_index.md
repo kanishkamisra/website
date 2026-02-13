@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: My research interests include Natural Language Processing, Cognitive Science, and Deep Learning.
+bio: I do computational linguistics and cognitive science.
 #education:
 #  courses:
 #  - course: PhD, Natural Language Understanding
@@ -119,7 +119,14 @@ I am currently working on projects .
 [Characterizing the Role of Similarity in the Property Inferences of Language Models](https://aclanthology.org/2025.naacl-long.574/). *NAACL 2025*.
 
 - Yulu Qin,<sup>\*</sup> Dheeraj Varghese,<sup>\*</sup> Adam Dahlgren Lindström, Lucia Donatelli, **Kanishka Misra**,<sup>&dagger;</sup> and Najoung Kim.<sup>&dagger;</sup> 2025. 
-[Vision-and-Language Training Helps Deploy Taxonomic Knowledge but Does Not Fundamentally Alter It](https://arxiv.org/abs/2507.13328). *arxiv preprint, Under Review*.
+[Vision-and-Language Training Helps Deploy Taxonomic Knowledge but Does Not Fundamentally Alter It](https://arxiv.org/abs/2507.13328). *NeurIPS 2025*.
+
+
+Some upcoming talks:
+- Keynote at [Texas Linguistics Society](https://tls.ling.utexas.edu/) - Feb 20.
+- Invited Talk at the University of Amsterdam - April 2.
+- Keynote at the [International Conference on Construction Grammar (ICCG)](https://adele.scholar.princeton.edu/iccg14-%E2%80%93-14th-international-conference-construction-grammar) - June 4-7
+- Keynote at the 1st Workshop for [Computational Developmental Linguistics](https://comp-dev-ling.github.io/) at ACL 2026 - July 3-4.
 
 <!--**Contribution of language to semantic cognition**
 - Typicality effects

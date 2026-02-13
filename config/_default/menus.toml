@@ -21,7 +21,12 @@
 [[main]]
   name = "Misc."
   url = "misc/"
-  weight = 70
+  weight = 80
+  
+[[main]]
+  name = "Lab"
+  url = "group/"
+  weight = 10
 
 [[main]]
   name = "Contact"

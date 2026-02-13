@@ -1,0 +1,12 @@
+<div class="person-card">
+  <img src="{{ .Get "photo" }}" alt="{{ .Get "name" }}" class="person-photo">
+  {{ if .Get "href" }}
+    <h3 class="person-name"><a href="{{ .Get "href" }}">{{ .Get "name" }}</a></h3>
+  {{ else }}
+    <h3 class="person-name">{{ .Get "name" }}</h3>
+  {{ end }}
+  <p class="person-role">{{ .Get "role" }}</p>
+  {{ if .Get "affiliation" }}
+    <p class="person-affiliation">{{ .Get "affiliation" }}</p>
+  {{ end }}
+</div>
