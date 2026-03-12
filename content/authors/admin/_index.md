@@ -32,6 +32,8 @@ organizations:
 #  url: "https://www.purdue.edu/"
 # - name: Speech & Language @ TTIC
 #   url: "https://home.ttic.edu/~klivescu/SLATTIC/people.htm"
+- name: KOALAB
+  url: "/lab"
 - name: UT Austin CompLing Group
   url: "https://sites.utexas.edu/compling/"
 - name: UT Austin NLP
@@ -78,15 +80,20 @@ also the [wider NLP Research Community at UT](https://www.nlp.utexas.edu/). I ma
 My research program lies at the intersection of Cognitive Science, Linguistics, and Artificial Intelligence. I am primarily interested in characterizing the statistical mechanisms that underlie the acquisition and generalization of complex linguistic phenomena and conceptual meaning. To this end, I: (1) develop methods to evaluate and analyze AI models from the perspective of semantic cognition; and (2) use AI models as simulated learners to test and generate novel hypotheses about language acquisition and generalization. My research has been recognized with awards at [EACL 2023](https://2023.eacl.org/program/best-paper/), [ACL 2023](https://2023.aclweb.org/program/best_papers/), and [EMNLP 2024](https://2024.emnlp.org/program/best_papers/)!
 
 <!--**Recruitment Note:** I am looking to recruit PhD Students through Linguistics, expected to start in Fall 2026. I am primarily interested in working with students who have interests at the intersection of AI <u>and</u> CogSci/NLP. Unfortunately, I am not recruiting any MS Students or Interns at the moment.-->
-{{% alert note %}}
+<!--{{% alert note %}}
 I am looking to recruit PhD Students through Linguistics, expected to start in Fall 2026. 
 I am primarily interested in working with students who have interests at the intersection 
 of AI <u>and</u> CogSci/NLP. Students can learn more about applications [here](https://liberalarts.utexas.edu/linguistics/graduate-programs/how-to-apply.html). 
 
 Unfortunately, I am not recruiting any MS Students or Interns at the moment.
+{{% /alert %}}-->
+{{% alert note %}}
+I am no longer recruiting, but watch this space for more updates!
 {{% /alert %}}
 
 Previously, I was a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/), a philanthropically endowed academic computer science institute located on the University of Chicago campus. Before, I was a postdoctoral fellow in the Linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). Before that, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
+
+I am the author of [minicons](https://minicons.kanishka.website), a python library that facilitates large scale behavioral analyses of transformer language models.
 
 My email is kmisra \[at\] utexas \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
 
@@ -94,12 +101,13 @@ My email is kmisra \[at\] utexas \[dot\] edu.<sup><a href = "https://en.wikipedi
 <!--I am particularly interested in characterizing the semantic knowledge made available to computational models that only learn from textual exposure. I work closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her lab at UChicago. 
 <!--I am also affiliated with [CERIAS](https://www.cerias.purdue.edu/), Purdue's center for research and education in areas of information security.-->
 
-### Other things:
+<!--### Other things:
 
 -   I am the author of [minicons](https://minicons.kanishka.website), a python library that facilitates large scale behavioral analyses of transformer language models.
 -   I used to co-organize the UChicago/TTIC NLP Seminar, along with the wonderful [Mina Lee](https://minalee-research.github.io/) and [Zhewei Sun](https://zhewei-sun.github.io/).
 -   I spent Fall 2022 as a Research Intern at Google AI working on multi-hop reasoning and language models.
 -   In summer of 2022, I hosted a two part discussion group on [Neural Nets for Cognition](https://neural-nets-for-cognition.net/) \@ [CogSci 2022](https://cognitivesciencesociety.org/cogsci-2022/)
+-->
 <!---   I was selected to be a Graduate Student Fellow in the inaugural [Purdue Graduate School Mentoring Fellows](https://news.cla.purdue.edu/2021/12/01/purdues-graduate-school-mentoring-graduate-student-fellow-program/) program!-->
 <!--In 2018, I was fortunate to be awarded the Purdue Research Foundation fellowship (now known as the Ross-Lynn Graduate Student Fellowship). I then taught database fundamentals to sophomore level undergraduates for three semesters. I am currently funded by an [NSF-EAGER grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2039605&HistoricalAwards=false) focused on using artificial intelligence techniques to develop entertainment education materials for social-engineering research.-->
 <!--I enjoy mentoring students interested in Natural Language Processing, check out my CV for some examples of undergraduate projects I have mentored.--->
@@ -115,18 +123,22 @@ I am currently working on projects .
 
 - **Kanishka Misra** and Najoung Kim. 2024. [Generating novel experimental hypotheses from language models: A case study on cross-dative generalization](https://arxiv.org/abs/2408.05086). *arxiv preprint*.
 
-- Juan Diego Rodriguez, Aaron Mueller, and **Kanishka Misra**. 2025. 
+<!-- - Juan Diego Rodriguez, Aaron Mueller, and **Kanishka Misra**. 2025.
 [Characterizing the Role of Similarity in the Property Inferences of Language Models](https://aclanthology.org/2025.naacl-long.574/). *NAACL 2025*.
+-->
 
 - Yulu Qin,<sup>\*</sup> Dheeraj Varghese,<sup>\*</sup> Adam Dahlgren Lindström, Lucia Donatelli, **Kanishka Misra**,<sup>&dagger;</sup> and Najoung Kim.<sup>&dagger;</sup> 2025. 
 [Vision-and-Language Training Helps Deploy Taxonomic Knowledge but Does Not Fundamentally Alter It](https://arxiv.org/abs/2507.13328). *NeurIPS 2025*.
 
+- Tianyang Xu, Marcelo Sandoval-Castaneda, Karen Livescu, Greg Shakhnarovich, and **Kanishka Misra**. 2026. [Cross-Modal Taxonomic Generalization in (Vision-) Language Models](https://arxiv.org/abs/2603.07474). *Under Review*.
+
 
 Some upcoming talks:
-- Keynote at [Texas Linguistics Society](https://tls.ling.utexas.edu/) - Feb 20.
+- Invited Talk at the University of Groningen - April 1.
 - Invited Talk at the University of Amsterdam - April 2.
 - Keynote at the [International Conference on Construction Grammar (ICCG)](https://adele.scholar.princeton.edu/iccg14-%E2%80%93-14th-international-conference-construction-grammar) - June 4-7
 - Keynote at the 1st Workshop for [Computational Developmental Linguistics](https://comp-dev-ling.github.io/) at ACL 2026 - July 3-4.
+- Frontier Lecture at the [2026 School on Analytical Connectionism](https://www.analytical-connectionism.net//school/2026/) at Gothenberg!
 
 <!--**Contribution of language to semantic cognition**
 - Typicality effects

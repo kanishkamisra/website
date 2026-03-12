@@ -54,9 +54,10 @@ Bears
   <p class="person-affiliation">UT Austin</p>
   </div>  -->
   {{< person-card name="Kanishka Misra" role="Principal Investigator" photo="images/avatar.jpg" href="/" affiliation="UT Austin" >}}
+  {{< person-card name="Youn-Gyu Park" role="PhD Student (advised by John Beavers)" photo="" href="." affiliation="UT Austin" >}}
   {{< person-card name="Daniel Brubaker" role="Undergrad (Senior)" photo="/img/person2.jpg" href="." affiliation="UT Austin" >}}
   {{< person-card name="Sriram Padmanabhan" role="Undergrad (Senior)" photo="/img/people/sriram.jpg" href="." affiliation="UT Austin" >}}
-  {{< person-card name="Siyuan Song" role="Undergrad (Senior)" photo="/img/people/siyuan.jpg" href="." affiliation="UT Austin" >}}
+  {{< person-card name="Siyuan Song" role="Undergrad (Junior)" photo="/img/people/siyuan.jpg" href="." affiliation="UT Austin" >}}
 </div>
 
 ## Student Affiliates
@@ -69,8 +70,7 @@ Bears
   {{< person-card name="William Sheffield" role="PhD Student (advised by Jessy Li)" photo="/img/people/willsheff.jpg" href="." affiliation="UT Austin" >}}
   {{< person-card name="Tianyang Xu" role="PhD Student (advised by Karen Livescu)" photo="" href="." affiliation="TTIC" >}}
   {{< person-card name="Qing Yao" role="PhD Student (advised by Kyle Mahowald)" photo="/img/people/qing-yao.jpg" href="." affiliation="UT Austin" >}}
-  <!-- {{< person-card name="Youn-Gyu Park" role="PhD Student (advised by John Beavers)" photo="" href="." affiliation="UT Austin" >}} -->
-  <!-- {{< person-card name="Zach Studdiford" role="Undergrad (Senior)" photo="/img/person3.jpg" href="/authors/person-three/" affiliation="UW Madison" >}} -->
+  {{< person-card name="Zach Studdiford" role="Undergrad (Senior)" photo="" href="." affiliation="UW Madison" >}}
 </div>
 
 
