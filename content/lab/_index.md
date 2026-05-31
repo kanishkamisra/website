@@ -54,7 +54,7 @@ Bears
   <p class="person-affiliation">UT Austin</p>
   </div>  -->
   {{< person-card name="Kanishka Misra" role="Principal Investigator" photo="images/avatar.jpg" href="/" affiliation="UT Austin" >}}
-  {{< person-card name="Youn-Gyu Park" role="PhD Student (advised by John Beavers)" photo="" href="." affiliation="UT Austin" >}}
+  {{< person-card name="Chan Young Jung" role="PhD Student (co-advised with Jessy Li)" photo="/img/people/chanyoungjung.png" href="." affiliation="UT Austin" >}}
   {{< person-card name="Daniel Brubaker" role="Undergrad (Senior)" photo="/img/person2.jpg" href="." affiliation="UT Austin" >}}
   {{< person-card name="Sriram Padmanabhan" role="Undergrad (Senior)" photo="/img/people/sriram.jpg" href="." affiliation="UT Austin" >}}
   {{< person-card name="Siyuan Song" role="Undergrad (Junior)" photo="/img/people/siyuan.jpg" href="." affiliation="UT Austin" >}}
@@ -65,12 +65,13 @@ Bears
 <div class="people-grid">
   {{< person-card name="Sasha Boguraev" role="PhD Student (advised by Kyle Mahowald)" photo="/img/people/sasha.jpg" href="https://sashaboguraev.github.io/" affiliation="UT Austin" >}}
   {{< person-card name="Lalchand Pandia" role="PhD Student (advised by Allyson Ettinger)" photo="/img/people/lalchand.jpg" href="." affiliation="University of Chicago" >}}
+  {{< person-card name="Youn-Gyu Park" role="PhD Student (advised by John Beavers)" photo="" href="." affiliation="UT Austin" >}}
   {{< person-card name="Yulu Qin" role="PhD Student (advised by Najoung Kim)" photo="/img/people/yulu.jpg" href="." affiliation="Boston University" >}}
   {{< person-card name="Juan Diego Rodriguez" role="PhD Student (advised by Greg Durrett and Katrin Erk)" photo="/img/people/JuanDiegoRodriguez.jpg" href="." affiliation="UT Austin" >}}
   {{< person-card name="William Sheffield" role="PhD Student (advised by Jessy Li)" photo="/img/people/willsheff.jpg" href="." affiliation="UT Austin" >}}
+  {{< person-card name="Zach Studdiford" role="Undergrad (Senior)" photo="" href="." affiliation="UW Madison" >}}
   {{< person-card name="Tianyang Xu" role="PhD Student (advised by Karen Livescu)" photo="" href="." affiliation="TTIC" >}}
   {{< person-card name="Qing Yao" role="PhD Student (advised by Kyle Mahowald)" photo="/img/people/qing-yao.jpg" href="." affiliation="UT Austin" >}}
-  {{< person-card name="Zach Studdiford" role="Undergrad (Senior)" photo="" href="." affiliation="UW Madison" >}}
 </div>
 
 

@@ -88,7 +88,10 @@ of AI <u>and</u> CogSci/NLP. Students can learn more about applications [here](h
 Unfortunately, I am not recruiting any MS Students or Interns at the moment.
 {{% /alert %}}-->
 {{% alert note %}}
-I am no longer recruiting, but watch this space for more updates!
+I am looking to recruit PhD Students through <b>Linguistics</b>, expected to start in Fall 2027. 
+I am primarily interested in working with students who have interests at the intersection 
+of AI <u>and</u> CogSci/NLP. Students can learn more about applications [here](https://liberalarts.utexas.edu/linguistics/graduate-programs/how-to-apply.html). 
+<!--I am no longer recruiting, but watch this space for more updates!-->
 {{% /alert %}}
 
 Previously, I was a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/), a philanthropically endowed academic computer science institute located on the University of Chicago campus. Before, I was a postdoctoral fellow in the Linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). Before that, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
@@ -121,7 +124,7 @@ I am currently working on projects .
 
 - **Kanishka Misra** and Kyle Mahowald. 2024. [Language Models Learn Rare Phenomena from Less Rare Phenomena: The Case of the Missing AANNs](https://aclanthology.org/2024.emnlp-main.53/). *EMNLP 2024*. **Outstanding Paper Award**.
 
-- **Kanishka Misra** and Najoung Kim. 2024. [Generating novel experimental hypotheses from language models: A case study on cross-dative generalization](https://arxiv.org/abs/2408.05086). *arxiv preprint*.
+- **Kanishka Misra** and Najoung Kim. 2024. [A systematic framework for generating novel experimental hypotheses from language models](https://arxiv.org/abs/2408.05086). *arxiv preprint*.
 
 <!-- - Juan Diego Rodriguez, Aaron Mueller, and **Kanishka Misra**. 2025.
 [Characterizing the Role of Similarity in the Property Inferences of Language Models](https://aclanthology.org/2025.naacl-long.574/). *NAACL 2025*.
@@ -130,15 +133,13 @@ I am currently working on projects .
 - Yulu Qin,<sup>\*</sup> Dheeraj Varghese,<sup>\*</sup> Adam Dahlgren Lindström, Lucia Donatelli, **Kanishka Misra**,<sup>&dagger;</sup> and Najoung Kim.<sup>&dagger;</sup> 2025. 
 [Vision-and-Language Training Helps Deploy Taxonomic Knowledge but Does Not Fundamentally Alter It](https://arxiv.org/abs/2507.13328). *NeurIPS 2025*.
 
-- Tianyang Xu, Marcelo Sandoval-Castaneda, Karen Livescu, Greg Shakhnarovich, and **Kanishka Misra**. 2026. [Cross-Modal Taxonomic Generalization in (Vision-) Language Models](https://arxiv.org/abs/2603.07474). *Under Review*.
+- Tianyang Xu, Marcelo Sandoval-Castaneda, Karen Livescu, Greg Shakhnarovich, and **Kanishka Misra**. 2026. [Cross-Modal Taxonomic Generalization in (Vision-) Language Models](https://arxiv.org/abs/2603.07474). *ACL 2026*.
 
 
 Some upcoming talks:
-- Invited Talk at the University of Groningen - April 1.
-- Invited Talk at the University of Amsterdam - April 2.
 - Keynote at the [International Conference on Construction Grammar (ICCG)](https://adele.scholar.princeton.edu/iccg14-%E2%80%93-14th-international-conference-construction-grammar) - June 4-7
 - Keynote at the 1st Workshop for [Computational Developmental Linguistics](https://comp-dev-ling.github.io/) at ACL 2026 - July 3-4.
-- Frontier Lecture at the [2026 School on Analytical Connectionism](https://www.analytical-connectionism.net//school/2026/) at Gothenberg!
+- Frontiers Lecture at the [2026 School on Analytical Connectionism](https://www.analytical-connectionism.net//school/2026/) at Chalmers University, Gothenberg!
 
 <!--**Contribution of language to semantic cognition**
 - Typicality effects
