@@ -90,7 +90,7 @@ Unfortunately, I am not recruiting any MS Students or Interns at the moment.
 {{% alert note %}}
 I am looking to recruit PhD Students through <b>Linguistics</b>, expected to start in Fall 2027. 
 I am primarily interested in working with students who have interests at the intersection 
-of AI <u>and</u> CogSci/NLP. Students can learn more about applications [here](https://liberalarts.utexas.edu/linguistics/graduate-programs/how-to-apply.html). 
+of AI <u>and</u> CogSci/NLP. Students can learn more about applications [here](https://liberalarts.utexas.edu/linguistics/graduate-programs/how-to-apply.html).
 <!--I am no longer recruiting, but watch this space for more updates!-->
 {{% /alert %}}
 

@@ -24,7 +24,8 @@ I have been enjoying reading whodunnits these days (early 2023), and one of my f
   - **A line to kill**
   - **The twist of a knife**
   - **Close to death**
-  - *he has 7 more planned!!*
+  - **A Deadly Episode**
+  - *he has 6 more planned!!*
   
 Other whodunnits/books with whodunnit vibes I've recently read:
 
@@ -36,6 +37,8 @@ Other whodunnits/books with whodunnit vibes I've recently read:
 - **The Marlow Murder Club** by Robert Thorogood (didn't really like this)
 - **Death comes to Marlow** by Robert Thorogood (didn't really like this either)
 - **The Thursday Murder Club** by Richard Osman (currently reading, slowly...).
+- **How to solve your own murder** by Kristen Perrin (ugh, i really did not like the narration of this book -- might just be me though)
+- **We solve murders** by Richard Osman (uhhhh.. the case here was kind of not interesting?)
 
 I recently started reading Robert Galbraith's Cormoran Strike series (rank so far in parantheses, titles ordered by chronology):
 
@@ -46,7 +49,7 @@ I recently started reading Robert Galbraith's Cormoran Strike series (rank so fa
 - **Troubled Blood** (1 -- best one so far, not only is the character development at its peak but the actual mystery is by far the most intriguing)
 - **The Ink Black Heart** (1.5 -- similar to troubled blood, the climax was rushed, which is why this is still below troubled blood.)
 - **The Running Grave** (3 -- very good character development, but main story was not as good as TB or IBH)
-- **The Hallmarked Man** (have pre-ordered!)
+- **The Hallmarked Man** (7 -- case was convoluted, and I ended up liking the will-they-wont-they more than the case itself; might have to reread)
 
 One day I hope to solve [Cain's Jawbone](https://en.wikipedia.org/wiki/Cain%27s_Jawbone) by Edward Powys Mathers.
 
