@@ -1,0 +1,100 @@
+# People shown on the lab page, grouped by section.
+#
+# Each top-level "- section:" block becomes a heading + grid on the page,
+# in the order listed here. Add a new section by adding another block.
+# Hide a person (or a whole section) by commenting the line(s) with `#`.
+#
+# Person fields: name (required), role, photo ("" = no image),
+#                href (omit/"" = plain text, no link), affiliation ("" = no pill)
+
+- section: Members
+  people:
+    - {
+        name: "Kanishka Misra",
+        role: "Principal Investigator",
+        photo: "images/avatar.jpg",
+        href: "/",
+        affiliation: "UT Austin",
+      }
+    - {
+        name: "Chan Young Jung",
+        role: "PhD Student (co-advised with Jessy Li)",
+        photo: "/img/people/chanyoungjung.png",
+        href: ".",
+        affiliation: "UT Austin",
+      }
+    - {
+        name: "Sriram Padmanabhan",
+        role: "Undergrad (Senior)",
+        photo: "/img/people/sriram.jpg",
+        href: ".",
+        affiliation: "UT Austin",
+      }
+    # - { name: "Daniel Brubaker",  role: "Undergrad (Senior)", photo: "/img/person2.jpg",       href: ".", affiliation: "UT Austin" }
+    # - { name: "Siyuan Song",      role: "Undergrad (Junior)", photo: "/img/people/siyuan.jpg", href: ".", affiliation: "UT Austin" }
+
+- section: Student Affiliates
+  people:
+    - {
+        name: "Sasha Boguraev",
+        role: "PhD Student (advised by Kyle Mahowald)",
+        photo: "/img/people/sasha.jpg",
+        href: "https://sashaboguraev.github.io/",
+        affiliation: "UT Austin",
+      }
+    - {
+        name: "Lalchand Pandia",
+        role: "PhD Student (advised by Allyson Ettinger)",
+        photo: "/img/people/lalchand.jpg",
+        href: ".",
+        affiliation: "University of Chicago",
+      }
+    - {
+        name: "Youn-Gyu Park",
+        role: "PhD Student (advised by John Beavers)",
+        photo: "",
+        href: ".",
+        affiliation: "UT Austin",
+      }
+    - {
+        name: "Yulu Qin",
+        role: "PhD Student (advised by Najoung Kim)",
+        photo: "/img/people/yulu.jpg",
+        href: "https://yuluqinn.github.io/",
+        affiliation: "Boston University",
+      }
+    - {
+        name: "Juan Diego Rodriguez",
+        role: "PhD Student (advised by Greg Durrett and Katrin Erk)",
+        photo: "/img/people/JuanDiegoRodriguez.jpg",
+        href: "https://www.juandiego-rodriguez.com/",
+        affiliation: "UT Austin",
+      }
+    - {
+        name: "William Sheffield",
+        role: "PhD Student (advised by Jessy Li)",
+        photo: "/img/people/willsheff.jpg",
+        href: ".",
+        affiliation: "UT Austin",
+      }
+    - {
+        name: "Zach Studdiford",
+        role: "Undergrad (Senior)",
+        photo: "",
+        href: ".",
+        affiliation: "UW Madison",
+      }
+    - {
+        name: "Tianyang Xu",
+        role: "PhD Student (advised by Karen Livescu)",
+        photo: "",
+        href: "https://sally-xu-42.github.io/",
+        affiliation: "TTIC",
+      }
+    - {
+        name: "Qing Yao",
+        role: "PhD Student (advised by Kyle Mahowald)",
+        photo: "/img/people/qing-yao.jpg",
+        href: "https://dounick.github.io/",
+        affiliation: "UT Austin",
+      }

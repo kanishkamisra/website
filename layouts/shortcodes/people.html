@@ -1,0 +1,23 @@
+{{- /* Render all people sections from the page bundle's people.yaml.
+       Usage (no args): {{< people >}} */ -}}
+{{- $res := .Page.Resources.GetMatch "people.yaml" -}}
+{{- $sections := $res | transform.Unmarshal -}}
+{{- range $sections }}
+<h2 id="{{ .section | urlize }}">{{ .section }}</h2>
+<div class="people-grid">
+  {{- range .people }}
+  <div class="person-card">
+    <img src="{{ .photo }}" alt="{{ .name }}" class="person-photo">
+    {{ if .href }}
+      <h3 class="person-name"><a href="{{ .href }}">{{ .name }}</a></h3>
+    {{ else }}
+      <h3 class="person-name">{{ .name }}</h3>
+    {{ end }}
+    <p class="person-role">{{ .role }}</p>
+    {{ if .affiliation }}
+      <p class="person-affiliation">{{ .affiliation }}</p>
+    {{ end }}
+  </div>
+  {{- end }}
+</div>
+{{- end }}
