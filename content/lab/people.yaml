@@ -30,8 +30,6 @@
         href: ".",
         affiliation: "UT Austin",
       }
-    # - { name: "Daniel Brubaker",  role: "Undergrad (Senior)", photo: "/img/person2.jpg",       href: ".", affiliation: "UT Austin" }
-    # - { name: "Siyuan Song",      role: "Undergrad (Junior)", photo: "/img/people/siyuan.jpg", href: ".", affiliation: "UT Austin" }
 
 - section: Student Affiliates
   people:

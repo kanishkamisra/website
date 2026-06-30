@@ -17,8 +17,9 @@
 {{/* Set `hide_title: true` in front matter to keep the browser-tab title (from `title:`) while hiding the on-page <h1>. */}}
 {{ $hide_title := $page.Params.hide_title }}
 
-{{/* Header image */}}
-{{ if and .Params.header.image (not (and $featured (not .Params.image.preview_only))) }}
+{{/* Header image. Set `header.share_only: true` to use the image only for the
+     social/link-sharing card (og:image) without rendering an on-page banner. */}}
+{{ if and .Params.header.image (not .Params.header.share_only) (not (and $featured (not .Params.image.preview_only))) }}
 <div class="article-header">
   {{ $img_src := urls.Parse .Params.header.image }}
   {{ if $img_src.Scheme }}
