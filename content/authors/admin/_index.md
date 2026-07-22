@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: I do computational linguistics and cognitive science.
+bio: I am an Assistant Professor of Linguistics at UT Austin!
 #education:
 #  courses:
 #  - course: PhD, Natural Language Understanding
