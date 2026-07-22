@@ -1,0 +1,807 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Extracting Word and Phrase Representations using minicons" href="tutorials_word_representations.html"><link rel="prev" title="minicons: Enabling Flexible Behavioral and Representational Analyses of Transformer Language Models" href="index.html">
+        <link rel="prefetch" href="_static/logo.png" as="image">
+        <link rel="prefetch" href="_static/logo.png" as="image">
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>Eliciting scores from Autoregressive LMs - minicons</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=43ec6894" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">minicons</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/logo.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/logo.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">minicons</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Eliciting scores from Autoregressive LMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials_word_representations.html">Extracting Word and Phrase Representations using minicons</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="source/minicons.html">minicons</a><input aria-label="Toggle navigation of minicons" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="source/minicons.scorer.html">Scorer</a><input aria-label="Toggle navigation of Scorer" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/MaskedLMScorer.html">MaskedLMScorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/IncrementalLMScorer.html">IncrementalLMScorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/Seq2SeqScorer.html">Seq2SeqScorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/MambaScorer.html">MambaScorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/VLMScorer.html">VLMScorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="source/minicons.cwe.html">CWE (Contextual Word Embeddings)</a><input aria-label="Toggle navigation of CWE (Contextual Word Embeddings)" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/cwe/CWE.html">CWE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/cwe/EncDecCWE.html">EncDecCWE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/cwe/VisualCWE.html">VisualCWE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/tutorials_lm_scoring.ipynb.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="eliciting-scores-from-autoregressive-lms">
+<h1>Eliciting scores from Autoregressive LMs<a class="headerlink" href="#eliciting-scores-from-autoregressive-lms" title="Link to this heading">¶</a></h1>
+<p>Language models are trained to predict token probabilities, given some input context. This allows us to explore a number of different scoring methods.</p>
+<ul class="simple">
+<li><p>token-scoring: the natural ability of LMs – assigning probabilities to tokens given context</p></li>
+<li><p>word-scoring: going from tokens (which could be sub-words) to word scores</p></li>
+<li><p>sequence-scoring: going from tokens/words to full, multi-word sequences</p></li>
+<li><p>conditional-scoring: computing conditional probabilities of sequences given some input</p></li>
+</ul>
+<p>For all these methods, we will consider a range of different scores: probabilities, log-probabilities, surprisals. In the context of sequence probabilities, we will look at differences between summing log-probabilities (equivalent to multiplying probabilities) vs. looking at log-probability per token, to account for the effect of length.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">minicons</span><span class="w"> </span><span class="kn">import</span> <span class="n">scorer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.tokenize</span><span class="w"> </span><span class="kn">import</span> <span class="n">TweetTokenizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="different-types-of-lms">
+<h2>Different types of LMs<a class="headerlink" href="#different-types-of-lms" title="Link to this heading">¶</a></h2>
+<p>Autoregressive LMs: <code class="docutils literal notranslate"><span class="pre">lm.IncrementalLMScorer</span></code> - These predict the next token, given some left context, e.g., “I saw the man reading a __ –&gt; “book”, they can only look up the sequence words <em>before</em> the next one, i.e., they make predictions unidirectionally.</p>
+<p>Masked LMs: <code class="docutils literal notranslate"><span class="pre">lm.MaskedLMScorer</span></code> - These predict words in context using bidirectional evidence, i.e., they can even see the “future” in order to form predictions about a given word. E.g., “I saw a __ on the mat” –&gt; “cat”, “dog”, etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;HuggingFaceTB/SmolLM2-135M&quot;</span>
+<span class="c1"># model_name = &quot;gpt2&quot;</span>
+<span class="c1"># model_name = &quot;facebook/opt-125m&quot;</span>
+
+<span class="c1"># many models do not automatically insert a beggining of </span>
+<span class="c1"># sentence tokens when tokenizing a sequence, even though</span>
+<span class="c1"># they were trained to do so...</span>
+
+<span class="k">if</span> <span class="s2">&quot;gpt2&quot;</span> <span class="ow">in</span> <span class="n">model_name</span> <span class="ow">or</span> <span class="s2">&quot;pythia&quot;</span> <span class="ow">in</span> <span class="n">model_name</span> <span class="ow">or</span> <span class="s2">&quot;SmolLM&quot;</span> <span class="ow">in</span> <span class="n">model_name</span><span class="p">:</span>
+    <span class="n">BOS</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">BOS</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">lm</span> <span class="o">=</span> <span class="n">scorer</span><span class="o">.</span><span class="n">IncrementalLMScorer</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prefixes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;He caught the pass and scored another touchdown. There was nothing he enjoyed more than a good game of&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;The firefighters wanted to have a mascot to live with them at the firehouse. Naturally, they decided it would have to be a&quot;</span>
+<span class="p">]</span>
+
+<span class="n">dist</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">next_word_distribution</span><span class="p">(</span><span class="n">prefixes</span><span class="p">)</span>
+
+<span class="c1"># batch-wise log probabilities over the next word</span>
+<span class="n">dist</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-12.3408, -26.3428, -26.3726,  ..., -23.4791, -17.3325, -22.6918],
+        [-11.9606, -23.8860, -23.8423,  ..., -20.0405, -12.6999, -20.7964]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can then use this to compute the entropy of the distributions! Larger Entropies suggest &quot;more randomness&quot;</span>
+<span class="c1"># i.e., if many things can be expected as the &quot;next word&quot;, then we should see higher entropies.</span>
+
+<span class="n">entropy</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">dist</span> <span class="o">*</span> <span class="n">dist</span><span class="o">.</span><span class="n">exp</span><span class="p">())</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">entropy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([4.2262, 6.0277])
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Analysis:</strong> We see that the second context has a much higher entropy than the first one. This is to be expected! The first context clearly allows one to expect only one next word – i.e., football (in the US). In the second context, almost anything can be a mascot!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s now query our distributions -- here we can specify a list of items we want to get the </span>
+<span class="c1"># probabilities of, for each input. The output will be a tuple of two elements: first, a list </span>
+<span class="c1"># of lists containing the probabilities for each query. Second, a similarly structured object</span>
+<span class="c1"># but with ranks.</span>
+
+<span class="n">lm</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+    <span class="n">dist</span><span class="p">,</span> 
+    <span class="p">[[</span><span class="s2">&quot;football&quot;</span><span class="p">,</span> <span class="s2">&quot;baseball&quot;</span><span class="p">,</span> <span class="s2">&quot;monopoly&quot;</span><span class="p">],</span> 
+     <span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;bear&quot;</span><span class="p">,</span> <span class="s2">&quot;zebra&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">]]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([[0.3232646584510803, 0.021983524784445763, 5.0356284191366285e-05],
+  [0.0610167421400547,
+   0.04948180541396141,
+   0.0008991205831989646,
+   0.014311952516436577]],
+ [[1, 6, 844], [1, 2, 160, 9]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># But how to get the actual next word in each context? or a set of next words?</span>
+<span class="c1"># to do this, we can simply use the &lt;model&gt;.topk() function, which returns the</span>
+<span class="c1"># top &quot;k&quot; next words.</span>
+
+<span class="n">lm</span><span class="o">.</span><span class="n">topk</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([[&#39;football&#39;,
+   &#39;pass&#39;,
+   &#39;catch&#39;,
+   &#39;basketball&#39;,
+   &#39;soccer&#39;,
+   &#39;baseball&#39;,
+   &#39;the&#39;,
+   &#39;tag&#39;,
+   &#39;touch&#39;,
+   &#39;&#39;],
+  [&#39;dog&#39;,
+   &#39;bear&#39;,
+   &#39;lion&#39;,
+   &#39;horse&#39;,
+   &#39;dragon&#39;,
+   &#39;giant&#39;,
+   &#39;big&#39;,
+   &#39;wolf&#39;,
+   &#39;cat&#39;,
+   &#39;tiger&#39;]],
+ [[0.3232646584510803,
+   0.07216373831033707,
+   0.05828924849629402,
+   0.04123228043317795,
+   0.025963453575968742,
+   0.021983524784445763,
+   0.019504325464367867,
+   0.01449351292103529,
+   0.013784543611109257,
+   0.010535284876823425],
+  [0.0610167421400547,
+   0.04948180541396141,
+   0.023994380608201027,
+   0.022978678345680237,
+   0.017409881576895714,
+   0.01674766279757023,
+   0.01547678466886282,
+   0.014478103257715702,
+   0.014311952516436577,
+   0.013663243502378464]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="token-scoring">
+<h2>Token Scoring<a class="headerlink" href="#token-scoring" title="Link to this heading">¶</a></h2>
+<p>Now moving on to more exciting functions, let’s start with token scoring! Here we can get a token-by-token probability/log-probability, given a batch of sentences.</p>
+<p><strong>Input:</strong> I know what the lion devoured at sunrise.</p>
+<p><strong>Outputs:</strong></p>
+<ul class="simple">
+<li><p>Probabilities: <span class="math notranslate nohighlight">\(p(w_i | w_1, w_2, \dots, w_{i-1})\)</span></p></li>
+<li><p>log-probabilities: <span class="math notranslate nohighlight">\(\log p(w_i | w_1, w_2, \dots, w_{i-1})\)</span></p></li>
+<li><p>Surprisals: <span class="math notranslate nohighlight">\(-\log p(w_i | w_1, w_2, \dots, w_{i-1})\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sequences</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;I know what the lion devoured at sunrise.&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;I know that the lion devoured at sunrise.&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Probabilities:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">token_score</span><span class="p">(</span>
+    <span class="n">sequences</span><span class="p">,</span> 
+    <span class="n">bos_token</span><span class="o">=</span><span class="n">BOS</span><span class="p">,</span>
+    <span class="n">prob</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">surprisal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bow_correction</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[(&#39;&lt;|endoftext|&gt;&#39;, 0.0),
+  (&#39;I&#39;, 6.193082809448242),
+  (&#39;Ġknow&#39;, 4.064835548400879),
+  (&#39;Ġwhat&#39;, 2.929741382598877),
+  (&#39;Ġthe&#39;, 2.5732474327087402),
+  (&#39;Ġlion&#39;, 9.888419151306152),
+  (&#39;Ġdev&#39;, 11.566431999206543),
+  (&#39;oured&#39;, 2.284313201904297),
+  (&#39;Ġat&#39;, 3.8329339027404785),
+  (&#39;Ġsunrise&#39;, 7.398892879486084),
+  (&#39;.&#39;, 1.7576900720596313)],
+ [(&#39;&lt;|endoftext|&gt;&#39;, 0.0),
+  (&#39;I&#39;, 6.193082809448242),
+  (&#39;Ġknow&#39;, 4.064835548400879),
+  (&#39;Ġthat&#39;, 1.2324100732803345),
+  (&#39;Ġthe&#39;, 2.039327383041382),
+  (&#39;Ġlion&#39;, 9.423368453979492),
+  (&#39;Ġdev&#39;, 9.497617721557617),
+  (&#39;oured&#39;, 1.1308780908584595),
+  (&#39;Ġat&#39;, 7.301660537719727),
+  (&#39;Ġsunrise&#39;, 9.36837387084961),
+  (&#39;.&#39;, 2.652425765991211)]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>log probabilities/surprisals:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">token_score</span><span class="p">(</span>
+    <span class="n">sequences</span><span class="p">,</span> 
+    <span class="n">bos_token</span><span class="o">=</span><span class="n">BOS</span><span class="p">,</span>
+    <span class="n">surprisal</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[(&#39;&lt;|endoftext|&gt;&#39;, 0.0),
+  (&#39;I&#39;, 5.686653137207031),
+  (&#39;Ġknow&#39;, 4.515300750732422),
+  (&#39;Ġwhat&#39;, 2.9601783752441406),
+  (&#39;Ġthe&#39;, 2.591022491455078),
+  (&#39;Ġlion&#39;, 9.441679954528809),
+  (&#39;Ġdev&#39;, 12.020923614501953),
+  (&#39;oured&#39;, 1.3213729858398438),
+  (&#39;Ġat&#39;, 4.788769721984863),
+  (&#39;Ġsunrise&#39;, 7.405997276306152),
+  (&#39;.&#39;, 1.3616142272949219)],
+ [(&#39;&lt;|endoftext|&gt;&#39;, 0.0),
+  (&#39;I&#39;, 5.686653137207031),
+  (&#39;Ġknow&#39;, 4.515300750732422),
+  (&#39;Ġthat&#39;, 1.2616539001464844),
+  (&#39;Ġthe&#39;, 2.0563812255859375),
+  (&#39;Ġlion&#39;, 9.17728042602539),
+  (&#39;Ġdev&#39;, 9.753372192382812),
+  (&#39;oured&#39;, 1.1199378967285156),
+  (&#39;Ġat&#39;, 7.276801109313965),
+  (&#39;Ġsunrise&#39;, 9.404172897338867),
+  (&#39;.&#39;, 2.371004104614258)]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="word-scoring">
+<h2>Word scoring<a class="headerlink" href="#word-scoring" title="Link to this heading">¶</a></h2>
+<p>Same metrics, but log probabilities for words that are split into tokens are summed—e.g., <code class="docutils literal notranslate"><span class="pre">devoured</span></code> is split into <code class="docutils literal notranslate"><span class="pre">dev</span> <span class="pre">+</span> <span class="pre">oured</span></code>. However, here you have to provide the word tokenizer yourself. We will use <code class="docutils literal notranslate"><span class="pre">nltk</span></code>’s <code class="docutils literal notranslate"><span class="pre">TweetTokenizer()</span></code> as an example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_tokenizer</span> <span class="o">=</span> <span class="n">TweetTokenizer</span><span class="p">()</span><span class="o">.</span><span class="n">tokenize</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">word_score_tokenized</span><span class="p">(</span>
+    <span class="n">sequences</span><span class="p">,</span> 
+    <span class="n">bos_token</span><span class="o">=</span><span class="n">BOS</span><span class="p">,</span> 
+    <span class="n">tokenize_function</span><span class="o">=</span><span class="n">word_tokenizer</span><span class="p">,</span>
+    <span class="n">surprisal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">base_two</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[(&#39;I&#39;, 8.204106330871582),
+  (&#39;know&#39;, 6.514202117919922),
+  (&#39;what&#39;, 4.270634651184082),
+  (&#39;the&#39;, 3.7380552291870117),
+  (&#39;lion&#39;, 13.621464729309082),
+  (&#39;devoured&#39;, 19.248865127563477),
+  (&#39;at&#39;, 6.908734321594238),
+  (&#39;sunrise&#39;, 10.684595108032227),
+  (&#39;.&#39;, 1.9643940925598145)],
+ [(&#39;I&#39;, 8.204106330871582),
+  (&#39;know&#39;, 6.514202117919922),
+  (&#39;that&#39;, 1.8201818466186523),
+  (&#39;the&#39;, 2.966731071472168),
+  (&#39;lion&#39;, 13.24001693725586),
+  (&#39;devoured&#39;, 15.686870574951172),
+  (&#39;at&#39;, 10.498205184936523),
+  (&#39;sunrise&#39;, 13.567353248596191),
+  (&#39;.&#39;, 3.420635938644409)]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sequence-scoring">
+<h2>Sequence scoring<a class="headerlink" href="#sequence-scoring" title="Link to this heading">¶</a></h2>
+<p>We can also compute the joint probability/log-probability of entire sequences, by simply summing the token probabilities. Although, the default behavior is to do so per token – i.e., by taking the mean.</p>
+<p><strong>Input:</strong> batch of sentences</p>
+<p><strong>Outputs:</strong> scores indicating how likely each sequence is. There are multiple methods for doing this though:</p>
+<ul class="simple">
+<li><p>summed log-probs (equivalent to joint probability, computed using the product rule)</p></li>
+<li><p>log-prob per token</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sequences</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;The keys to the cabinet are on the table.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;The keys to the cabinet is on the table.&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>log-prob per token (default behavior):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">sequence_score</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">bos_token</span><span class="o">=</span><span class="n">BOS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3.674643039703369, -4.0424699783325195]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summed-log-probs">
+<h2>Summed log-probs:<a class="headerlink" href="#summed-log-probs" title="Link to this heading">¶</a></h2>
+<p>summing is done by using the <code class="docutils literal notranslate"><span class="pre">reduction</span></code> argument, which takes a function as its value. It is called a “reduction” since it is reducing a list of values into a single value</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">sequence_score</span><span class="p">(</span>
+    <span class="n">sequences</span><span class="p">,</span> 
+    <span class="n">bos_token</span><span class="o">=</span><span class="n">BOS</span><span class="p">,</span> 
+    <span class="n">reduction</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-36.746429443359375, -40.42470169067383]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, the lambda function is a concise way of defining a function, here this is equivalent to taking the torch tensor consisting of the model elicited log-probabilities and reduces it row-wise by summing, and extracting the item (as opposed to keeping it as a <code class="docutils literal notranslate"><span class="pre">tensor</span></code>). For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.223234</span><span class="p">,</span> <span class="mf">0.443257</span><span class="p">,</span> <span class="mf">0.364343</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">sum_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+<span class="n">sum_func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.030834
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="log-prob-of-full-sequence-summing-vs-log-prob-per-token-avg">
+<h2>log-prob of full sequence (summing) vs. log-prob per token (avg)<a class="headerlink" href="#log-prob-of-full-sequence-summing-vs-log-prob-per-token-avg" title="Link to this heading">¶</a></h2>
+<p>Usually, the two metrics show similar qualitative trends, especially for minimal pair comparisons. However there are certain cases where log-prob per token is a better metric. This is because the summed log prob metric for a sentence might be lower simply because it is longer (contain more tokens)–since it involves a more number of multiplications between word-probabilities, each of which is a number lower than 1.</p>
+<p>The following pair illustrates this issue:</p>
+<ol class="arabic simple">
+<li><p>These casseroles disgust Mrs. O’leary</p></li>
+<li><p>*These casseroles disgusts Kayla</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stimuli</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;These casseroles disgust Mrs. O&#39;leary&quot;</span><span class="p">,</span> <span class="c1"># longer but grammatical</span>
+    <span class="s2">&quot;These casseroles disgusts Kayla&quot;</span> <span class="c1"># shorter but ungrammatical</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sum</span>
+<span class="n">lm</span><span class="o">.</span><span class="n">sequence_score</span><span class="p">(</span>
+    <span class="n">stimuli</span><span class="p">,</span> 
+    <span class="n">bos_token</span><span class="o">=</span><span class="n">BOS</span><span class="p">,</span> 
+    <span class="n">reduction</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-61.54801559448242, -56.26276779174805]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">sequence_score</span><span class="p">(</span><span class="n">stimuli</span><span class="p">,</span> <span class="n">bos_token</span><span class="o">=</span><span class="n">BOS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-6.154801368713379, -8.037538528442383]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conditional-lm-scoring">
+<h2>Conditional LM scoring<a class="headerlink" href="#conditional-lm-scoring" title="Link to this heading">¶</a></h2>
+<p>This follows the same principle as sequence scoring, but allows you to separate the prefix and the continuation. Like sequence scoring, this method also allows for different reduction methods.</p>
+<p>For example, the code below computes:</p>
+<ol class="arabic simple">
+<li><p>log p(are cooked in a pie. | Sliced apples)</p></li>
+<li><p>log p(are cooked in a pie. | Apples)</p></li>
+<li><p>log p(are cooked in a pie. | Sliced things)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lake and Murphy (2023) / Murphy (1988)</span>
+<span class="c1"># &quot;are cooked in a pie&quot; is an emergent property of sliced apples</span>
+
+<span class="n">prefix</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Sliced apples&quot;</span><span class="p">,</span> <span class="s2">&quot;Apples&quot;</span><span class="p">,</span> <span class="s2">&quot;Sliced things&quot;</span><span class="p">]</span>
+<span class="n">continuation</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;are cooked in a pie.&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lm</span><span class="o">.</span><span class="n">conditional_score</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">continuation</span><span class="p">,</span> <span class="n">bos_token</span><span class="o">=</span><span class="n">BOS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3.2367591857910156, -3.9154112339019775, -3.4075069427490234]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="tutorials_word_representations.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Extracting Word and Phrase Representations using minicons</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Kanishka Misra
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Eliciting scores from Autoregressive LMs</a><ul>
+<li><a class="reference internal" href="#different-types-of-lms">Different types of LMs</a></li>
+<li><a class="reference internal" href="#token-scoring">Token Scoring</a></li>
+<li><a class="reference internal" href="#word-scoring">Word scoring</a></li>
+<li><a class="reference internal" href="#sequence-scoring">Sequence scoring</a></li>
+<li><a class="reference internal" href="#summed-log-probs">Summed log-probs:</a></li>
+<li><a class="reference internal" href="#log-prob-of-full-sequence-summing-vs-log-prob-per-token-avg">log-prob of full sequence (summing) vs. log-prob per token (avg)</a></li>
+<li><a class="reference internal" href="#conditional-lm-scoring">Conditional LM scoring</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=d102b19a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/custom.js?v=0b490ccf"></script>
+    </body>
+</html>

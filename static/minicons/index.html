@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="minicons" href="source/minicons.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Eliciting scores from Autoregressive LMs" href="tutorials_lm_scoring.html">
         <link rel="prefetch" href="_static/logo.png" as="image">
         <link rel="prefetch" href="_static/logo.png" as="image">
 
@@ -11,8 +11,9 @@
         <title>minicons</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=cd7d9b8a" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=43ec6894" />
     
     
 
@@ -197,7 +198,12 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials_lm_scoring.html">Eliciting scores from Autoregressive LMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials_word_representations.html">Extracting Word and Phrase Representations using minicons</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul>
 <li class="toctree-l1 has-children"><a class="reference internal" href="source/minicons.html">minicons</a><input aria-label="Toggle navigation of minicons" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="source/minicons.scorer.html">Scorer</a><input aria-label="Toggle navigation of Scorer" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -254,7 +260,7 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="minicons-enabling-flexible-behavioral-and-representational-analyses-of-transformer-language-models">
+          <section class="tex2jax_ignore mathjax_ignore" id="minicons-enabling-flexible-behavioral-and-representational-analyses-of-transformer-language-models">
 <h1>minicons: Enabling Flexible Behavioral and Representational Analyses of Transformer Language Models<a class="headerlink" href="#minicons-enabling-flexible-behavioral-and-representational-analyses-of-transformer-language-models" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://pepy.tech/project/minicons"><img alt="Downloads" src="https://static.pepy.tech/personalized-badge/minicons?period=total&amp;units=international_system&amp;left_color=black&amp;right_color=brightgreen&amp;left_text=Downloads" /></a></p>
 <p>This repo is a wrapper around the <code class="docutils literal notranslate"><span class="pre">transformers</span></code> <a class="reference external" href="https://huggingface.co/transformers">library</a> from Hugging Face :hugs:</p>
@@ -430,8 +436,11 @@
 <h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://kanishka.website/post/minicons-running-large-scale-behavioral-analyses-on-transformer-lms/">Introduction to using LM-scoring methods using minicons</a></p></li>
-<li><p><a class="reference internal" href="#examples/surprisals.md"><span class="xref myst">Computing sentence and token surprisals using minicons</span></a></p></li>
-<li><p><a class="reference internal" href="#examples/word_representations.md"><span class="xref myst">Extracting word/phrase representations using minicons</span></a></p></li>
+<li><p><a class="reference external" href="https://kanishka.website/minicons/tutorials_lm_scoring.html">Computing sentence and token surprisals using minicons</a></p></li>
+</ul>
+<!-- - [Old surprisals tutorial](https://kanishka.website/minicons/tutorials_surprisals.html) -->
+<ul class="simple">
+<li><p><a class="reference external" href="https://kanishka.website/minicons/tutorials_word_representations.html">Extracting word/phrase representations using minicons</a></p></li>
 </ul>
 </section>
 <section id="recent-updates">
@@ -482,6 +491,8 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 </section>
 
@@ -490,12 +501,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="source/minicons.html">
+          <a class="next-page" href="tutorials_lm_scoring.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">minicons</div>
+                <div class="title">Eliciting scores from Autoregressive LMs</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -539,7 +550,9 @@
 <li><a class="reference internal" href="#tutorials">Tutorials</a></li>
 <li><a class="reference internal" href="#recent-updates">Recent Updates</a></li>
 <li><a class="reference internal" href="#citation">Citation</a></li>
-<li><a class="reference internal" href="#famous-users-of-minicons">Famous users of minicons:</a></li>
+<li><a class="reference internal" href="#famous-users-of-minicons">Famous users of minicons:</a><ul>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -555,6 +568,6 @@
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
-    <script src="_static/custom.js?v=816477cf"></script>
+    <script src="_static/custom.js?v=0b490ccf"></script>
     </body>
 </html>

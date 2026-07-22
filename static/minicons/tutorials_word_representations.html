@@ -1,0 +1,557 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="minicons" href="source/minicons.html"><link rel="prev" title="Eliciting scores from Autoregressive LMs" href="tutorials_lm_scoring.html">
+        <link rel="prefetch" href="_static/logo.png" as="image">
+        <link rel="prefetch" href="_static/logo.png" as="image">
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>Extracting Word and Phrase Representations using minicons - minicons</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=43ec6894" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">minicons</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/logo.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/logo.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">minicons</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorials_lm_scoring.html">Eliciting scores from Autoregressive LMs</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Extracting Word and Phrase Representations using minicons</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="source/minicons.html">minicons</a><input aria-label="Toggle navigation of minicons" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="source/minicons.scorer.html">Scorer</a><input aria-label="Toggle navigation of Scorer" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/MaskedLMScorer.html">MaskedLMScorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/IncrementalLMScorer.html">IncrementalLMScorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/Seq2SeqScorer.html">Seq2SeqScorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/MambaScorer.html">MambaScorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/scorer/VLMScorer.html">VLMScorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="source/minicons.cwe.html">CWE (Contextual Word Embeddings)</a><input aria-label="Toggle navigation of CWE (Contextual Word Embeddings)" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="source/cwe/CWE.html">CWE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/cwe/EncDecCWE.html">EncDecCWE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source/cwe/VisualCWE.html">VisualCWE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/tutorials_word_representations.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="extracting-word-and-phrase-representations-using-minicons">
+<h1>Extracting Word and Phrase Representations using minicons<a class="headerlink" href="#extracting-word-and-phrase-representations-using-minicons" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">minicons</span></code> allows for efficient and intuitive extraction of word/phrase representations using transformer models (in theory, any model that is available on the huggingface hub).
+It does so by using a wrapper (in the <code class="docutils literal notranslate"><span class="pre">cwe</span></code> module) around the <code class="docutils literal notranslate"><span class="pre">AutoModel</span></code> class made available by the transformers package by HuggingFace.</p>
+<p>For demonstration purposes, let’s use the <code class="docutils literal notranslate"><span class="pre">bert-base-uncased</span></code> model to extract contextual representations of the word <em>aircraft</em> from the list of sentences in the file <code class="docutils literal notranslate"><span class="pre">samplesentences.txt</span></code> (listed in the same directory as this file).</p>
+<section id="preliminaries">
+<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Link to this heading">¶</a></h2>
+<section id="required-packages">
+<h3>Required packages<a class="headerlink" href="#required-packages" title="Link to this heading">¶</a></h3>
+<p>This tutorial requires the following packages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minicons</span>
+<span class="n">torch</span>
+<span class="n">transformers</span>
+</pre></div>
+</div>
+</section>
+<section id="importing-libraries">
+<h3>Importing libraries<a class="headerlink" href="#importing-libraries" title="Link to this heading">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">minicons</span><span class="w"> </span><span class="kn">import</span> <span class="n">cwe</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">minicons.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">character_span</span> <span class="c1"># for demonstrating.</span>
+</pre></div>
+</div>
+</section>
+<section id="loading-sentences">
+<h3>Loading sentences<a class="headerlink" href="#loading-sentences" title="Link to this heading">¶</a></h3>
+<p>We will now load our sentences, each of which consists of the target word <em>aircraft</em>:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;samplesentences.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+<span class="n">sentences</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[&#39;This aircraft works by jet propulsion.&#39;,</span>
+<span class="sd"> &#39;His passion is making model aircraft.&#39;]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">11</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="loading-the-model">
+<h3>Loading the model<a class="headerlink" href="#loading-the-model" title="Link to this heading">¶</a></h3>
+<p>Every representation extraction model in <code class="docutils literal notranslate"><span class="pre">minicons</span></code> is an instance of the <code class="docutils literal notranslate"><span class="pre">cwe.CWE</span></code> class. CWE stands for ‘contextual word embeddings.’</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">cwe</span><span class="o">.</span><span class="n">CWE</span><span class="p">(</span><span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">,</span> <span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span> <span class="c1"># also allows gpus, use &#39;cuda:[NUMBER]&#39; to do so.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="representation-extraction">
+<h2>Representation Extraction<a class="headerlink" href="#representation-extraction" title="Link to this heading">¶</a></h2>
+<p>The function primarily used for extracting representations from models is <code class="docutils literal notranslate"><span class="pre">model.extract_representation()</span></code>. It accepts batches of instances represented in either of the following formats:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">(</span><span class="n">sentence_1</span><span class="p">,</span> <span class="n">word_1</span><span class="p">),</span>
+  <span class="p">(</span><span class="n">sentence_2</span><span class="p">,</span> <span class="n">word_2</span><span class="p">),</span>
+  <span class="o">....</span>
+  <span class="p">(</span><span class="n">sentence_n</span><span class="p">,</span> <span class="n">word_n</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">(</span><span class="n">sentence_1</span><span class="p">,</span> <span class="p">(</span><span class="n">start_1</span><span class="p">,</span> <span class="n">end_1</span><span class="p">)),</span>
+  <span class="p">(</span><span class="n">sentence_2</span><span class="p">,</span> <span class="p">(</span><span class="n">start_2</span><span class="p">,</span> <span class="n">end_2</span><span class="p">)),</span>
+  <span class="o">....</span>
+  <span class="p">(</span><span class="n">sentence_n</span><span class="p">,</span> <span class="p">(</span><span class="n">start_n</span><span class="p">,</span> <span class="n">end_n</span><span class="p">))</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">(start_i,</span> <span class="pre">end_i)</span></code> are the character span indices for the target word in the ith sentence, i.e., <code class="docutils literal notranslate"><span class="pre">start_i</span></code> is the start index, and <code class="docutils literal notranslate"><span class="pre">end_i</span></code> is the end index.</p>
+<p>For example, the instance <code class="docutils literal notranslate"><span class="pre">[&quot;I</span> <span class="pre">like</span> <span class="pre">reading</span> <span class="pre">books.&quot;,</span> <span class="pre">(15,</span> <span class="pre">20)]</span></code> corresponds to the word <code class="docutils literal notranslate"><span class="pre">&quot;books&quot;</span></code>.</p>
+<p>Regardless of what is specified, <code class="docutils literal notranslate"><span class="pre">extract_representation()</span></code> reduces the input to the second format. For instance, to get the character span indices of <em>aircraft</em> in the first sentence:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">character_span</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;aircraft&#39;</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">(5, 13)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p>The first type indeed provides an easier method to prepare our data to extract representations:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">instances</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+    <span class="n">instances</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;aircraft&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We can now use <code class="docutils literal notranslate"><span class="pre">instances</span></code> as an input to <code class="docutils literal notranslate"><span class="pre">model.extract_representation()</span></code>. By default, this method extracts representations from the last layer of the model:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">extract_representation</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">tensor([[ 0.4418,  0.2876, -0.4887,  ..., -0.9296,  0.2270,  0.4052],</span>
+<span class="sd">        [ 0.6424,  0.3509,  0.1863,  ..., -0.7924,  0.0086, -0.5835],</span>
+<span class="sd">        [-0.1713, -0.0228, -0.1329,  ..., -0.8026,  0.6910,  0.0614],</span>
+<span class="sd">        ...,</span>
+<span class="sd">        [ 0.1711,  0.3773, -1.2992,  ..., -0.3187,  0.3004, -0.4013],</span>
+<span class="sd">        [ 0.6711,  0.0556, -1.1710,  ..., -0.5866,  0.8467,  0.2816],</span>
+<span class="sd">        [ 0.5522,  0.1332,  0.2180,  ..., -0.2806,  1.0105, -0.1799]])</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p>We can even choose a different layer:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">extract_representation</span><span class="p">(</span><span class="n">instances</span><span class="p">,</span> <span class="n">layer</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">tensor([[ 1.1305,  1.2379, -0.3605,  ..., -0.2164,  0.7634,  0.2290],</span>
+<span class="sd">        [ 1.5314,  1.1103, -0.3012,  ...,  0.3013,  1.1243, -0.1035],</span>
+<span class="sd">        [ 0.5519,  0.3571,  0.1852,  ..., -0.0317,  0.3467, -0.5793],</span>
+<span class="sd">        ...,</span>
+<span class="sd">        [ 0.2921,  0.5046, -0.8121,  ..., -0.0687,  0.5321,  0.0470],</span>
+<span class="sd">        [ 0.6099,  0.9541, -0.5739,  ...,  0.1725,  0.2572, -0.0846],</span>
+<span class="sd">        [ 0.8634,  0.3579, -0.1031,  ..., -0.4277, -0.0830, -0.3293]])</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p>or even specify multiple layers, which yields a list of torch tensors:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">extract_representation</span><span class="p">(</span><span class="n">instances</span><span class="p">,</span> <span class="n">layer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[tensor([[ 0.9413,  0.3149,  0.0279,  ..., -1.2449,  0.5606, -0.0098],</span>
+<span class="sd">         [ 1.2197,  0.4842,  0.0792,  ..., -1.3511,  0.3262, -0.8011],</span>
+<span class="sd">         [ 0.1097, -0.0434,  0.4395,  ..., -1.2032,  1.0695,  0.1302],</span>
+<span class="sd">         ...,</span>
+<span class="sd">         [ 0.5841,  0.3509, -0.4591,  ..., -0.2502,  0.5510, -0.2269],</span>
+<span class="sd">         [ 0.8643,  0.2670, -0.8616,  ..., -0.4080,  0.3723, -0.0150],</span>
+<span class="sd">         [ 0.9704,  0.2731,  0.0032,  ..., -0.4349,  1.3013, -0.1415]]),</span>
+<span class="sd"> tensor([[ 0.4418,  0.2876, -0.4887,  ..., -0.9296,  0.2270,  0.4052],</span>
+<span class="sd">         [ 0.6424,  0.3509,  0.1863,  ..., -0.7924,  0.0086, -0.5835],</span>
+<span class="sd">         [-0.1713, -0.0228, -0.1329,  ..., -0.8026,  0.6910,  0.0614],</span>
+<span class="sd">         ...,</span>
+<span class="sd">         [ 0.1711,  0.3773, -1.2992,  ..., -0.3187,  0.3004, -0.4013],</span>
+<span class="sd">         [ 0.6711,  0.0556, -1.1710,  ..., -0.5866,  0.8467,  0.2816],</span>
+<span class="sd">         [ 0.5522,  0.1332,  0.2180,  ..., -0.2806,  1.0105, -0.1799]])]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># These can be pooled using the following code:</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">extract_representation</span><span class="p">(</span><span class="n">instances</span><span class="p">,</span> <span class="n">layer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">tensor([[ 0.6916,  0.3012, -0.2304,  ..., -1.0873,  0.3938,  0.1977],</span>
+<span class="sd">        [ 0.9310,  0.4175,  0.1328,  ..., -1.0717,  0.1674, -0.6923],</span>
+<span class="sd">        [-0.0308, -0.0331,  0.1533,  ..., -1.0029,  0.8803,  0.0958],</span>
+<span class="sd">        ...,</span>
+<span class="sd">        [ 0.3776,  0.3641, -0.8791,  ..., -0.2845,  0.4257, -0.3141],</span>
+<span class="sd">        [ 0.7677,  0.1613, -1.0163,  ..., -0.4973,  0.6095,  0.1333],</span>
+<span class="sd">        [ 0.7613,  0.2032,  0.1106,  ..., -0.3577,  1.1559, -0.1607]])</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p>A small trick to extract from the last 4 layers of the model involves using the <code class="docutils literal notranslate"><span class="pre">model.layers</span></code> attribute.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">last_four</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="o">+</span><span class="mi">1</span><span class="p">))[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">extract_representation</span><span class="p">(</span><span class="n">instances</span><span class="p">,</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">last_four</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[tensor([[ 0.9946,  0.9216, -0.2156,  ..., -0.4210,  0.3931,  0.2772],</span>
+<span class="sd">         [ 1.3800,  0.7844, -0.3833,  ..., -0.2114,  0.5890, -0.4240],</span>
+<span class="sd">         [ 0.2445,  0.2528,  0.3336,  ..., -0.4638,  0.3499, -0.2713],</span>
+<span class="sd">         ...,</span>
+<span class="sd">         [ 0.6907,  0.4878, -0.2212,  ...,  0.0482,  0.0307,  0.0583],</span>
+<span class="sd">         [ 0.6474,  0.9128, -0.1065,  ..., -0.6336, -0.1677, -0.2797],</span>
+<span class="sd">         [ 1.0601,  0.2845,  0.2318,  ..., -0.7379,  0.6266, -0.3281]]),</span>
+<span class="sd"> tensor([[ 1.0311,  0.2918,  0.0645,  ..., -1.2735,  0.6836, -0.3382],</span>
+<span class="sd">         [ 1.3628,  0.4729, -0.1582,  ..., -0.9663,  0.5652, -0.9539],</span>
+<span class="sd">         [ 0.3337, -0.0796,  0.3472,  ..., -0.8018,  0.7095, -0.5963],</span>
+<span class="sd">         ...,</span>
+<span class="sd">         [ 0.8667,  0.5114, -0.4021,  ..., -0.2998,  0.3388, -0.5384],</span>
+<span class="sd">         [ 0.5956,  0.2355, -0.1907,  ..., -0.3381,  0.0460, -0.2902],</span>
+<span class="sd">         [ 1.1451,  0.1151,  0.1154,  ..., -0.5127,  1.3450, -0.5618]]),</span>
+<span class="sd"> tensor([[ 0.9413,  0.3149,  0.0279,  ..., -1.2449,  0.5606, -0.0098],</span>
+<span class="sd">         [ 1.2197,  0.4842,  0.0792,  ..., -1.3511,  0.3262, -0.8011],</span>
+<span class="sd">         [ 0.1097, -0.0434,  0.4395,  ..., -1.2032,  1.0695,  0.1302],</span>
+<span class="sd">         ...,</span>
+<span class="sd">         [ 0.5841,  0.3509, -0.4591,  ..., -0.2502,  0.5510, -0.2269],</span>
+<span class="sd">         [ 0.8643,  0.2670, -0.8616,  ..., -0.4080,  0.3723, -0.0150],</span>
+<span class="sd">         [ 0.9704,  0.2731,  0.0032,  ..., -0.4349,  1.3013, -0.1415]]),</span>
+<span class="sd"> tensor([[ 0.4418,  0.2876, -0.4887,  ..., -0.9296,  0.2270,  0.4052],</span>
+<span class="sd">         [ 0.6424,  0.3509,  0.1863,  ..., -0.7924,  0.0086, -0.5835],</span>
+<span class="sd">         [-0.1713, -0.0228, -0.1329,  ..., -0.8026,  0.6910,  0.0614],</span>
+<span class="sd">         ...,</span>
+<span class="sd">         [ 0.1711,  0.3773, -1.2992,  ..., -0.3187,  0.3004, -0.4013],</span>
+<span class="sd">         [ 0.6711,  0.0556, -1.1710,  ..., -0.5866,  0.8467,  0.2816],</span>
+<span class="sd">         [ 0.5522,  0.1332,  0.2180,  ..., -0.2806,  1.0105, -0.1799]])]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<section id="extracting-reprsentations-of-phrases">
+<h3>Extracting reprsentations of phrases<a class="headerlink" href="#extracting-reprsentations-of-phrases" title="Link to this heading">¶</a></h3>
+<p>One can even pass constituent phrases of a sentence in each instance to extract representations of phrases (by default they are pooled using an average). For instance:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">phrases</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;I like reading books.&#39;</span><span class="p">,</span> <span class="s1">&#39;reading books&#39;</span><span class="p">],</span> 
+    <span class="p">[</span><span class="s1">&#39;I also like riding my bike!&#39;</span><span class="p">,</span> <span class="s1">&#39;riding my bike&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">extract_representation</span><span class="p">(</span><span class="n">phrases</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">tensor([[ 0.2985,  0.6786,  0.2250,  ...,  0.1723,  0.3650, -0.5355],</span>
+<span class="sd">        [ 1.2477,  0.1224, -0.0942,  ..., -0.0835, -0.2701, -0.2143]])</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Fin.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="source/minicons.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">minicons</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="tutorials_lm_scoring.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Eliciting scores from Autoregressive LMs</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Kanishka Misra
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Extracting Word and Phrase Representations using minicons</a><ul>
+<li><a class="reference internal" href="#preliminaries">Preliminaries</a><ul>
+<li><a class="reference internal" href="#required-packages">Required packages</a></li>
+<li><a class="reference internal" href="#importing-libraries">Importing libraries</a></li>
+<li><a class="reference internal" href="#loading-sentences">Loading sentences</a></li>
+<li><a class="reference internal" href="#loading-the-model">Loading the model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#representation-extraction">Representation Extraction</a><ul>
+<li><a class="reference internal" href="#extracting-reprsentations-of-phrases">Extracting reprsentations of phrases</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=d102b19a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/custom.js?v=0b490ccf"></script>
+    </body>
+</html>
