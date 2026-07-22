@@ -96,7 +96,7 @@ of AI <u>and</u> CogSci/NLP. Students can learn more about applications [here](h
 
 Previously, I was a Research Assistant Professor at the [Toyota Technological Institute at Chicago](https://www.ttic.edu/), a philanthropically endowed academic computer science institute located on the University of Chicago campus. Before, I was a postdoctoral fellow in the Linguistics department at UT Austin, working with [Dr. Kyle Mahowald](https://mahowak.github.io/). Before that, I was a PhD student at Purdue University, where I worked on Natural Language Understanding with [Dr. Julia Taylor Rayz](https://polytechnic.purdue.edu/profile/taylo108) at the [AKRaNLU Lab](https://engineering.purdue.edu/AKRANLU/). I also worked closely with [Dr. Allyson Ettinger](https://aetting.github.io/) and her [lab](https://uchicagocompling.github.io/) at UChicago.
 
-I am the author of [minicons](https://minicons.kanishka.website), a python library that facilitates large scale behavioral analyses of transformer language models.
+I am the author of [minicons](https://kanishka.website/minicons), a python library that facilitates large scale behavioral analyses of transformer language models.
 
 My email is kmisra \[at\] utexas \[dot\] edu.<sup><a href = "https://en.wikipedia.org/wiki/Address_munging">\[why is it like that?\]</a></sup>
 
@@ -133,12 +133,10 @@ I am currently working on projects .
 - Yulu Qin,<sup>\*</sup> Dheeraj Varghese,<sup>\*</sup> Adam Dahlgren Lindström, Lucia Donatelli, **Kanishka Misra**,<sup>&dagger;</sup> and Najoung Kim.<sup>&dagger;</sup> 2025. 
 [Vision-and-Language Training Helps Deploy Taxonomic Knowledge but Does Not Fundamentally Alter It](https://arxiv.org/abs/2507.13328). *NeurIPS 2025*.
 
-- Tianyang Xu, Marcelo Sandoval-Castaneda, Karen Livescu, Greg Shakhnarovich, and **Kanishka Misra**. 2026. [Cross-Modal Taxonomic Generalization in (Vision-) Language Models](https://arxiv.org/abs/2603.07474). *ACL 2026*.
+- Tianyang Xu, Marcelo Sandoval-Castaneda, Karen Livescu, Greg Shakhnarovich, and **Kanishka Misra**. 2026. [Cross-Modal Taxonomic Generalization in (Vision-) Language Models](https://aclanthology.org/2026.acl-long.742/). *ACL 2026*.
 
 
 Some upcoming talks:
-- Keynote at the [International Conference on Construction Grammar (ICCG)](https://adele.scholar.princeton.edu/iccg14-%E2%80%93-14th-international-conference-construction-grammar) - June 4-7
-- Keynote at the 1st Workshop for [Computational Developmental Linguistics](https://comp-dev-ling.github.io/) at ACL 2026 - July 3-4.
 - Frontiers Lecture at the [2026 School on Analytical Connectionism](https://www.analytical-connectionism.net//school/2026/) at Chalmers University, Gothenberg!
 
 <!--**Contribution of language to semantic cognition**

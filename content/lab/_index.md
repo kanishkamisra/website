@@ -20,7 +20,7 @@ Koalab is a community of linguists, computer scientists, and cognitive scientist
 
 * **Develop tests for AI systems that target their ability to capture these abstractions** -- e.g., [COMPS @ EACL 2023 (Best Paper Award)](https://aclanthology.org/2023.eacl-main.213/), [Padmanabhan et al., 2026 @ ACL Findings](https://aclanthology.org/2026.findings-acl.1842/).
   <!-- * [Misra et al., 2022](), [] -->
-* **Develop methods that allow us to understand what cues in a computational model's learning environment facilitate its ability to demonstrate a specific abstraction** -- e.g., [Misra and Mahowald, 2024 @ EMNLP (Outstanding paper award)](https://aclanthology.org/2024.emnlp-main.53/)
+* **Develop methods (like controlled rearing) that allow us to understand what cues in a computational model's learning environment facilitate its ability to demonstrate a specific abstraction** -- e.g., [Misra and Mahowald, 2024 @ EMNLP (Outstanding paper award)](https://aclanthology.org/2024.emnlp-main.53/)
 * **Develop analysis methods to answer long standing philosophical questions about the nature of representations that can learned from language alone (vs. those requiring extra-linguistic information)** -- e.g., [Qin et al., 2025 @ NeurIPS](https://arxiv.org/abs/2507.13328), [Xu et al., 2026 @ ACL](https://aclanthology.org/2026.acl-long.742/)
 * **Use interpretability methods to understand the representational basis of abstraction-like phenomena** -- e.g., [Rodriguez, Mueller, and Misra, 2025 @ NAACL](https://aclanthology.org/2025.naacl-long.574/)
 * **Use AI models as simulated learners to test and generate *novel* hypotheses about linguistic abstraction and generalization** -- e.g., [Misra and Kim, 2024/6](https://arxiv.org/abs/2408.05086).
