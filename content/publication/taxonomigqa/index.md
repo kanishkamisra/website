@@ -22,7 +22,7 @@ links:
 #   url: https://aclanthology.org/2023.eacl-main.213.mp4
 # - name: Supplementary
 #   url: https://github.com/kanishkamisra/lm-induction/blob/main/supplemental.pdf
-publication: In *NeurIPS 2025*
+publication: In *Advances in Neural Information Processing Systems 38 (NeurIPS 2025)*, pp. 12273-12301
 publication_short: In *NeurIPS 2025*
 publication_types:
 - "2"
