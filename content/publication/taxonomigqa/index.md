@@ -25,7 +25,7 @@ links:
 publication: In *Advances in Neural Information Processing Systems 38 (NeurIPS 2025)*, pp. 12273-12301
 publication_short: In *NeurIPS 2025*
 publication_types:
-- "2"
+- "1"
 #publishDate: "2021-08-01T00:00:00Z"
 # slides: example
 summary: >
