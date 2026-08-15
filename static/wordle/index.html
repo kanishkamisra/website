@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wordle + Information Theory</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="toast-container"></div>
+<div id="global-tooltip" class="global-tooltip" role="tooltip"></div>
+
+<header id="app-header">
+  <div class="header-inner">
+    <h1>Wordle <span class="subtitle">+ Information Theory</span></h1>
+    <div class="header-buttons">
+      <button id="new-game-btn" class="btn">New Game</button>
+      <button id="reveal-btn" class="btn btn-secondary">Show Solution</button>
+    </div>
+  </div>
+</header>
+
+<main id="app-main">
+  <section id="game-section">
+    <div id="board"></div>
+    <div id="keyboard"></div>
+  </section>
+
+  <section id="analysis-section">
+    <h2>Guess Analysis</h2>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-value" id="remaining-count">12953</div>
+        <div class="stat-label">
+          words still possible
+          <span class="info-icon" tabindex="0" data-tooltip="How many words from the full allowed word list are still consistent with every piece of feedback you've received so far. This never uses hidden knowledge of which words NYT considers valid answers.">i</span>
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="max-bits">13.66</div>
+        <div class="stat-label">
+          max bits available
+          <span class="info-icon" tabindex="0" data-tooltip="log2(words still possible). The most information a single guess could possibly reveal this turn &mdash; achieved only if its feedback splits every remaining possibility into its own unique group.">i</span>
+        </div>
+      </div>
+    </div>
+
+    <details id="remaining-list-details">
+      <summary>Preview remaining candidates</summary>
+      <div id="remaining-list"></div>
+    </details>
+
+    <h3>Look up a word
+      <span class="info-icon" tabindex="0" data-tooltip="Check any allowed word's information value against everything still consistent with the board, without spending a guess on it.">i</span>
+    </h3>
+    <div class="search-row">
+      <input type="text" id="word-search-input" maxlength="5" placeholder="e.g. crane" autocomplete="off" spellcheck="false">
+      <button id="word-search-btn" class="btn btn-small">Analyze</button>
+    </div>
+    <div id="word-search-result" class="search-result"></div>
+
+    <h3>Guess history</h3>
+    <table id="history-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Guess</th>
+          <th>Bits gained
+            <span class="info-icon" tabindex="0" data-tooltip="The actual information this guess's real feedback gave you: log2(remaining before &divide; remaining after).">i</span>
+          </th>
+          <th>Expected bits
+            <span class="info-icon" tabindex="0" data-tooltip="Entropy: the average bits this guess was predicted to reveal, before you saw the outcome &mdash; weighting every possible feedback pattern by how many candidates would produce it.">i</span>
+          </th>
+          <th>Efficiency
+            <span class="info-icon" tabindex="0" data-tooltip="Bits gained divided by the max bits possible that turn. Measures how lucky the actual outcome was, not how good the guess choice was on average.">i</span>
+          </th>
+          <th>Left after</th>
+        </tr>
+      </thead>
+      <tbody id="history-body"></tbody>
+    </table>
+
+    <h3>
+      Suggested next guesses
+      <span id="leaderboard-loading" class="loading-indicator" hidden>computing&hellip;</span>
+    </h3>
+    <div class="toggle-row">
+      <button id="answers-toggle-btn" class="btn btn-secondary btn-small" aria-pressed="false">Show possible candidates</button>
+      <span class="info-icon" tabindex="0" data-tooltip="Restricts this table to words from the full allowed list that are themselves still consistent with your board, scored against that same narrower set. No NYT answer-list knowledge is used anywhere in this app, including here.">i</span>
+      <span id="answers-mode-note" class="mode-note"></span>
+    </div>
+    <table id="leaderboard-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th class="sortable" data-sort-key="word"><span class="th-text">Word</span></th>
+          <th class="sortable" data-sort-key="entropy">
+            <span class="th-text">Expected bits</span>
+            <span class="info-icon" tabindex="0" data-tooltip="Entropy: the average information (in bits) this guess is predicted to reveal, given what's still possible. Higher is better.">i</span>
+          </th>
+          <th class="sortable" data-sort-key="expRemaining">
+            <span class="th-text">Expected left</span>
+            <span class="info-icon" tabindex="0" data-tooltip="The average number of candidates that would remain after this guess, weighted by how likely each feedback pattern is: &Sigma;(bucket size&sup2;) / N. Lower is better.">i</span>
+          </th>
+          <th class="sortable" data-sort-key="maxRemaining">
+            <span class="th-text">Worst case</span>
+            <span class="info-icon" tabindex="0" data-tooltip="The largest number of candidates that could remain after this guess &mdash; its least informative possible outcome. Lower is safer.">i</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-body"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer id="app-footer">
+  <div class="footer-inner">
+    <p>Made by Kanishka Misra + Claude.</p>
+    <p>Inspired by 3Blue1Brown's <a href="https://www.youtube.com/watch?v=v68zYyaEmEA" target="_blank" rel="noopener">Solving Wordle using information theory</a>.</p>
+  </div>
+</footer>
+
+<div id="scratch-modal" class="modal-overlay" hidden>
+  <div class="scratch-card">
+    <button id="scratch-close" class="modal-close" aria-label="Close">&times;</button>
+    <h3>Scratch to reveal the answer</h3>
+    <div class="scratch-wrap">
+      <div id="scratch-answer" class="scratch-answer"></div>
+      <canvas id="scratch-canvas" width="300" height="100"></canvas>
+    </div>
+    <p class="scratch-hint">Click and drag across the panel like a scratch ticket.</p>
+    <button id="scratch-reveal-all" class="btn btn-secondary btn-small">Just show me</button>
+  </div>
+</div>
+
+<script src="words.js"></script>
+<script src="turn1_leaderboard.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
