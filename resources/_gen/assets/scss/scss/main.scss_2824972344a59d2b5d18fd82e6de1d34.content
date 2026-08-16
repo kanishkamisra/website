@@ -9349,5 +9349,133 @@ iframe {
 .carousel-indicators li {
   background-color: #06805E80; }
 
+/* alerts: the theme styles `warning` as an alarming red, which is too loud for
+   routine notices like "this schedule may change". Soften it to amber, and keep
+   the red as a separate `caution` variant for things that genuinely warrant it.
+   See the type -> variant mapping in `partials/content_alerts.html`. */
+.alert-warning {
+  color: #7a5200;
+  background-color: #fffaf0;
+  border-color: #e0a800; }
+
+div.alert-warning > div:first-child::before {
+  color: #e0a800; }
+
+.alert-caution {
+  color: #cd0930;
+  background-color: #fff5f7;
+  border-color: #ff3860; }
+
+div.alert-caution > div:first-child::before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #ff3860;
+  content: '\f071'; }
+
+/* wide pages (e.g. syllabi with big schedule tables) */
+/* opt in per page with `wide: true` in the front matter */
+/* theme default is 760px */
+.article-wide .article-container {
+  max-width: 900px; }
+
+.article-wide .article-style table {
+  width: 100%;
+  font-size: 0.9rem; }
+
+/* `hide_title: true` leaves an empty <h1> behind; don't reserve space for it */
+.article-container > h1:empty {
+  display: none; }
+
+/* in-page table of contents, opt in with `toc: true` in the front matter */
+.article-toc {
+  font-size: 0.78rem; }
+
+.article-toc-title {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 0.72rem;
+  color: #707070;
+  margin-bottom: .4rem; }
+
+.article-toc nav ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0; }
+
+.article-toc nav ul ul {
+  padding-left: .85rem; }
+
+.article-toc nav li {
+  margin-bottom: .2rem;
+  line-height: 1.25; }
+
+.article-toc nav a {
+  font-weight: 400; }
+
+/* narrow viewports: in the flow above the content, matching the container width */
+.article-toc {
+  max-width: 760px;
+  margin: 0 auto 1.5rem auto;
+  padding: 0 20px 1rem 20px;
+  border-bottom: 1px solid #e8e8e8; }
+
+.article-wide .article-toc {
+  max-width: 900px; }
+
+/* wide viewports: the toc sits beside the content rather than inside it, and the
+   pair is centred as a unit. Centring the content alone and demanding a 240px
+   gutter on *both* sides would need ~250px more window than this, which is why
+   the toc used to drop back to the top on ordinary laptop widths.
+
+   $half-block is half of (content width + 240px toc gutter). */
+/* each breakpoint is the block width (content + 240px toc) plus a little
+   breathing room at the window edges */
+@media (min-width: 1080px) {
+  .article-has-toc:not(.article-wide) .article-container {
+    margin-left: calc(50% - 260px);
+    margin-right: 0; }
+  .article-has-toc:not(.article-wide) .article-toc {
+    position: fixed;
+    top: 115px;
+    left: calc(50% - 500px);
+    width: 220px;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 0;
+    /* fits without scrolling at normal window heights. The cap is only a
+       fallback so a very short window can still reach the last entries --
+       it stays scrollable by wheel/trackpad, but the bar itself is hidden. */
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none; }
+  .article-has-toc:not(.article-wide) .article-toc::-webkit-scrollbar {
+    display: none; } }
+
+@media (min-width: 1220px) {
+  .article-has-toc.article-wide .article-container {
+    margin-left: calc(50% - 330px);
+    margin-right: 0; }
+  .article-has-toc.article-wide .article-toc {
+    position: fixed;
+    top: 115px;
+    left: calc(50% - 570px);
+    width: 220px;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 0;
+    /* fits without scrolling at normal window heights. The cap is only a
+       fallback so a very short window can still reach the last entries --
+       it stays scrollable by wheel/trackpad, but the bar itself is hidden. */
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none; }
+  .article-has-toc.article-wide .article-toc::-webkit-scrollbar {
+    display: none; } }
+
 .section-heading p {
   color: #004346; }

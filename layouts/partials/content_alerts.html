@@ -1,0 +1,19 @@
+{{/* Renders a page's content, turning GitHub-style alerts into the same markup
+     the theme's `alert` shortcode emits, so `> [!WARNING]` just works in any
+     markdown file.
+
+     Hugo gained native support for these in 0.132 via a blockquote render hook,
+     but blogdown builds this site with 0.115, so we rewrite the already-rendered
+     blockquotes here instead. Once Hugo is new enough this whole partial can be
+     replaced by `layouts/_default/_markup/render-blockquote.html`.
+
+     Variants: `note` (blue) from the theme, `warning` (amber) and `caution`
+     (red) from `custom.scss`. Ordinary blockquotes are left untouched. */}}
+
+{{ $content := .Content }}
+{{ range $type, $variant := dict "NOTE" "note" "TIP" "note" "IMPORTANT" "note" "WARNING" "warning" "CAUTION" "caution" }}
+  {{ $pattern := printf `(?s)<blockquote>\s*<p>\[!%s\]\s*(.*?)\s*</blockquote>` $type }}
+  {{ $replacement := printf `<div class="alert alert-%s"><div><p>$1</div></div>` $variant }}
+  {{ $content = replaceRE $pattern $replacement $content }}
+{{ end }}
+{{ $content | safeHTML }}

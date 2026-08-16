@@ -1,0 +1,25 @@
+{{- define "main" -}}
+
+<article class="article{{ if .Params.wide }} article-wide{{ end }}{{ if .Params.toc }} article-has-toc{{ end }}">
+
+  {{ partial "page_header" . }}
+
+  {{ if .Params.toc }}
+  <aside class="article-toc">
+    <div class="article-toc-title">{{ i18n "on_this_page" }}</div>
+    {{ .TableOfContents }}
+  </aside>
+  {{ end }}
+
+  <div class="article-container">
+
+    <div class="article-style">
+      {{ partial "content_alerts" . }}
+    </div>
+
+    {{ partial "page_footer" . }}
+
+  </div>
+</article>
+
+{{- end -}}

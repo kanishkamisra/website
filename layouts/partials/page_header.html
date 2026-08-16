@@ -17,6 +17,9 @@
 {{/* Set `hide_title: true` in front matter to keep the browser-tab title (from `title:`) while hiding the on-page <h1>. */}}
 {{ $hide_title := $page.Params.hide_title }}
 
+{{/* Set `hide_date: true` in front matter to drop the metadata line (date, authors) from the page. */}}
+{{ $hide_meta := $page.Params.hide_date }}
+
 {{/* Header image. Set `header.share_only: true` to use the image only for the
      social/link-sharing card (og:image) without rendering an on-page banner. */}}
 {{ if and .Params.header.image (not .Params.header.share_only) (not (and $featured (not .Params.image.preview_only))) }}
@@ -63,7 +66,9 @@
   <p class="page-subtitle">{{ . | markdownify | emojify }}</p>
   {{end}}
 
+  {{ if not $hide_meta }}
   {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
+  {{ end }}
   {{ partial "page_links_div.html" $page }}
 </div>
 
@@ -90,7 +95,9 @@
   {{end}}
 
   {{ if not .IsNode }}
-    {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
+    {{ if not $hide_meta }}
+      {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
+    {{ end }}
     {{ partial "page_links_div.html" $page }}
   {{end}}
 </div>
