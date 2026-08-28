@@ -136,8 +136,8 @@ I am currently working on projects .
 - Tianyang Xu, Marcelo Sandoval-Castaneda, Karen Livescu, Greg Shakhnarovich, and **Kanishka Misra**. 2026. [Cross-Modal Taxonomic Generalization in (Vision-) Language Models](https://aclanthology.org/2026.acl-long.742/). *ACL 2026*.
 
 
-Some upcoming talks:
-- Frontiers Lecture at the [2026 School on Analytical Connectionism](https://www.analytical-connectionism.net//school/2026/) at Chalmers University, Gothenberg!
+<!--Some upcoming talks:
+- Frontiers Lecture at the [2026 School on Analytical Connectionism](https://www.analytical-connectionism.net//school/2026/) at Chalmers University, Gothenberg! -->
 
 <!--**Contribution of language to semantic cognition**
 - Typicality effects
