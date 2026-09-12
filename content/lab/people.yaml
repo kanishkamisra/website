@@ -77,10 +77,10 @@
       }
     - {
         name: "Zach Studdiford",
-        role: "Undergrad (Senior)",
+        role: "PhD Student",
         photo: "",
         href: ".",
-        affiliation: "UW Madison",
+        affiliation: "UCSD CogSci",
       }
     - {
         name: "Tianyang Xu",
