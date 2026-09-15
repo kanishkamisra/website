@@ -1,0 +1,686 @@
+:root {
+  --color-correct: #6aaa64;
+  --color-present: #c9b458;
+  --color-absent: #787c7f;
+  --color-border: #d3d6da;
+  --color-border-filled: #878a8c;
+  --color-text: #1a1a1b;
+  --color-bg: #ffffff;
+  --color-accent: #3a7ca5;
+  --color-bar-context: #c3c7cd;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-size: 18px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Helvetica Neue", Arial, "Segoe UI", sans-serif;
+}
+
+/* sticky footer: main grows to fill short pages, pushing the footer down */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app-header {
+  flex: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+
+.header-inner h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: normal;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  padding: 9px 16px;
+  border-radius: 4px;
+  border: none;
+  background: var(--color-text);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn:hover { opacity: 0.85; }
+
+.btn:disabled,
+.btn:disabled:hover {
+  background: #eceef0;
+  color: #9aa0a6;
+  border-color: #dfe2e5;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--color-text);
+  border: 1px solid var(--color-border-filled);
+}
+
+.btn-small {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.tab-bar {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  gap: 4px;
+  padding: 10px 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  color: #555;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: -1px;
+}
+
+.tab-btn:hover { background: #f4f4f5; color: var(--color-text); }
+
+.tab-btn.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+}
+
+#app-main {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  flex: 1 0 auto;
+  padding: 24px 16px 64px;
+}
+
+.tab-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.tab-panel[hidden] { display: none; }
+
+#setup-section, #blind-setup-section {
+  flex: 1 1 420px;
+  min-width: 320px;
+}
+
+#setup-section h2, #blind-setup-section h2 {
+  font-size: 1.25rem;
+  margin: 28px 0 6px;
+}
+
+#setup-section h2:first-child, #blind-setup-section h2:first-child {
+  margin-top: 0;
+}
+
+#setup-section h3, #blind-setup-section h3, #blind-outcome-words-wrap h3 {
+  font-size: 1.1rem;
+  margin: 24px 0 8px;
+}
+
+#blind-outcome-words-wrap h3:first-child {
+  margin-top: 0;
+}
+
+.section-hint {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+/* Static (non-interactive) tile rows -- answer display, outcome preview.
+   minmax(0, 1fr), not bare 1fr: a grid track's implicit min-width is its
+   content's min-content size, which can exceed an even 1/5 split once the
+   container gets narrow (e.g. the 200px column-detail readout) -- minmax(0, ...)
+   lets tracks actually shrink to fit instead of overflowing the container. */
+.board-row.static {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  max-width: 320px;
+  margin-bottom: 8px;
+}
+
+.board-row.static .tile {
+  width: auto;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.tile {
+  width: 58px;
+  height: 58px;
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-text);
+  background: white;
+  user-select: none;
+}
+
+.tile.filled { border-color: var(--color-border-filled); }
+.tile.correct { background: var(--color-correct); border-color: var(--color-correct); color: white; }
+.tile.present { background: var(--color-present); border-color: var(--color-present); color: white; }
+.tile.absent  { background: var(--color-absent);  border-color: var(--color-absent);  color: white; }
+
+#answer-display h2 { margin-bottom: 10px; }
+
+#answer-fact {
+  margin: 4px 0 14px;
+}
+
+/* Word search / lookup */
+.search-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+#answer-input, #guess-input, #blind-guess-input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid var(--color-border-filled);
+  border-radius: 4px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#answer-input:focus, #guess-input:focus, #blind-guess-input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.search-result {
+  font-size: 1rem;
+  margin-bottom: 14px;
+  min-height: 1.4rem;
+  line-height: 1.6;
+}
+
+.search-result.error {
+  color: #b3261e;
+}
+
+.outcome-summary {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 4px 0 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+th, td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  color: #555;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mode-note {
+  font-size: 0.85rem;
+  color: #777;
+  font-style: italic;
+}
+
+/* Info icon tooltips */
+.info-icon {
+  display: inline-flex;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #9aa0a6;
+  color: white;
+  font-size: 0.72rem;
+  font-style: italic;
+  font-family: Georgia, "Times New Roman", serif;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+  position: relative;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.info-icon:hover, .info-icon:focus {
+  background: var(--color-accent);
+  outline: none;
+}
+
+h3 .info-icon, th .info-icon {
+  text-transform: none;
+  margin-left: 3px;
+}
+
+.global-tooltip {
+  position: fixed;
+  max-width: 260px;
+  width: max-content;
+  background: #1a1a1b;
+  color: white;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.4;
+  padding: 8px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease;
+  z-index: 3000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  pointer-events: none;
+}
+
+.global-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#toast-container {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.toast {
+  background: var(--color-text);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  animation: toast-in 0.15s ease;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Analysis panel */
+#analysis-section, #blind-analysis-section {
+  flex: 1 1 420px;
+  min-width: 320px;
+}
+
+/* Column/horizontal chart mode: the chart can have up to 243 bars, so it earns
+   the setup column's space too instead of being squeezed into half the page.
+   Setup keeps its normal width and simply wraps onto its own row above, since
+   the analysis section next to it now claims the full row's width. */
+.tab-panel.chart-expanded #analysis-section,
+.tab-panel.chart-expanded #blind-analysis-section {
+  flex-basis: 100%;
+}
+
+#analysis-section h2, #blind-analysis-section h2 {
+  margin-top: 0;
+  font-size: 1.45rem;
+}
+
+#analysis-section h3, #blind-analysis-section h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+}
+
+.dist-orientation-btn {
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.stat-box {
+  background: #f7f7f8;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-align: center;
+  flex: 1 1 120px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+#remaining-list-details {
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+#remaining-list, .word-list-box {
+  margin-top: 6px;
+  line-height: 1.7;
+  max-height: 140px;
+  overflow-y: auto;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* A direct child of .tab-panel (not nested in either column) so it always
+   drops to its own full-width row at the very bottom, regardless of whether
+   the chart above is in its normal half-width layout or column mode's
+   full-width one. */
+#blind-outcome-words-wrap {
+  flex: 1 1 100%;
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+}
+
+#blind-outcome-pattern-tiles {
+  max-width: 260px;
+}
+
+#blind-outcome-words-summary {
+  margin: 10px 0 0;
+}
+
+/* Outcome distribution chart: one bar per realized feedback pattern, sorted by
+   count. Bars are a neutral gray (magnitude only). When a specific outcome is
+   known (the "with an answer" tab) that single row is picked out in the accent
+   color, per the dataviz "emphasis" pattern -- one series is the point, the
+   rest are context. The "without an answer" tab renders the same chart with no
+   row picked out, since there's no specific outcome to emphasize. */
+.dist-caption {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+.dist-caption .dist-actual-badge {
+  position: static;
+  margin-left: 0;
+}
+
+.distribution-list {
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+.dist-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 4px;
+  border-radius: 6px;
+}
+
+.dist-row.dist-actual, .dist-row.dist-selected {
+  background: rgba(58, 124, 165, 0.1);
+}
+
+.dist-clickable {
+  cursor: pointer;
+}
+
+.dist-row.dist-clickable:hover, .dist-row.dist-clickable:focus-visible {
+  background: #f0f2f4;
+  outline: none;
+}
+
+.dist-row.dist-clickable.dist-selected:hover,
+.dist-row.dist-clickable.dist-selected:focus-visible {
+  background: rgba(58, 124, 165, 0.16);
+}
+
+.dist-pattern {
+  display: flex;
+  gap: 2px;
+  flex: none;
+}
+
+.dist-mini-tile {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+}
+
+.dist-mini-tile.correct { background: var(--color-correct); }
+.dist-mini-tile.present { background: var(--color-present); }
+.dist-mini-tile.absent  { background: var(--color-absent); }
+
+.dist-bar-track {
+  flex: 1 1 auto;
+  height: 14px;
+}
+
+.dist-bar-fill {
+  height: 100%;
+  min-width: 3px;
+  border-radius: 0 4px 4px 0;
+  background: var(--color-bar-context);
+}
+
+.dist-row.dist-actual .dist-bar-fill, .dist-row.dist-selected .dist-bar-fill {
+  background: var(--color-accent);
+}
+
+.dist-count {
+  flex: none;
+  width: 195px;
+  text-align: right;
+  font-size: 0.85rem;
+  color: #555;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.dist-pct {
+  color: #888;
+}
+
+.dist-bits {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.dist-actual-badge {
+  display: block;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-variant-numeric: normal;
+}
+
+/* Column ("horizontal") mode: same data, rotated -- a bar per outcome laid out
+   left to right instead of top to bottom, so shape-across-many-outcomes reads
+   at a glance. Up to 243 columns can exist, so per dataviz "label selectively"
+   guidance only the emphasized column (the real or clicked outcome) gets a
+   value label, on its cap; every column's full detail (pattern, count, percent,
+   bits) is one hover away via its native title tooltip. */
+.distribution-list.as-columns {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 260px;
+  max-height: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 10px 8px;
+}
+
+.dist-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 0;
+  min-width: 6px;
+  max-width: 22px;
+  height: 100%;
+}
+
+.dist-col-bar {
+  width: 100%;
+  min-height: 3px;
+  border-radius: 4px 4px 0 0;
+  background: var(--color-bar-context);
+}
+
+.dist-col.dist-actual .dist-col-bar, .dist-col.dist-selected .dist-col-bar {
+  background: var(--color-accent);
+}
+
+/* Hovering/focusing a column previews it: a ring (not a fill) plus a slightly
+   darker gray, kept visually distinct from the solid accent fill that means
+   "the real or clicked-to-select outcome" so the two can coexist on the same
+   column without one masking the other. Pure :hover/:focus-visible, no
+   JS-managed class -- it only ever reflects whichever column currently has
+   the mouse/focus. */
+.dist-col.dist-clickable:hover .dist-col-bar,
+.dist-col.dist-clickable:focus-visible .dist-col-bar {
+  background: #9aa4ad;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.dist-col.dist-clickable.dist-selected:hover .dist-col-bar,
+.dist-col.dist-clickable.dist-selected:focus-visible .dist-col-bar {
+  background: var(--color-accent);
+}
+
+.dist-col-label {
+  font-size: 0.68rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+
+/* Column-mode detail readout: full metrics for one clicked column, given the
+   full chart width to lay out in -- rather than crammed onto a 6-22px bar. */
+.dist-column-detail {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+
+.dist-column-detail .board-row.static {
+  flex: none;
+  max-width: 200px;
+  margin-bottom: 0;
+}
+
+.dist-column-detail-text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#app-footer {
+  flex: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-inner {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 18px 16px 28px;
+  font-size: 0.8rem;
+  color: #777;
+  text-align: center;
+}
+
+.footer-inner p {
+  margin: 3px 0;
+}
+
+.footer-inner a {
+  color: #555;
+}
+
+@media (max-width: 720px) {
+  .tab-panel { flex-direction: column; align-items: center; }
+  #setup-section, #analysis-section, #blind-setup-section, #blind-analysis-section { width: 100%; }
+}

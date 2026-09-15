@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wordle Explorer + Information Theory</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="toast-container"></div>
+<div id="global-tooltip" class="global-tooltip" role="tooltip"></div>
+
+<header id="app-header">
+  <div class="header-inner">
+    <h1>Wordle <span class="subtitle">Explorer</span></h1>
+    <div class="header-buttons">
+      <button id="change-answer-btn" class="btn btn-secondary" hidden>Change answer</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tab-bar" role="tablist">
+  <button class="tab-btn active" data-tab="blind" role="tab" aria-selected="true" aria-controls="tab-panel-blind">Without an answer</button>
+  <button class="tab-btn" data-tab="answer" role="tab" aria-selected="false" aria-controls="tab-panel-answer">With an answer</button>
+</nav>
+
+<main id="app-main">
+<div id="tab-panel-answer" class="tab-panel" role="tabpanel" hidden>
+  <section id="setup-section">
+
+    <div id="answer-picker">
+      <h2>1. Pick an answer</h2>
+      <p class="section-hint">Choose any word from the allowed word list. You already know it &mdash; the point here isn't to guess it, it's to see how guesses behave against it.</p>
+      <div class="search-row">
+        <input type="text" id="answer-input" list="word-datalist" maxlength="5" placeholder="e.g. crane" autocomplete="off" spellcheck="false">
+        <button id="answer-random-btn" class="btn btn-secondary btn-small" title="Pick a random allowed word">Random</button>
+        <button id="answer-set-btn" class="btn btn-small">Set answer</button>
+      </div>
+      <div id="answer-result" class="search-result"></div>
+    </div>
+
+    <div id="answer-display" hidden>
+      <h2>Your answer</h2>
+      <div id="answer-tiles" class="board-row static"></div>
+      <p id="answer-fact" class="mode-note"></p>
+      <button id="reset-guesses-btn" class="btn btn-secondary btn-small">Reset guesses (keep answer)</button>
+    </div>
+
+    <div id="guess-picker" hidden>
+      <h2>2. Try a guess</h2>
+      <p class="section-hint">Enter any allowed word to see the feedback it would get, and how much it was expected to tell you.</p>
+      <div class="search-row">
+        <input type="text" id="guess-input" list="word-datalist" maxlength="5" placeholder="e.g. slate" autocomplete="off" spellcheck="false">
+        <button id="guess-analyze-btn" class="btn btn-small">Analyze</button>
+      </div>
+      <div id="guess-result" class="search-result"></div>
+
+      <div id="outcome-preview" hidden>
+        <div id="outcome-tiles" class="board-row static"></div>
+        <p class="outcome-summary" id="outcome-summary"></p>
+        <button id="commit-guess-btn" class="btn btn-secondary btn-small">Use this as guess <span id="commit-guess-num"></span></button>
+      </div>
+    </div>
+
+    <div id="history-wrap" hidden>
+      <h3>Guess history</h3>
+      <table id="history-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Guess</th>
+            <th>Bits gained
+              <span class="info-icon" tabindex="0" data-tooltip="The actual information this guess gave you against your chosen answer: log2(remaining before &divide; remaining after).">i</span>
+            </th>
+            <th>Expected bits
+              <span class="info-icon" tabindex="0" data-tooltip="Entropy: the average bits this guess was predicted to reveal, before you saw the outcome &mdash; weighting every possible feedback pattern by how many candidates would produce it.">i</span>
+            </th>
+            <th>Efficiency
+              <span class="info-icon" tabindex="0" data-tooltip="Bits gained divided by the max bits possible that turn. Measures how lucky/unlucky this particular answer made the outcome, not how good the guess was on average.">i</span>
+            </th>
+            <th>Left after</th>
+          </tr>
+        </thead>
+        <tbody id="history-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="analysis-section">
+    <h2>Analysis</h2>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-value" id="remaining-count">12953</div>
+        <div class="stat-label">
+          words still possible
+          <span class="info-icon" tabindex="0" data-tooltip="How many words from the full allowed word list are still consistent with every guess you've committed so far.">i</span>
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="max-bits">13.66</div>
+        <div class="stat-label">
+          max bits available
+          <span class="info-icon" tabindex="0" data-tooltip="log2(words still possible). The most information a single guess could possibly reveal right now &mdash; achieved only if its feedback splits every remaining possibility into its own unique group.">i</span>
+        </div>
+      </div>
+    </div>
+
+    <details id="remaining-list-details">
+      <summary>Preview words still possible</summary>
+      <div id="remaining-list"></div>
+    </details>
+
+    <div id="guess-stats-section" hidden>
+      <h3>This guess, out of <span id="stats-candidate-count"></span> possible words</h3>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-value" id="stat-entropy">&ndash;</div>
+          <div class="stat-label">
+            expected bits
+            <span class="info-icon" tabindex="0" data-tooltip="Entropy: the average information (in bits) this guess is predicted to reveal, given what's still possible. Higher is better.">i</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-exp-remaining">&ndash;</div>
+          <div class="stat-label">
+            expected left
+            <span class="info-icon" tabindex="0" data-tooltip="The average number of candidates that would remain after this guess, weighted by how likely each feedback pattern is: &Sigma;(bucket size&sup2;) / N. Lower is better.">i</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-max-remaining">&ndash;</div>
+          <div class="stat-label">
+            worst case
+            <span class="info-icon" tabindex="0" data-tooltip="The largest number of candidates that could remain after this guess &mdash; its least informative possible outcome.">i</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-partitions">&ndash;</div>
+          <div class="stat-label">
+            distinct outcomes
+            <span class="info-icon" tabindex="0" data-tooltip="How many of the 243 possible feedback patterns (green/yellow/gray &times; 5 positions) actually occur for at least one still-possible word.">i</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Outcome distribution
+        <span class="info-icon" tabindex="0" data-tooltip="Every distinct feedback pattern this guess can produce against the words still possible, and how many words produce it. The highlighted row is the pattern your chosen answer actually produces. Each row's bits value is log2(1 / probability) &mdash; the information you'd gain if that particular pattern turned out to be the real one; rarer patterns are worth more bits.">i</span>
+        <button id="dist-orientation-btn" class="btn btn-secondary btn-small dist-orientation-btn">Show as columns</button>
+      </h3>
+      <p class="dist-caption" id="dist-caption"></p>
+      <div id="distribution-list" class="distribution-list"></div>
+      <div id="dist-column-detail" class="dist-column-detail" hidden>
+        <div id="dist-column-detail-tiles" class="board-row static"></div>
+        <p id="dist-column-detail-text" class="dist-column-detail-text"></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="tab-panel-blind" class="tab-panel" role="tabpanel">
+  <section id="blind-setup-section">
+    <h2>Try a guess</h2>
+    <p class="section-hint">See every feedback pattern a guess can produce across all 12,953 allowed words &mdash; no answer needed. This is the same entropy calculation, just without picking a specific word to check the outcome against.</p>
+    <div class="search-row">
+      <input type="text" id="blind-guess-input" list="word-datalist" maxlength="5" placeholder="e.g. crane" autocomplete="off" spellcheck="false">
+      <button id="blind-guess-analyze-btn" class="btn btn-small">Analyze</button>
+    </div>
+    <div id="blind-guess-result" class="search-result"></div>
+  </section>
+
+  <section id="blind-analysis-section">
+    <h2>Analysis</h2>
+
+    <p id="blind-empty-state" class="section-hint">Enter a guess on the left to see its outcome distribution.</p>
+
+    <div id="blind-guess-stats-section" hidden>
+      <h3><span id="blind-stats-guess-word"></span> against all <span id="blind-stats-candidate-count"></span> allowed words</h3>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-value" id="blind-stat-entropy">&ndash;</div>
+          <div class="stat-label">
+            expected bits
+            <span class="info-icon" tabindex="0" data-tooltip="Entropy: the average information (in bits) this guess is predicted to reveal, averaged over every word it could turn out to be. Higher is better.">i</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="blind-stat-exp-remaining">&ndash;</div>
+          <div class="stat-label">
+            expected left
+            <span class="info-icon" tabindex="0" data-tooltip="The average number of candidates that would remain after this guess, weighted by how likely each feedback pattern is: &Sigma;(bucket size&sup2;) / N. Lower is better.">i</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="blind-stat-max-remaining">&ndash;</div>
+          <div class="stat-label">
+            worst case
+            <span class="info-icon" tabindex="0" data-tooltip="The largest number of candidates that could remain after this guess &mdash; its least informative possible outcome.">i</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="blind-stat-partitions">&ndash;</div>
+          <div class="stat-label">
+            distinct outcomes
+            <span class="info-icon" tabindex="0" data-tooltip="How many of the 243 possible feedback patterns (green/yellow/gray &times; 5 positions) actually occur for at least one allowed word.">i</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Outcome distribution
+        <span class="info-icon" tabindex="0" data-tooltip="Every distinct feedback pattern this guess can produce, and how many of the allowed words would produce it &mdash; with no answer fixed, every pattern is just shown as a possibility, none highlighted. Each row's bits value is log2(1 / probability) &mdash; the information you'd gain if that particular pattern turned out to be the real one; rarer patterns are worth more bits.">i</span>
+        <button id="blind-dist-orientation-btn" class="btn btn-secondary btn-small dist-orientation-btn">Show as columns</button>
+      </h3>
+      <p class="dist-caption" id="blind-dist-caption"></p>
+      <div id="blind-distribution-list" class="distribution-list"></div>
+      <div id="blind-dist-column-detail" class="dist-column-detail" hidden>
+        <div id="blind-dist-column-detail-tiles" class="board-row static"></div>
+        <p id="blind-dist-column-detail-text" class="dist-column-detail-text"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blind-outcome-words-wrap" hidden>
+    <h3>Words behind an outcome</h3>
+    <p class="section-hint" id="blind-outcome-hint">Click any row in the outcome distribution to see exactly which words would produce it.</p>
+    <div id="blind-outcome-detail" hidden>
+      <div id="blind-outcome-pattern-tiles" class="board-row static"></div>
+      <p id="blind-outcome-words-summary" class="mode-note"></p>
+      <div id="blind-outcome-words-list" class="word-list-box"></div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer id="app-footer">
+  <div class="footer-inner">
+    <p>Made by Kanishka Misra + Claude.</p>
+    <p>Companion to the <a href="../wordle/index.html">Wordle + Information Theory</a> game &mdash; inspired by 3Blue1Brown's <a href="https://www.youtube.com/watch?v=v68zYyaEmEA" target="_blank" rel="noopener">Solving Wordle using information theory</a>.</p>
+  </div>
+</footer>
+
+<datalist id="word-datalist"></datalist>
+
+<script src="words.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
