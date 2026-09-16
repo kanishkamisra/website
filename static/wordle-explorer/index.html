@@ -32,7 +32,7 @@
       <h2>1. Pick an answer</h2>
       <p class="section-hint">Choose any word from the allowed word list. You already know it &mdash; the point here isn't to guess it, it's to see how guesses behave against it.</p>
       <div class="search-row">
-        <input type="text" id="answer-input" list="word-datalist" maxlength="5" placeholder="e.g. crane" autocomplete="off" spellcheck="false">
+        <input type="text" id="answer-input" maxlength="5" placeholder="e.g. crane" autocomplete="off" spellcheck="false">
         <button id="answer-random-btn" class="btn btn-secondary btn-small" title="Pick a random allowed word">Random</button>
         <button id="answer-set-btn" class="btn btn-small">Set answer</button>
       </div>
@@ -50,7 +50,7 @@
       <h2>2. Try a guess</h2>
       <p class="section-hint">Enter any allowed word to see the feedback it would get, and how much it was expected to tell you.</p>
       <div class="search-row">
-        <input type="text" id="guess-input" list="word-datalist" maxlength="5" placeholder="e.g. slate" autocomplete="off" spellcheck="false">
+        <input type="text" id="guess-input" maxlength="5" placeholder="e.g. slate" autocomplete="off" spellcheck="false">
         <button id="guess-analyze-btn" class="btn btn-small">Analyze</button>
       </div>
       <div id="guess-result" class="search-result"></div>
@@ -163,7 +163,7 @@
     <h2>Try a guess</h2>
     <p class="section-hint">See every feedback pattern a guess can produce across all 12,953 allowed words &mdash; no answer needed. This is the same entropy calculation, just without picking a specific word to check the outcome against.</p>
     <div class="search-row">
-      <input type="text" id="blind-guess-input" list="word-datalist" maxlength="5" placeholder="e.g. crane" autocomplete="off" spellcheck="false">
+      <input type="text" id="blind-guess-input" maxlength="5" placeholder="e.g. crane" autocomplete="off" spellcheck="false">
       <button id="blind-guess-analyze-btn" class="btn btn-small">Analyze</button>
     </div>
     <div id="blind-guess-result" class="search-result"></div>
@@ -238,8 +238,6 @@
     <p>Companion to the <a href="../wordle/index.html">Wordle + Information Theory</a> game &mdash; inspired by 3Blue1Brown's <a href="https://www.youtube.com/watch?v=v68zYyaEmEA" target="_blank" rel="noopener">Solving Wordle using information theory</a>.</p>
   </div>
 </footer>
-
-<datalist id="word-datalist"></datalist>
 
 <script src="words.js"></script>
 <script src="app.js"></script>

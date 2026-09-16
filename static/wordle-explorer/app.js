@@ -114,7 +114,6 @@
   const distColumnDetailTilesEl = document.getElementById('dist-column-detail-tiles');
   const distColumnDetailTextEl = document.getElementById('dist-column-detail-text');
 
-  const wordDatalistEl = document.getElementById('word-datalist');
   const toastContainer = document.getElementById('toast-container');
 
   const tabButtons = document.querySelectorAll('.tab-btn');
@@ -811,7 +810,6 @@
   });
 
   // ---------- Boot ----------
-  wordDatalistEl.innerHTML = ALLOWED.map((w) => `<option value="${w}">`).join('');
   updateTopStats();
   refreshVisibility();
   switchTab('blind');
