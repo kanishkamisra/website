@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perceptron Playground</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="toast-container"></div>
+
+<header id="app-header">
+  <div class="header-inner">
+    <h1>Perceptron <span class="subtitle">Playground</span></h1>
+    <div class="header-buttons">
+      <a href="#how-it-works" class="btn btn-secondary btn-small">How it works</a>
+    </div>
+  </div>
+</header>
+
+<!-- Training controls -->
+<div id="control-bar">
+  <div class="control-inner">
+    <div class="control-group">
+      <button id="reset-btn" class="btn btn-secondary" title="Back to the starting weights (R)">&#8634; Reset</button>
+      <button id="step-btn" class="btn btn-secondary" title="Process one training example (S)">Step</button>
+      <button id="play-btn" class="btn btn-play" title="Train continuously (Space)">&#9654; Train</button>
+      <input type="range" id="speed" min="0" max="9" step="1" value="3" aria-label="Speed" title="Speed">
+      <span id="speed-label" class="speed-label">5 / sec</span>
+    </div>
+    <div class="counters">
+      <span>Epoch <b id="epoch-count">0</b></span>
+      <span>Updates <b id="step-count">0</b></span>
+      <span>Mistakes <b id="error-count">0 / 0</b></span>
+    </div>
+  </div>
+  <div id="status-line" class="status-line" hidden></div>
+</div>
+
+<main id="app-main">
+
+  <!-- Left: data + plot -->
+  <section id="plot-col">
+    <p class="lede">A perceptron separates two classes with a straight line. Pick a dataset, then press <b>Step</b> to watch it learn one example at a time.</p>
+    <div id="preset-grid" class="chips">
+      <span class="chips-label">Data</span>
+      <button class="chip" data-preset="and">AND</button>
+      <button class="chip" data-preset="or">OR</button>
+      <button class="chip" data-preset="nand">NAND</button>
+      <button class="chip" data-preset="xor">XOR</button>
+      <button class="chip" data-preset="blobs">Clusters</button>
+      <button class="chip" data-preset="overlap">Overlapping</button>
+      <button class="chip" data-preset="empty">Blank</button>
+    </div>
+
+    <div id="plot-wrap">
+      <canvas id="plot"></canvas>
+    </div>
+
+    <div id="boundary-eq" class="boundary-eq"></div>
+    <div class="plot-legend">
+      <span><span class="dot dot-pos"></span> <span class="label-pos-text">+1</span></span>
+      <span><span class="dot dot-neg"></span> <span class="label-neg-text">&minus;1</span></span>
+      <span><span class="ring"></span> misclassified</span>
+      <span><b><i>w</i></b> points to the <span class="label-pos-text">+1</span> side</span>
+    </div>
+
+    <div class="tool-row">
+      <div class="segmented" role="radiogroup" aria-label="Drawing tool">
+        <button class="seg-btn active" data-tool="pos" role="radio" aria-checked="true"><span class="dot dot-pos"></span> <span class="label-pos-text">+1</span></button>
+        <button class="seg-btn" data-tool="neg" role="radio" aria-checked="false"><span class="dot dot-neg"></span> <span class="label-neg-text">&minus;1</span></button>
+        <button class="seg-btn" data-tool="erase" role="radio" aria-checked="false">Erase</button>
+      </div>
+      <span class="hint">Click the plot to add a point &middot; drag to move &middot; click a point to flip it</span>
+    </div>
+
+    <details class="fold">
+      <summary>Edit points as numbers <span id="n-points" class="muted"></span></summary>
+      <div class="table-wrap">
+        <table id="data-table">
+          <thead>
+            <tr><th>#</th><th>x<sub>1</sub></th><th>x<sub>2</sub></th><th>y</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="table-buttons">
+        <button id="add-row-btn" class="btn btn-secondary btn-small">+ Add row</button>
+        <button id="clear-btn" class="btn btn-secondary btn-small">Clear all</button>
+      </div>
+    </details>
+  </section>
+
+  <!-- Right: model + learning -->
+  <section id="model-col">
+    <div id="diagram-wrap"><svg id="diagram" role="img" aria-label="Perceptron diagram"></svg></div>
+
+    <div class="model-row">
+      <label>Activation
+        <select id="act-select">
+          <option value="sign">sign</option>
+          <option value="step">step</option>
+          <option value="sigmoid">sigmoid</option>
+          <option value="tanh">tanh</option>
+          <option value="linear">none (linear)</option>
+        </select>
+      </label>
+      <label><span>Learning rate <span class="nocase">&eta;</span></span>
+        <input type="number" id="lr-input" value="0.1" min="0" step="0.05">
+      </label>
+    </div>
+
+    <div class="sub-head">
+      <span title="Changing a weight starts a new training run from these values. Reset returns to them.">Weights &amp; bias</span>
+      <span class="link-buttons">
+        <label class="wstep">step
+          <select id="wstep-select">
+            <option value="0.01">0.01</option>
+            <option value="0.05">0.05</option>
+            <option value="0.1" selected>0.1</option>
+            <option value="0.25">0.25</option>
+            <option value="0.5">0.5</option>
+            <option value="1">1</option>
+          </select>
+        </label>
+        <button id="zero-btn" class="link-btn">set all to 0</button>
+        <button id="random-btn" class="link-btn">random</button>
+      </span>
+    </div>
+    <div id="weight-list"></div>
+
+    <div class="sub-head"><span>Last update</span></div>
+    <div id="update-box" class="update-box"></div>
+
+    <div class="sub-head"><span>Mistakes during training</span></div>
+    <canvas id="chart"></canvas>
+    <div id="chart-legend" class="chart-legend"></div>
+
+    <details class="fold">
+      <summary>More settings</summary>
+      <div class="settings">
+        <label class="check"><input type="checkbox" id="bias-check" checked> Use a bias term <i>b</i></label>
+        <div class="field-row">
+          <label for="order-select">Example order</label>
+          <select id="order-select">
+            <option value="fixed">In order</option>
+            <option value="shuffle">Shuffled each epoch</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <label for="max-epochs">Give up after</label>
+          <span><input type="number" id="max-epochs" value="100" min="1" step="1"> epochs</span>
+        </div>
+        <div class="field-row">
+          <label for="view-select">Axis range</label>
+          <select id="view-select">
+            <option value="bool">&minus;0.5 to 1.5</option>
+            <option value="1.5">&minus;1.5 to 1.5</option>
+            <option value="3">&minus;3 to 3</option>
+            <option value="6">&minus;6 to 6</option>
+          </select>
+        </div>
+        <label class="check"><input type="checkbox" id="stop-check" checked> Stop once every point is correct</label>
+        <label class="check"><input type="checkbox" id="trail-check" checked> Show earlier boundaries (dashed)</label>
+        <label class="check"><input type="checkbox" id="vector-check" checked> Show weight vector <b><i>w</i></b></label>
+      </div>
+    </details>
+  </section>
+</main>
+
+<section id="how-it-works">
+  <div class="how-inner">
+    <h2>How it works</h2>
+    <div class="how-grid">
+      <div>
+        <h3>1. Compute a weighted sum</h3>
+        <p>Each example has two inputs, <i>x</i><sub>1</sub> and <i>x</i><sub>2</sub>: its position in the plot. The perceptron multiplies each input by its weight, adds them up, and adds the bias:</p>
+        <p class="formula">z = w<sub>1</sub>x<sub>1</sub> + w<sub>2</sub>x<sub>2</sub> + b</p>
+        <h3>2. Apply the activation</h3>
+        <p>The prediction is <span class="formula-inline">&ycirc; = f(z)</span>. With the default <b>sign</b> activation, &ycirc; = +1 if z &ge; 0 and &minus;1 otherwise (here sign(0) = +1). The <b>decision boundary</b> is the set of points where z = 0: the dark line in the plot. For two inputs it is always a straight line, and <b>w</b> points toward the +1 side.</p>
+      </div>
+      <div>
+        <h3>3. Update when wrong</h3>
+        <p>For each training example (one <i>update</i>), the perceptron learning rule nudges every weight:</p>
+        <p class="formula">w<sub>i</sub> &larr; w<sub>i</sub> + &eta; (y &minus; &ycirc;) x<sub>i</sub> &nbsp;&nbsp;&nbsp; b &larr; b + &eta; (y &minus; &ycirc;)</p>
+        <p>If the prediction is right, y &minus; &ycirc; = 0 and nothing changes. If it's wrong, the boundary moves toward classifying that point correctly. One pass through all the examples is an <b>epoch</b>.</p>
+        <p>With sigmoid, tanh, or no activation, the update also multiplies by the slope f&prime;(z) (gradient descent on squared error), so weights keep changing a little even for correct points. No regularization is used.</p>
+      </div>
+      <div>
+        <h3>Things to try</h3>
+        <ul>
+          <li>Train on <b>AND</b> and <b>OR</b> one <i>Step</i> at a time. Which examples cause updates?</li>
+          <li>Turn off the bias and try AND again. Why does it fail?</li>
+          <li>Try <b>XOR</b>. Can any straight line separate it? What happens to the boundary as training goes on?</li>
+          <li>Try <b>Overlapping</b>. Why does the boundary never settle?</li>
+          <li>Set a huge or tiny learning rate. What changes, and what doesn't? (Hint: for sign with zero starting weights, &eta; only rescales <b>w</b>.)</li>
+          <li>Start from your own hand-picked weights and see how many updates training needs.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="app-footer">
+  <div class="footer-inner">
+    <p>Made by Kanishka Misra + Claude.</p>
+    <p>Inspired by the <a href="https://playground.tensorflow.org/" target="_blank" rel="noopener">TensorFlow Neural Network Playground</a>.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
