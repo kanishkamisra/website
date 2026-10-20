@@ -709,3 +709,134 @@ select, input[type="number"] {
 .btn { white-space: nowrap; }
 .control-group { flex-wrap: wrap; }
 .formula { overflow-x: auto; white-space: nowrap; font-size: 0.98rem; }
+
+/* ---------- Tabs: Full / Simple ---------- */
+
+.tab-bar { border-bottom: 1px solid var(--color-border); }
+
+.tab-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8px 16px 0;
+  display: flex;
+  gap: 4px;
+}
+
+.tab-btn {
+  padding: 9px 18px;
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: -1px;
+}
+
+.tab-btn:hover { background: #f4f4f5; color: var(--color-text); }
+.tab-btn.active { color: var(--color-text); border-bottom-color: var(--color-accent); }
+
+/* Simple view: plot on the left; training data and the update log on the right */
+#side-col { display: none; min-width: 0; }
+
+body.simple #side-col { display: block; }
+body.simple #model-col,
+body.simple #how-it-works,
+body.simple .lede,
+body.simple #boundary-eq,
+body.simple #data-slot details.fold summary,
+body.simple .header-buttons { display: none; }
+
+body.simple #app-main {
+  max-width: 1240px;
+  grid-template-columns: minmax(0, 540px) minmax(0, 1fr);
+}
+
+body.simple .tab-inner,
+body.simple .control-inner,
+body.simple .status-line,
+body.simple .header-inner { max-width: 1240px; }
+
+body.simple #data-slot details.fold { margin-top: 0; border-top: none; padding-top: 0; }
+body.simple #data-slot .table-wrap { max-height: 190px; }
+
+.side-head {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #777;
+  margin: 0 0 8px;
+}
+
+.side-head .muted { text-transform: none; letter-spacing: 0; }
+#data-slot + .side-head { margin-top: 22px; }
+
+.log-wrap {
+  max-height: 440px;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+#log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+#log-table th {
+  position: sticky;
+  top: 0;
+  background: var(--color-panel);
+  font-weight: 600;
+  text-align: right;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+#log-table td {
+  text-align: right;
+  padding: 4px 8px;
+  border-bottom: 1px solid #eef0f2;
+  white-space: nowrap;
+}
+
+#log-table th:nth-child(-n+3), #log-table td:nth-child(-n+3) { text-align: left; }
+#log-table th:nth-child(9), #log-table td:nth-child(9) { border-left: 1px solid var(--color-border); }
+
+#log-table td.ok { color: var(--color-right); font-weight: 700; }
+#log-table td.bad { color: var(--color-wrong); font-weight: 700; }
+#log-table tr.miss td { background: #fdf0ee; }
+#log-table tr.miss td:nth-child(n+9) { font-weight: 700; }
+#log-table tr.nochange td:nth-child(n+9) { color: #999; }
+#log-table tr.epoch-start td { border-top: 2px solid var(--color-border-filled); }
+#log-table tr.latest td { box-shadow: inset 0 -2px 0 var(--color-accent); }
+#log-table tr.log-start td { color: var(--color-muted); font-style: italic; background: #fafafa; }
+#log-table tr.log-start td:nth-child(n+2) { font-style: normal; }
+
+.log-empty {
+  margin: 0;
+  padding: 16px 12px;
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  body.simple #app-main { grid-template-columns: minmax(0, 1fr); }
+}
+body.simple #data-slot .table-wrap,
+body.simple #data-slot .table-buttons { max-width: 380px; }
+
+/* borrowed panels in the Simple view */
+body.simple #weights-slot { margin-top: 4px; }
+body.simple #weights-slot .sub-head { margin-top: 18px; }
+body.simple #update-slot .sub-head { margin: 22px 0 8px; }
+body.simple #update-slot .update-box { font-size: 0.9rem; }
+#update-slot + .side-head { margin-top: 22px; }

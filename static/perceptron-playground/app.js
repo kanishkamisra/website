@@ -63,6 +63,7 @@ const VIEWS = {
 };
 
 const TRAIL_LEN = 6;
+const LOG_MAX = 1000;
 
 // ---------- State ----------
 
@@ -91,6 +92,8 @@ const S = {
   epochMarks: [],           // step counts at which an epoch ended
   trail: [],                // past {w, b}
   last: null,               // details of the most recent update
+  log: [],                  // one entry per update, for the Simple view
+  logRun: 0,                // bumped on every new run so the log view resets
   running: false,
   status: null,             // {text, kind}
 
@@ -198,6 +201,8 @@ function newRun() {
   S.epochMarks = [];
   S.trail = [];
   S.last = null;
+  S.log = [];
+  S.logRun++;
   setStatus(null);
   makePerm();
 }
@@ -231,6 +236,9 @@ function doStep() {
   }
   if (S.step === 0 && S.idx === 0 && !S.initial) {
     S.initial = { w: { ...S.w }, b: S.b };
+  }
+  if (S.log.length === 0) {
+    S.log.push({ id: 0, start: true, w: { ...S.w }, b: S.b });
   }
   if (S.history.length === 0) {
     S.history.push({ step: 0, ...countErrors() });
@@ -272,6 +280,13 @@ function doStep() {
   S.step++;
   S.idx++;
   S.history.push({ step: S.step, ...countErrors() });
+
+  S.log.push({
+    id: S.step, epoch: S.epoch + 1, i, x1: p.x1, x2: p.x2, y, z, yhat, correct, changed,
+    w: { ...S.w }, b: S.b, rule: act.rule,
+  });
+  // keep the start row plus the most recent updates
+  if (S.log.length > LOG_MAX + 1) S.log.splice(1, S.log.length - LOG_MAX - 1);
 
   if (!isFinite(S.b) || feats.some(f => !isFinite(S.w[f.id]))) {
     setStatus("The weights blew up to infinity. Try a smaller learning rate, then Reset.", "bad");
@@ -1111,6 +1126,108 @@ function renderChart() {
     : "";
 }
 
+// ---------- Update log (Simple view) ----------
+
+const logBody = $("#log-body");
+const logWrap = $("#log-wrap");
+let logShownRun = -1;
+let logShownId = -1;
+
+function logRow(e) {
+  const tr = document.createElement("tr");
+  const wCells = `<td>${fmt(e.w.x1)}</td><td>${fmt(e.w.x2)}</td><td>${S.useBias ? fmt(e.b) : "—"}</td>`;
+  if (e.start) {
+    tr.className = "log-start";
+    tr.innerHTML = `<td colspan="8">Starting weights</td>${wCells}`;
+    return tr;
+  }
+  const out = v => (e.rule === "perceptron" ? fmtSigned(v) : fmt(v, 2));
+  tr.className = (e.correct ? "" : "miss") + (e.changed ? "" : " nochange");
+  tr.innerHTML = `
+    <td>${e.id}</td><td>${e.epoch}</td><td>#${e.i + 1}</td>
+    <td>(${fmtShort(e.x1)}, ${fmtShort(e.x2)})</td><td>${fmtSigned(e.y)}</td>
+    <td>${fmt(e.z)}</td><td>${out(e.yhat)}</td>
+    <td class="${e.correct ? "ok" : "bad"}">${e.correct ? "✓" : "✗"}</td>
+    ${wCells}`;
+  return tr;
+}
+
+function renderLog() {
+  if (!document.body.classList.contains("simple")) return;
+  if (logShownRun !== S.logRun) {
+    logBody.innerHTML = "";
+    logShownRun = S.logRun;
+    logShownId = -1;
+  }
+  const nearBottom = logWrap.scrollHeight - logWrap.scrollTop - logWrap.clientHeight < 40;
+  const frag = document.createDocumentFragment();
+  let prevEpoch = null;
+  const lastRow = logBody.lastElementChild;
+  if (lastRow) prevEpoch = +lastRow.dataset.epoch || null;
+  for (const e of S.log) {
+    if (e.id <= logShownId) continue;
+    const tr = logRow(e);
+    if (!e.start) {
+      tr.dataset.epoch = e.epoch;
+      if (prevEpoch !== null && e.epoch !== prevEpoch) tr.classList.add("epoch-start");
+      prevEpoch = e.epoch;
+    }
+    frag.appendChild(tr);
+    logShownId = e.id;
+  }
+  if (frag.childNodes.length) {
+    logBody.querySelectorAll("tr.latest").forEach(r => r.classList.remove("latest"));
+    logBody.appendChild(frag);
+    logBody.lastElementChild.classList.add("latest");
+    // trim old rows, keeping the starting-weights row
+    while (logBody.children.length > LOG_MAX + 1) logBody.children[1].remove();
+    // follow new rows unless the viewer has scrolled up to look at older ones
+    if (nearBottom) logWrap.scrollTop = logWrap.scrollHeight;
+  }
+  $("#log-empty").hidden = S.log.length > 0;
+  $("#n-points-simple").textContent = `(${S.points.length})`;
+}
+
+// ---------- Views: Full / Simple ----------
+
+const dataFold = $("#data-fold");
+let foldWasOpen = false;
+
+// Panels borrowed from the Full view while Simple is showing. A marker
+// remembers where each one lives so it can be put back.
+const BORROWED = [["#data-fold", "#data-slot"], ["#weights-block", "#weights-slot"], ["#update-block", "#update-slot"]]
+  .map(([el, slot]) => ({ el: $(el), slot: $(slot), marker: document.createComment(el) }));
+
+function setView(view) {
+  const simple = view === "simple";
+  if (simple === document.body.classList.contains("simple")) return;
+  document.body.classList.toggle("simple", simple);
+  document.querySelectorAll(".tab-btn").forEach(b => {
+    const on = b.dataset.view === view;
+    b.classList.toggle("active", on);
+    b.setAttribute("aria-selected", String(on));
+  });
+  if (simple) {
+    foldWasOpen = dataFold.open;
+    dataFold.open = true;
+    for (const m of BORROWED) {
+      m.el.before(m.marker);
+      m.slot.appendChild(m.el);
+    }
+  } else {
+    for (const m of BORROWED) {
+      m.marker.replaceWith(m.el);
+    }
+    dataFold.open = foldWasOpen;
+  }
+  try { history.replaceState(null, "", simple ? "#simple" : location.pathname + location.search); } catch (e) {}
+  render();
+  if (simple) logWrap.scrollTop = logWrap.scrollHeight;
+}
+
+document.querySelectorAll(".tab-btn").forEach(b =>
+  b.addEventListener("click", () => setView(b.dataset.view)));
+
 // ---------- Render all ----------
 
 function renderCounters() {
@@ -1128,6 +1245,7 @@ function render() {
   renderCounters();
   syncWeightInputs();
   updateTableHighlights();
+  renderLog();
 }
 
 function renderLabelsForActivation() {
@@ -1235,6 +1353,9 @@ document.addEventListener("keydown", e => {
 
 // ---------- Init ----------
 
+window.addEventListener("hashchange", () => setView(location.hash === "#simple" ? "simple" : "full"));
+
 renderWeightControls();
 renderLabelsForActivation();
 loadPreset("and");
+if (location.hash === "#simple") setView("simple");

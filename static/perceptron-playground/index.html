@@ -18,6 +18,13 @@
   </div>
 </header>
 
+<nav class="tab-bar" role="tablist">
+  <div class="tab-inner">
+    <button class="tab-btn active" data-view="full" role="tab" aria-selected="true">Full playground</button>
+    <button class="tab-btn" data-view="simple" role="tab" aria-selected="false">Simple</button>
+  </div>
+</nav>
+
 <!-- Training controls -->
 <div id="control-bar">
   <div class="control-inner">
@@ -74,7 +81,9 @@
       <span class="hint">Click the plot to add a point &middot; drag to move &middot; click a point to flip it</span>
     </div>
 
-    <details class="fold">
+    <div id="weights-slot"></div>
+
+    <details class="fold" id="data-fold">
       <summary>Edit points as numbers <span id="n-points" class="muted"></span></summary>
       <div class="table-wrap">
         <table id="data-table">
@@ -89,6 +98,29 @@
         <button id="clear-btn" class="btn btn-secondary btn-small">Clear all</button>
       </div>
     </details>
+  </section>
+
+  <!-- Simple view only: training data + update log -->
+  <section id="side-col">
+    <h2 class="side-head">Training data <span id="n-points-simple" class="muted"></span></h2>
+    <div id="data-slot"></div>
+
+    <div id="update-slot"></div>
+
+    <h2 class="side-head">Update log</h2>
+    <div class="log-wrap" id="log-wrap">
+      <table id="log-table">
+        <thead>
+          <tr>
+            <th>Update</th><th>Epoch</th><th>Point</th><th><i>x</i></th><th><i>y</i></th>
+            <th><i>z</i></th><th>&ycirc;</th><th></th>
+            <th>w<sub>1</sub></th><th>w<sub>2</sub></th><th>b</th>
+          </tr>
+        </thead>
+        <tbody id="log-body"></tbody>
+      </table>
+      <p id="log-empty" class="log-empty">Press <b>Step</b> to train on one point. Each update shows up here, with the weights after it.</p>
+    </div>
   </section>
 
   <!-- Right: model + learning -->
@@ -110,6 +142,7 @@
       </label>
     </div>
 
+    <div id="weights-block">
     <div class="sub-head">
       <span title="Changing a weight starts a new training run from these values. Reset returns to them.">Weights &amp; bias</span>
       <span class="link-buttons">
@@ -128,9 +161,12 @@
       </span>
     </div>
     <div id="weight-list"></div>
+    </div>
 
-    <div class="sub-head"><span>Last update</span></div>
-    <div id="update-box" class="update-box"></div>
+    <div id="update-block">
+      <div class="sub-head"><span>Last update</span></div>
+      <div id="update-box" class="update-box"></div>
+    </div>
 
     <div class="sub-head"><span>Mistakes during training</span></div>
     <canvas id="chart"></canvas>
