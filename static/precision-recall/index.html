@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Total Recall</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header id="app-header">
+  <div class="header-inner">
+    <div>
+      <h1>Total Recall <span class="subtitle">(and Precision, and Accuracy)</span></h1>
+    </div>
+    <div class="record" id="record" title="Your answers on this device">
+      <span class="record-label">Your record</span>
+      <span id="record-value" class="record-value">0 / 0</span>
+      <button id="record-reset" class="link-btn">reset</button>
+    </div>
+  </div>
+</header>
+
+<main id="app-main">
+
+  <section class="scenario-card" aria-live="polite">
+    <div class="scenario-top">
+      <span id="scenario-id" class="scenario-id"></span>
+      <span class="top-buttons">
+        <button id="copy-btn" class="btn btn-secondary btn-small" title="Copy a link that always opens this scenario">Copy link</button>
+        <button id="new-btn" class="btn btn-secondary btn-small">New scenario &#8635;</button>
+      </span>
+    </div>
+    <p id="scenario-intro" class="scenario-intro"></p>
+    <p class="fact"><b>Total:</b> <span id="fact-total"></span></p>
+    <p class="fact"><b>Classifier A:</b> <span id="fact-a"></span></p>
+    <p class="fact"><b>Classifier B:</b> <span id="fact-b"></span></p>
+  </section>
+
+  <section id="questions"></section>
+
+  <section id="summary" class="summary" hidden>
+    <p id="summary-text" class="summary-text"></p>
+    <h3>The full picture</h3>
+    <div class="matrices">
+      <div id="matrix-a"></div>
+      <div id="matrix-b"></div>
+    </div>
+    <button id="new-btn-2" class="btn">Try a new scenario &#8635;</button>
+  </section>
+
+  <details class="defs">
+    <summary>Need a reminder? The three definitions</summary>
+    <dl>
+      <dt>Accuracy</dt>
+      <dd>Of <i>all</i> the items, what fraction did the classifier get right? It counts both kinds of correct answers: positives it caught and negatives it left alone.
+        <div class="formula">accuracy = (true positives + true negatives) / total</div></dd>
+      <dt>Recall</dt>
+      <dd>Of the items that are <i>actually</i> positive, what fraction did the classifier find?
+        <div class="formula">recall = true positives / actual positives</div></dd>
+      <dt>Precision</dt>
+      <dd>Of the items the classifier <i>labeled</i> positive, what fraction really were positive?
+        <div class="formula">precision = true positives / labeled positive</div></dd>
+    </dl>
+  </details>
+</main>
+
+<footer id="app-footer">
+  <div class="footer-inner">
+    <p>Made by Kanishka Misra + Claude.</p>
+    <p>A new scenario every time you load the page. Share the link to share the exact scenario.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
