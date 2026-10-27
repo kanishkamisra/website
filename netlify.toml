@@ -9,3 +9,12 @@
   HUGO_VERSION = "0.115.1"
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.115.1"
+# Total Recall used to live at /precision-recall; keep old links working.
+[[redirects]]
+  from = "/precision-recall"
+  to = "/total-recall/"
+  status = 301
+[[redirects]]
+  from = "/precision-recall/*"
+  to = "/total-recall/:splat"
+  status = 301
