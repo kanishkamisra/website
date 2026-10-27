@@ -41,10 +41,11 @@ const SIZES = [
   { N: 200, step: 20 },
 ];
 
+// Question order; each metric has its own color (see .m-* in style.css).
 const METRICS = [
-  { key: "acc", name: "accuracy" },
   { key: "rec", name: "recall" },
   { key: "prec", name: "precision" },
+  { key: "acc", name: "accuracy" },
 ];
 
 // Non-tied metrics must differ by at least this much, so the comparison
@@ -163,7 +164,7 @@ function explain(key, S) {
     rec: "Recall = true positives / actual positives",
     prec: "Precision = true positives / labeled positive",
   }[key];
-  let html = `<div class="rule">${rule}</div><div>${line("A", A)}</div><div>${line("B", B)}</div>`;
+  let html = `<div class="rule m-${key}">${rule}</div><div>${line("A", A)}</div><div>${line("B", B)}</div>`;
   if (S.answers[key] === "Neither") {
     const what = { acc: "the same number right overall", rec: `the same share of the actual ${pos}`, prec: "equally trustworthy labels" }[key];
     html += `<div class="note">Neither! They have ${what}, even though their raw counts differ.</div>`;
@@ -209,9 +210,9 @@ function render() {
   box.innerHTML = "";
   METRICS.forEach(({ key, name }, i) => {
     const q = document.createElement("div");
-    q.className = "question";
+    q.className = `question q-${key}`;
     q.innerHTML = `
-      <p class="q-text">${i + 1}. Which classifier has a higher <span class="metric">${name}</span>?</p>
+      <p class="q-text">${i + 1}. Which classifier has a higher <span class="metric m-${key}">${name}</span>?</p>
       <div class="options" role="group" aria-label="${name}">
         <button class="opt" data-v="A">A</button>
         <button class="opt" data-v="B">B</button>

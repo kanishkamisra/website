@@ -10,6 +10,10 @@
   --color-right: #2e8b57;
   --color-right-bg: #e8f5ee;
   --color-wrong-bg: #fbeceb;
+  /* one color per metric (kept clear of the red/green used for feedback) */
+  --color-rec: #1f6fb2;
+  --color-prec: #7d3c98;
+  --color-acc: #c25e00;
 }
 
 * { box-sizing: border-box; }
@@ -192,7 +196,16 @@ body {
   margin: 0 0 12px;
 }
 
-.metric { color: var(--color-wrong); }
+.metric { font-weight: 800; }
+
+.m-rec { color: var(--color-rec); }
+.m-prec { color: var(--color-prec); }
+.m-acc { color: var(--color-acc); }
+
+.question { border-left: 4px solid transparent; padding-left: 14px; }
+.question.q-rec { border-left-color: var(--color-rec); }
+.question.q-prec { border-left-color: var(--color-prec); }
+.question.q-acc { border-left-color: var(--color-acc); }
 
 .options { display: flex; gap: 10px; flex-wrap: wrap; }
 
@@ -226,7 +239,7 @@ body {
 .verdict { font-weight: 700; margin-bottom: 4px; }
 .verdict.ok { color: var(--color-right); }
 .verdict.bad { color: var(--color-wrong); }
-.rule { font-family: Georgia, "Times New Roman", serif; color: var(--color-muted); }
+.rule { font-family: Georgia, "Times New Roman", serif; font-weight: 600; }
 .note { margin-top: 6px; font-weight: 600; color: var(--color-right); }
 
 /* ---------- Summary ---------- */
@@ -320,3 +333,4 @@ body {
   .opt { flex: 1; min-width: 0; }
   .feedback { overflow-x: auto; }
 }
+.defs .formula { display: table; }
