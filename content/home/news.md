@@ -50,4 +50,8 @@ subtitle = "[SEE ALL](/news)"
  css_class = ""
 +++
 
-{{< readfromfile "/content/newslist.dat" 6 >}} 
+<div class="news-scroll">
+
+{{< readfromfile "/content/newslist.dat" 25 >}}
+
+</div>

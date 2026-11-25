@@ -49,6 +49,14 @@ Bears
 ### Assessing Discourse Sensitive Properties in LMs -->
 
 
+## Recent News
+
+<div class="news-scroll">
+
+{{< readfromfile "/content/newslist.dat" 25 >}}
+
+</div>
+
 {{< people >}}
 
 ## Alumni
